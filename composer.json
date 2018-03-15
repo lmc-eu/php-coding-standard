@@ -1,0 +1,14 @@
+{
+    "name": "lmc/coding-standard",
+    "description": "Coding standard used in LMC projects",
+    "type": "library",
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "authors": [
+        {
+            "name": "LMC s.r.o.",
+            "homepage": "https://github.com/lmc-eu"
+        }
+    ],
+    "require": {}
+}
