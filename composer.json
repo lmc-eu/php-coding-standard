@@ -3,12 +3,15 @@
     "description": "Coding standard used in LMC projects",
     "type": "library",
     "license": "MIT",
-    "minimum-stability": "stable",
+    "minimum-stability": "alpha",
+    "prefer-stable": true,
     "authors": [
         {
             "name": "LMC s.r.o.",
             "homepage": "https://github.com/lmc-eu"
         }
     ],
-    "require": {}
+    "require": {
+        "symplify/easy-coding-standard": "4.0.x"
+    }
 }
