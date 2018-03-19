@@ -1,0 +1,6 @@
+files:
+    easy-coding-standard.yml:
+        depth: 3
+        excludedKeys:
+            0: parameters
+    yaml-sort-checker.yml:
