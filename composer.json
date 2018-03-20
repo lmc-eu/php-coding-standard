@@ -15,14 +15,16 @@
         "symplify/easy-coding-standard": "4.0.x"
     },
     "require-dev": {
-        "j13k/yaml-lint": "^1.1"
+        "j13k/yaml-lint": "^1.1",
+        "mhujer/yaml-sort-checker": "^1.1"
     },
     "scripts": {
         "all": [
             "@lint"
         ],
         "lint": [
-            "vendor/bin/yaml-lint *.yml"
+            "vendor/bin/yaml-lint *.yml",
+            "vendor/bin/yaml-sort-checker"
         ]
     }
 }
