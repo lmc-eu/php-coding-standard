@@ -73,6 +73,7 @@ services:
 
     PhpCsFixer\Fixer\Alias\MbStrFunctionsFixer: ~
     PhpCsFixer\Fixer\Alias\NoAliasFunctionsFixer: ~
+    PhpCsFixer\Fixer\Alias\RandomApiMigrationFixer: ~
     PhpCsFixer\Fixer\ArrayNotation\ArraySyntaxFixer:
         syntax: short
     PhpCsFixer\Fixer\ArrayNotation\NormalizeIndexBraceFixer: ~
@@ -101,11 +102,16 @@ services:
         less_and_greater: false
     PhpCsFixer\Fixer\FunctionNotation\FunctionTypehintSpaceFixer: ~
     PhpCsFixer\Fixer\FunctionNotation\NoUnreachableDefaultArgumentValueFixer: ~
+    PhpCsFixer\Fixer\FunctionNotation\ReturnTypeDeclarationFixer: ~
+    PhpCsFixer\Fixer\FunctionNotation\VoidReturnFixer: ~
     PhpCsFixer\Fixer\Import\NoLeadingImportSlashFixer: ~
     PhpCsFixer\Fixer\Import\NoUnusedImportsFixer:
     PhpCsFixer\Fixer\Import\OrderedImportsFixer: ~
+    PhpCsFixer\Fixer\LanguageConstruct\DeclareEqualNormalizeFixer: ~
     PhpCsFixer\Fixer\LanguageConstruct\IsNullFixer:
         use_yoda_style: false
+    PhpCsFixer\Fixer\ListNotation\ListSyntaxFixer:
+        syntax: short
     PhpCsFixer\Fixer\NamespaceNotation\NoLeadingNamespaceWhitespaceFixer: ~
     PhpCsFixer\Fixer\NamespaceNotation\SingleBlankLineBeforeNamespaceFixer: ~
     PhpCsFixer\Fixer\Operator\BinaryOperatorSpacesFixer: ~
@@ -115,6 +121,7 @@ services:
     PhpCsFixer\Fixer\Operator\ObjectOperatorWithoutWhitespaceFixer: ~
     PhpCsFixer\Fixer\Operator\StandardizeNotEqualsFixer: ~
     PhpCsFixer\Fixer\Operator\TernaryOperatorSpacesFixer: ~
+    PhpCsFixer\Fixer\Operator\TernaryToNullCoalescingFixer: ~
     PhpCsFixer\Fixer\Operator\UnaryOperatorSpacesFixer: ~
     PhpCsFixer\Fixer\Phpdoc\NoBlankLinesAfterPhpdocFixer: ~
     PhpCsFixer\Fixer\Phpdoc\NoEmptyPhpdocFixer: ~
@@ -136,11 +143,14 @@ services:
     PhpCsFixer\Fixer\Semicolon\NoEmptyStatementFixer: ~
     PhpCsFixer\Fixer\Semicolon\NoSinglelineWhitespaceBeforeSemicolonsFixer: ~
     PhpCsFixer\Fixer\Semicolon\SpaceAfterSemicolonFixer: ~
+    PhpCsFixer\Fixer\Strict\DeclareStrictTypesFixer: ~
+    PhpCsFixer\Fixer\Strict\StrictParamFixer: ~
     PhpCsFixer\Fixer\StringNotation\SingleQuoteFixer: ~
     PhpCsFixer\Fixer\Whitespace\BlankLineBeforeStatementFixer:
         statements:
             - return
             - try
+    PhpCsFixer\Fixer\Whitespace\CompactNullableTypehintFixer: ~
     PhpCsFixer\Fixer\Whitespace\NoExtraBlankLinesFixer:
         tokens:
             - break
@@ -154,6 +164,14 @@ services:
             - use
             - use_trait
     PhpCsFixer\Fixer\Whitespace\NoWhitespaceInBlankLineFixer: ~
+
+    SlevomatCodingStandard\Sniffs\Exceptions\ReferenceThrowableOnlySniff: ~
+
+    Symplify\CodingStandard\Fixer\Naming\ExceptionNameFixer: ~
+    Symplify\CodingStandard\Fixer\Naming\MagicMethodsNamingFixer: ~
+    Symplify\CodingStandard\Sniffs\Naming\AbstractClassNameSniff: ~
+    Symplify\CodingStandard\Sniffs\Naming\InterfaceNameSniff: ~
+    Symplify\CodingStandard\Sniffs\Naming\TraitNameSniff: ~
 
 parameters:
     skip:
