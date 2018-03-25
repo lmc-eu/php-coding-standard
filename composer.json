@@ -23,7 +23,7 @@
             "@lint"
         ],
         "lint": [
-            "vendor/bin/yaml-lint *.yml",
+            "for FILE_NAME in *.yml *.yaml; do vendor/bin/yaml-lint \"$FILE_NAME\"; done",
             "vendor/bin/yaml-sort-checker"
         ]
     }
