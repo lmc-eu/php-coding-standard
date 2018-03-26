@@ -1,5 +1,8 @@
 imports:
-    - { resource: 'vendor/symplify/easy-coding-standard/config/psr2.yml' }
+    # Import path when this package is installed as dependency
+    - { resource: '../../easy-coding-standard/config/psr2.yml', ignore_errors: true }
+    # Import path when this package is being used directly (eg. during development)
+    - { resource: 'vendor/symplify/easy-coding-standard/config/psr2.yml', ignore_errors: true }
 
 services:
     # Class and Interface names should be unique in a project, they should never be duplicated
