@@ -20,11 +20,11 @@ also be explicitly required with their stability flag.
 
 ## Usage
 
-1. Create `easy-coding-standard.yml` file in root directory of your project and import the LMC code-style rules:
+1. Create `easy-coding-standard.yaml` file in root directory of your project and import the LMC code-style rules:
 
 ```yaml
 imports:
-    - { resource: 'vendor/lmc/coding-standard/easy-coding-standard.yml' }
+    - { resource: 'vendor/lmc/coding-standard/easy-coding-standard.yaml' }
 ```
 
 2. Run the check command (for `src/` and `tests/` directories):
