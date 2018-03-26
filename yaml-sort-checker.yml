@@ -3,4 +3,6 @@ files:
         depth: 3
         excludedKeys:
             0: parameters
+        excludedSections:
+            0: imports
     yaml-sort-checker.yml:

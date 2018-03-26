@@ -16,7 +16,7 @@
     },
     "require-dev": {
         "j13k/yaml-lint": "^1.1",
-        "mhujer/yaml-sort-checker": "^1.1"
+        "mhujer/yaml-sort-checker": "^1.2"
     },
     "scripts": {
         "all": [
