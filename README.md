@@ -1,5 +1,7 @@
 # LMC Coding Standard for PHP
 
+[![Latest Stable Version](https://img.shields.io/packagist/v/lmc/coding-standard.svg?style=flat-square)](https://packagist.org/packages/lmc/coding-standard)
+
 PHP coding standard used in [LMC](https://www.lmc.eu/en/) projects.
 
 Standard is based on [PSR-2](https://www.php-fig.org/psr/psr-2/) and adds various checks to make sure the code is readable,
