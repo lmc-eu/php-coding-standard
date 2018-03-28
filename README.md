@@ -46,12 +46,11 @@ vendor/bin/ecs check src/ tests/
 
 ### Exclude (skip) some checks or files
 
-If you need to exclude some specific check, please refer to the [EasyCodingStandard documentation](https://github.com/Symplify/EasyCodingStandard#exclude-checkers).
+You can configure EasyCodingStandard via `parameters` section of your `easy-coding-standard.yaml` to:
+ - exclude specific file from all checks (via [`exclude_files`](https://github.com/Symplify/EasyCodingStandard#ignore-what-you-cant-fix))
+ - skip specific check from some file(s) or directories (via [`skip`](https://github.com/Symplify/EasyCodingStandard#ignore-what-you-cant-fix))
+ - disable whole check (via [`exclude_checkers`](https://github.com/Symplify/EasyCodingStandard#exclude-checkers))
 
-If you want to exclude some specific file (or directory) from the checks, you can use `skip` parameter to do so (see [docs](https://github.com/Symplify/EasyCodingStandard#ignore-what-you-cant-fix)).
-⚠️ However **if you define custom `skip` section in your `parameters`, it will overwrite all `skip` rules** from the [imported standard][easy-coding-standard.yml]
-and re-enable various un-intended rules. Until this [ECS limitation](https://github.com/Symplify/Symplify/pull/697#issuecomment-373915457)
-is resolved, the workaround is to redeclare the whole content of the skip section of the main [`easy-coding-standard.yml`][easy-coding-standard.yml] file.
 
 ## Changelog
 For latest changes see [CHANGELOG.md](CHANGELOG.md) file. We follow [Semantic Versioning](http://semver.org/).
