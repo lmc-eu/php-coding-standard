@@ -14,11 +14,8 @@ We use [EasyCodingStandard] to define and execute checks created for both [PHP-C
 ## Installation
 
 ```bash
-composer require --dev lmc/coding-standard:dev-master symplify/easy-coding-standard:^4.0@alpha symplify/coding-standard:^4.0@alpha symplify/package-builder:^4.0@alpha symplify/token-runner:^4.0@alpha symplify/better-reflection-docblock:^4.0@alpha
+composer require --dev lmc/coding-standard:dev-master
 ```
-
-ℹ️ Because we currently depend on `@alpha` version of [EasyCodingStandard], all of its `@alpha` dependencies must temporarily
-also be explicitly required with their stability flag.
 
 ## Usage
 
@@ -52,7 +49,6 @@ You can configure EasyCodingStandard via `parameters` section of your `easy-codi
  - exclude specific file from all checks (via [`exclude_files`](https://github.com/Symplify/EasyCodingStandard#ignore-what-you-cant-fix))
  - skip specific check from some file(s) or directories (via [`skip`](https://github.com/Symplify/EasyCodingStandard#ignore-what-you-cant-fix))
  - disable whole check (via [`exclude_checkers`](https://github.com/Symplify/EasyCodingStandard#exclude-checkers))
-
 
 ## Changelog
 For latest changes see [CHANGELOG.md](CHANGELOG.md) file. We follow [Semantic Versioning](http://semver.org/).
