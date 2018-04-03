@@ -9,12 +9,10 @@ does follow the same conventions and does not contain common mistakes.
 
 We use [EasyCodingStandard] to define and execute checks created for both [PHP-CS-Fixer] and [PHP_CodeSniffer].
 
-**🚧 Please be advised this package is currently under development and anything can change anytime.**
-
 ## Installation
 
 ```bash
-composer require --dev lmc/coding-standard:dev-master
+composer require --dev lmc/coding-standard
 ```
 
 ## Usage
@@ -46,7 +44,7 @@ vendor/bin/ecs check src/ tests/
 ### Exclude (skip) some checks or files
 
 You can configure EasyCodingStandard via `parameters` section of your `easy-coding-standard.yaml` to:
- - exclude specific file from all checks (via [`exclude_files`](https://github.com/Symplify/EasyCodingStandard#ignore-what-you-cant-fix))
+ - exclude a specific file from all checks (via [`exclude_files`](https://github.com/Symplify/EasyCodingStandard#ignore-what-you-cant-fix))
  - skip specific check from some file(s) or directories (via [`skip`](https://github.com/Symplify/EasyCodingStandard#ignore-what-you-cant-fix))
  - disable whole check (via [`exclude_checkers`](https://github.com/Symplify/EasyCodingStandard#exclude-checkers))
 
