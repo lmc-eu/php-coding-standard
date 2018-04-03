@@ -1,8 +1,5 @@
 imports:
-    # Import path when this package is installed as dependency
-    - { resource: '../../easy-coding-standard/config/psr2.yml', ignore_errors: true }
-    # Import path when this package is being used directly (eg. during development)
-    - { resource: 'vendor/symplify/easy-coding-standard/config/psr2.yml', ignore_errors: true }
+    - { resource: '%vendor_dir%/symplify/easy-coding-standard/config/psr2.yml' }
 
 services:
     # Class and Interface names should be unique in a project, they should never be duplicated
@@ -200,9 +197,3 @@ parameters:
 
          # There could be more than one space after star (eg. in Doctrine annotations)
         PHP_CodeSniffer\Standards\Squiz\Sniffs\Commenting\DocCommentAlignmentSniff.SpaceAfterStar: ~
-
-         # Skip non-PSR2 rules incorrectly added by ECS (https://github.com/Symplify/Symplify/issues/696)
-        PHP_CodeSniffer\Standards\Squiz\Sniffs\WhiteSpace\ControlStructureSpacingSniff.LineAfterClose: ~
-        PHP_CodeSniffer\Standards\Squiz\Sniffs\WhiteSpace\ControlStructureSpacingSniff.NoLineAfterClose: ~
-        PHP_CodeSniffer\Standards\Squiz\Sniffs\WhiteSpace\ControlStructureSpacingSniff.SpaceBeforeCloseBrace: ~
-        PHP_CodeSniffer\Standards\Squiz\Sniffs\WhiteSpace\ControlStructureSpacingSniff.SpacingAfterOpenBrace: ~

@@ -3,7 +3,6 @@
     "description": "Coding standard used in LMC projects",
     "type": "library",
     "license": "MIT",
-    "minimum-stability": "alpha",
     "prefer-stable": true,
     "authors": [
         {
@@ -12,7 +11,7 @@
         }
     ],
     "require": {
-        "symplify/easy-coding-standard": "4.0.x"
+        "symplify/easy-coding-standard": "^4.0.0"
     },
     "require-dev": {
         "j13k/yaml-lint": "^1.1",
