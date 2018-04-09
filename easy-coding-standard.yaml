@@ -167,7 +167,7 @@ services:
 
     SlevomatCodingStandard\Sniffs\Exceptions\ReferenceThrowableOnlySniff: ~
 
-    Symplify\CodingStandard\Fixer\Naming\ExceptionNameFixer: ~
+    Symplify\CodingStandard\Fixer\Naming\ClassNameSuffixByParentFixer: ~
     Symplify\CodingStandard\Fixer\Naming\MagicMethodsNamingFixer: ~
     Symplify\CodingStandard\Sniffs\Naming\AbstractClassNameSniff: ~
     Symplify\CodingStandard\Sniffs\Naming\InterfaceNameSniff: ~
