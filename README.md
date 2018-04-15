@@ -21,7 +21,7 @@ composer require --dev lmc/coding-standard
 
 ```yaml
 imports:
-    - { resource: 'vendor/lmc/coding-standard/easy-coding-standard.yaml' }
+    - { resource: '%vendor_dir%/lmc/coding-standard/easy-coding-standard.yaml' }
 ```
 
 2. Run the check command (for `src/` and `tests/` directories):
