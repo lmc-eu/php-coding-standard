@@ -139,6 +139,13 @@ services:
     PhpCsFixer\Fixer\PhpTag\FullOpeningTagFixer: ~
     PhpCsFixer\Fixer\PhpUnit\PhpUnitConstructFixer: ~
     PhpCsFixer\Fixer\PhpUnit\PhpUnitDedicateAssertFixer: ~
+    # Use dedicated helper methods createMock() and createPartialMock() where possible
+    PhpCsFixer\Fixer\PhpUnit\PhpUnitMockFixer: ~
+    # Use expectedException*() methods instead of @expectedException* annotation (both following fixers must be applied to do so)
+    PhpCsFixer\Fixer\PhpUnit\PhpUnitNoExpectationAnnotationFixer: ~
+    PhpCsFixer\Fixer\PhpUnit\PhpUnitExpectationFixer: ~
+    # Visibility of setUp() and tearDown() method should be kept protected
+    PhpCsFixer\Fixer\PhpUnit\PhpUnitSetUpTearDownVisibilityFixer: ~
     PhpCsFixer\Fixer\ReturnNotation\NoUselessReturnFixer: ~
     PhpCsFixer\Fixer\Semicolon\NoEmptyStatementFixer: ~
     PhpCsFixer\Fixer\Semicolon\NoSinglelineWhitespaceBeforeSemicolonsFixer: ~

@@ -3,6 +3,8 @@ files:
         depth: 3
         excludedKeys:
             0: parameters
+            services:
+                - PhpCsFixer\Fixer\PhpUnit\PhpUnitExpectationFixer
         excludedSections:
             0: imports
     yaml-sort-checker.yml:
