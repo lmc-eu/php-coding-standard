@@ -10,12 +10,23 @@
             "homepage": "https://github.com/lmc-eu"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "Lmc\\CodingStandard\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Lmc\\CodingStandard\\": "tests/"
+        }
+    },
     "require": {
         "symplify/easy-coding-standard": "^4.0.2"
     },
     "require-dev": {
         "j13k/yaml-lint": "^1.1",
-        "mhujer/yaml-sort-checker": "^1.2"
+        "mhujer/yaml-sort-checker": "^1.2",
+        "phpunit/phpunit": "^7.1"
     },
     "scripts": {
         "all": [
@@ -25,5 +36,8 @@
             "for FILE_NAME in *.yml *.yaml; do vendor/bin/yaml-lint \"$FILE_NAME\"; done",
             "vendor/bin/yaml-sort-checker"
         ]
+    },
+    "config": {
+        "sort-packages": true
     }
 }

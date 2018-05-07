@@ -2,6 +2,9 @@ imports:
     - { resource: '%vendor_dir%/symplify/easy-coding-standard/config/psr2.yml' }
 
 services:
+    #  Function http_build_query() should always have specified `$arg_separator` parameter
+    Lmc\CodingStandard\Fixer\SpecifyArgSeparatorFixer: ~
+
     # Class and Interface names should be unique in a project, they should never be duplicated
     PHP_CodeSniffer\Standards\Generic\Sniffs\Classes\DuplicateClassNameSniff: ~
     # Control Structures must have at least one statement inside of the body (empty catch rules is skipped)
