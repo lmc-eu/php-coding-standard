@@ -9,6 +9,7 @@
     - `PhpUnitMockFixer`: Ensure dedicated helper methods `createMock()` and `createPartialMock()` are used where possible instead of `->getMock()`.
     - `PhpUnitNoExpectationAnnotationFixer`: Use `setExpectedException()` instead of `@expectedException` annotation.
     - `PhpUnitSetUpTearDownVisibilityFixer`: Visibility of `setUp()` and `tearDown()` method should be kept protected as defined in PHPUnit TestCase.
+- Do not check for `EventSubscriber` class suffixes via `ClassNameSuffixByParentFixer`.
 
 ## 1.0.1 - 2018-04-09
 - Replace deprecated `ExceptionNameFixer` with more generic `ClassNameSuffixByParentFixer`.
