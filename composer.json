@@ -26,15 +26,34 @@
     "require-dev": {
         "j13k/yaml-lint": "^1.1",
         "mhujer/yaml-sort-checker": "^1.2",
+        "phpstan/phpstan-phpunit": "^0.9.4",
+        "phpstan/phpstan-shim": "^0.9.2",
         "phpunit/phpunit": "^7.1"
     },
     "scripts": {
         "all": [
-            "@lint"
+            "@lint",
+            "@analyze",
+            "@test"
+        ],
+        "all-ci": [
+            "@lint",
+            "@analyze",
+            "@test-ci"
         ],
         "lint": [
             "for FILE_NAME in *.yml *.yaml; do vendor/bin/yaml-lint \"$FILE_NAME\"; done",
             "vendor/bin/yaml-sort-checker"
+        ],
+        "analyze": [
+            "vendor/bin/ecs check src/ tests/ -vvv --ansi",
+            "vendor/bin/phpstan.phar analyze ./src ./tests -c phpstan.neon --level 7 --ansi"
+        ],
+        "test": [
+            "./vendor/bin/phpunit --colors=always"
+        ],
+        "test-ci": [
+            "./vendor/bin/phpunit --colors=always --coverage-clover coverage-clover.xml"
         ]
     },
     "config": {
