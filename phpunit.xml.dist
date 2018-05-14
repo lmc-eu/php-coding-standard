@@ -1,0 +1,23 @@
+<phpunit
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+    bootstrap="./vendor/autoload.php"
+    colors="true"
+>
+    <testsuites>
+        <testsuite name="unit">
+            <directory>./tests/</directory>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist>
+            <directory suffix=".php">./src</directory>
+        </whitelist>
+    </filter>
+
+    <php>
+        <!-- E_ALL = 30719 -->
+        <ini name="error_reporting" value="30719"/>
+    </php>
+</phpunit>
