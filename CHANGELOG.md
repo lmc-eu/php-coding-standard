@@ -4,6 +4,9 @@
 
 <!-- There is always Unreleased section on the top. Subsections (Added, Changed, Fixed, Removed) should be added as needed. -->
 
+## Unreleased
+- Fix `Generic.Commenting.DocComment.SpacingBeforeTags` being reported on one-line phpDoc annotations (when PHP_Codesniffer 3.3.0+ is used).
+
 ## 1.1.0 - 2018-05-14
 - Add `SpecifyArgSeparatorFixer` to make sure arg_separator is always defined when using `http_build_query()` function.
 - Add PHPUnit fixers:
