@@ -206,6 +206,7 @@ parameters:
         PHP_CodeSniffer\Standards\Generic\Sniffs\Commenting\DocCommentSniff.NonParamGroup: ~
         PHP_CodeSniffer\Standards\Generic\Sniffs\Commenting\DocCommentSniff.ParamGroup: ~
         PHP_CodeSniffer\Standards\Generic\Sniffs\Commenting\DocCommentSniff.ParamNotFirst: ~
+        PHP_CodeSniffer\Standards\Generic\Sniffs\Commenting\DocCommentSniff.SpacingBeforeTags: ~
         PHP_CodeSniffer\Standards\Generic\Sniffs\Commenting\DocCommentSniff.TagValueIndent: ~
 
         # Skip unwanted rules from ArrayDeclarationSniff
