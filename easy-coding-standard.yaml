@@ -147,6 +147,8 @@ services:
     # Use expectedException*() methods instead of @expectedException* annotation (both following fixers must be applied to do so)
     PhpCsFixer\Fixer\PhpUnit\PhpUnitNoExpectationAnnotationFixer: ~
     PhpCsFixer\Fixer\PhpUnit\PhpUnitExpectationFixer: ~
+    # Order `@covers` annotation of PHPUnit tests
+    PhpCsFixer\Fixer\PhpUnit\PhpUnitOrderedCoversFixer: ~
     # Visibility of setUp() and tearDown() method should be kept protected
     PhpCsFixer\Fixer\PhpUnit\PhpUnitSetUpTearDownVisibilityFixer: ~
     PhpCsFixer\Fixer\ReturnNotation\NoUselessReturnFixer: ~
