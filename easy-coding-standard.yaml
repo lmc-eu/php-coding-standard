@@ -179,8 +179,10 @@ services:
 
     SlevomatCodingStandard\Sniffs\Exceptions\ReferenceThrowableOnlySniff: ~
 
-    Symplify\CodingStandard\Fixer\Naming\ClassNameSuffixByParentFixer:
-        parent_types_to_suffixes:
+    Symplify\CodingStandard\Fixer\Naming\MagicMethodsNamingFixer: ~
+    Symplify\CodingStandard\Sniffs\Naming\AbstractClassNameSniff: ~
+    Symplify\CodingStandard\Sniffs\Naming\ClassNameSuffixByParentSniff:
+        defaultParentClassToSuffixMap:
             '*Command': 'Command'
             '*Controller': 'Controller'
             '*Repository': 'Repository'
@@ -191,8 +193,6 @@ services:
             '*Sniff': 'Sniff'
             '*Exception': 'Exception'
             '*Handler': 'Handler'
-    Symplify\CodingStandard\Fixer\Naming\MagicMethodsNamingFixer: ~
-    Symplify\CodingStandard\Sniffs\Naming\AbstractClassNameSniff: ~
     Symplify\CodingStandard\Sniffs\Naming\InterfaceNameSniff: ~
     Symplify\CodingStandard\Sniffs\Naming\TraitNameSniff: ~
 
