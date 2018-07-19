@@ -21,7 +21,7 @@
         }
     },
     "require": {
-        "symplify/easy-coding-standard": "^4.0.2"
+        "symplify/easy-coding-standard": "^4.5.1"
     },
     "require-dev": {
         "j13k/yaml-lint": "^1.1",
