@@ -87,6 +87,7 @@ services:
     PhpCsFixer\Fixer\Basic\BracesFixer:
         allow_single_line_closure: true
     PhpCsFixer\Fixer\Basic\Psr4Fixer: ~
+    PhpCsFixer\Fixer\Casing\MagicMethodCasingFixer: ~
     PhpCsFixer\Fixer\Casing\NativeFunctionCasingFixer: ~
     PhpCsFixer\Fixer\CastNotation\CastSpacesFixer: ~
     PhpCsFixer\Fixer\CastNotation\LowercaseCastFixer: ~
@@ -179,7 +180,6 @@ services:
 
     SlevomatCodingStandard\Sniffs\Exceptions\ReferenceThrowableOnlySniff: ~
 
-    Symplify\CodingStandard\Fixer\Naming\MagicMethodsNamingFixer: ~
     Symplify\CodingStandard\Sniffs\Naming\AbstractClassNameSniff: ~
     Symplify\CodingStandard\Sniffs\Naming\ClassNameSuffixByParentSniff:
         defaultParentClassToSuffixMap:
