@@ -77,6 +77,8 @@ services:
     PhpCsFixer\Fixer\Alias\MbStrFunctionsFixer: ~
     PhpCsFixer\Fixer\Alias\NoAliasFunctionsFixer: ~
     PhpCsFixer\Fixer\Alias\RandomApiMigrationFixer: ~
+    # Cast shall be used, not `settype()`
+    PhpCsFixer\Fixer\Alias\SetTypeToCastFixer: ~
     PhpCsFixer\Fixer\ArrayNotation\ArraySyntaxFixer:
         syntax: short
     PhpCsFixer\Fixer\ArrayNotation\NormalizeIndexBraceFixer: ~
@@ -129,6 +131,8 @@ services:
     PhpCsFixer\Fixer\Operator\UnaryOperatorSpacesFixer: ~
     PhpCsFixer\Fixer\Phpdoc\NoBlankLinesAfterPhpdocFixer: ~
     PhpCsFixer\Fixer\Phpdoc\NoEmptyPhpdocFixer: ~
+    # Removes `@param` and `@return` tags that don't provide any useful information
+    PhpCsFixer\Fixer\Phpdoc\NoSuperfluousPhpdocTagsFixer: ~
     PhpCsFixer\Fixer\Phpdoc\PhpdocAddMissingParamAnnotationFixer: ~
     PhpCsFixer\Fixer\Phpdoc\PhpdocIndentFixer: ~
     PhpCsFixer\Fixer\Phpdoc\PhpdocNoAccessFixer: ~
@@ -152,6 +156,9 @@ services:
     PhpCsFixer\Fixer\PhpUnit\PhpUnitOrderedCoversFixer: ~
     # Visibility of setUp() and tearDown() method should be kept protected
     PhpCsFixer\Fixer\PhpUnit\PhpUnitSetUpTearDownVisibilityFixer: ~
+    # Calls to `PHPUnit\Framework\TestCase` static methods must all be of the same type (`$this->...`)
+    PhpCsFixer\Fixer\PhpUnit\PhpUnitTestCaseStaticMethodCallsFixer:
+        call_type: 'this'
     PhpCsFixer\Fixer\ReturnNotation\NoUselessReturnFixer: ~
     PhpCsFixer\Fixer\Semicolon\NoEmptyStatementFixer: ~
     PhpCsFixer\Fixer\Semicolon\NoSinglelineWhitespaceBeforeSemicolonsFixer: ~
