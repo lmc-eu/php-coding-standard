@@ -6,6 +6,10 @@
 
 ## Unreleased
 - Replace deprecated `Symplify\CodingStandard\Fixer\Naming\MagicMethodsNamingFixer` with `PhpCsFixer\Fixer\Casing\MagicMethodCasingFixer`.
+- Add new fixers:
+    - `NoSuperfluousPhpdocTagsFixer` to remove unnecessary `@return` and `@param` PHPDocs.
+    - `PhpUnitTestCaseStaticMethodCallsFixer` to unify how assertion methods in PHPUnit tests are called.
+    - `SetTypeToCastFixer` to ensure casting is used instead of `settype()` .
 
 ## 1.1.2 - 2018-07-19
 - Change deprecated implementation of `Symplify\CodingStandard\Fixer\Naming\ClassNameSuffixByParentFixer` to `Symplify\CodingStandard\Sniffs\Naming\ClassNameSuffixByParentSniff`
