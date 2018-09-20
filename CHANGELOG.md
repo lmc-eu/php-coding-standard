@@ -5,6 +5,8 @@
 <!-- There is always Unreleased section on the top. Subsections (Added, Changed, Fixed, Removed) should be added as needed. -->
 
 ## Unreleased
+
+## 1.2.0 - 2018-09-20
 - Replace deprecated `Symplify\CodingStandard\Fixer\Naming\MagicMethodsNamingFixer` with `PhpCsFixer\Fixer\Casing\MagicMethodCasingFixer`.
 - Add new fixers:
     - `NoSuperfluousPhpdocTagsFixer` to remove unnecessary `@return` and `@param` PHPDocs.
