@@ -106,7 +106,16 @@ services:
         equal: false
         identical: false
         less_and_greater: false
+    # Replace multiple nested calls of `dirname` by only one call with second `$level` parameter.
+    PhpCsFixer\Fixer\FunctionNotation\CombineNestedDirnameFixer: ~
+    # Order the flags in `fopen` calls, `b` and `t` must be last.
+    PhpCsFixer\Fixer\FunctionNotation\FopenFlagOrderFixer: ~
+    # The flags in `fopen` calls must contain `b` and must omit `t`.
+    PhpCsFixer\Fixer\FunctionNotation\FopenFlagsFixer: ~
+    # Add missing space between function's argument and its typehint.
     PhpCsFixer\Fixer\FunctionNotation\FunctionTypehintSpaceFixer: ~
+    # Function `implode` must be called with 2 arguments in the documented order.
+    PhpCsFixer\Fixer\FunctionNotation\ImplodeCallFixer: ~
     PhpCsFixer\Fixer\FunctionNotation\NoUnreachableDefaultArgumentValueFixer: ~
     PhpCsFixer\Fixer\FunctionNotation\ReturnTypeDeclarationFixer: ~
     PhpCsFixer\Fixer\FunctionNotation\VoidReturnFixer: ~
@@ -144,6 +153,8 @@ services:
     PhpCsFixer\Fixer\Phpdoc\PhpdocSingleLineVarSpacingFixer: ~
     PhpCsFixer\Fixer\Phpdoc\PhpdocTrimFixer: ~
     PhpCsFixer\Fixer\Phpdoc\PhpdocTypesFixer: ~
+    # `@var` and `@type` annotations must have type and name in the correct order
+    PhpCsFixer\Fixer\Phpdoc\PhpdocVarAnnotationCorrectOrderFixer: ~
     PhpCsFixer\Fixer\PhpTag\FullOpeningTagFixer: ~
     PhpCsFixer\Fixer\PhpUnit\PhpUnitConstructFixer: ~
     PhpCsFixer\Fixer\PhpUnit\PhpUnitDedicateAssertFixer: ~

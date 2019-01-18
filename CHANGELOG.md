@@ -5,6 +5,13 @@
 <!-- There is always Unreleased section on the top. Subsections (Added, Changed, Fixed, Removed) should be added as needed. -->
 
 ## Unreleased
+- Require EasyCodingStandard 5+.
+- Add new fixers from PHP-CS-Fixer 2.14 and 2.13:
+    - `CombineNestedDirnameFixer` - replace multiple nested calls of `dirname` by only one call with second `$level` parameter.
+    - `FopenFlagOrderFixer` - order the flags in `fopen` calls, `b` and `t` must be last.
+    - `FopenFlagsFixer` - the flags in `fopen` calls must contain `b` and must omit `t`.
+    - `ImplodeCallFixer` - function `implode` must be called with 2 arguments in the documented order.
+    - `PhpdocVarAnnotationCorrectOrderFixer` - `@var` and `@type` annotations must have type and name in the correct order
 
 ## 1.2.0 - 2018-09-20
 - Replace deprecated `Symplify\CodingStandard\Fixer\Naming\MagicMethodsNamingFixer` with `PhpCsFixer\Fixer\Casing\MagicMethodCasingFixer`.
