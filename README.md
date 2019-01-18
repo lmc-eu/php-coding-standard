@@ -47,6 +47,10 @@ You can configure EasyCodingStandard via `parameters` section of your `easy-codi
  - exclude a specific file from all checks (via [`exclude_files`](https://github.com/Symplify/EasyCodingStandard#ignore-what-you-cant-fix))
  - disable specific check completely or for some file(s) or directories (via [`skip`](https://github.com/Symplify/EasyCodingStandard#ignore-what-you-cant-fix))
 
+### IDE integration
+
+For integration with PHPStorm etc. follow instructions in EasyCodingStandard [README](https://github.com/Symplify/EasyCodingStandard#your-ide-integration).
+
 ## Changelog
 For latest changes see [CHANGELOG.md](CHANGELOG.md) file. We follow [Semantic Versioning](http://semver.org/).
 
