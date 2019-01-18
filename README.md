@@ -45,8 +45,7 @@ vendor/bin/ecs check src/ tests/
 
 You can configure EasyCodingStandard via `parameters` section of your `easy-coding-standard.yaml` to:
  - exclude a specific file from all checks (via [`exclude_files`](https://github.com/Symplify/EasyCodingStandard#ignore-what-you-cant-fix))
- - skip specific check from some file(s) or directories (via [`skip`](https://github.com/Symplify/EasyCodingStandard#ignore-what-you-cant-fix))
- - disable whole check (via [`exclude_checkers`](https://github.com/Symplify/EasyCodingStandard#exclude-checkers))
+ - disable specific check completely or for some file(s) or directories (via [`skip`](https://github.com/Symplify/EasyCodingStandard#ignore-what-you-cant-fix))
 
 ## Changelog
 For latest changes see [CHANGELOG.md](CHANGELOG.md) file. We follow [Semantic Versioning](http://semver.org/).
