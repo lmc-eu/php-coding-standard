@@ -12,6 +12,7 @@
     - `FopenFlagsFixer` - the flags in `fopen` calls must contain `b` and must omit `t`.
     - `ImplodeCallFixer` - function `implode` must be called with 2 arguments in the documented order.
     - `PhpdocVarAnnotationCorrectOrderFixer` - `@var` and `@type` annotations must have type and name in the correct order
+- Keep `@mixed` annotations preserved when explicitly declared.
 
 ## 1.2.0 - 2018-09-20
 - Replace deprecated `Symplify\CodingStandard\Fixer\Naming\MagicMethodsNamingFixer` with `PhpCsFixer\Fixer\Casing\MagicMethodCasingFixer`.
