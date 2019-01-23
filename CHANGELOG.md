@@ -5,6 +5,8 @@
 <!-- There is always Unreleased section on the top. Subsections (Added, Changed, Fixed, Removed) should be added as needed. -->
 
 ## Unreleased
+
+## 1.3.0 - 2019-01-23
 - Require EasyCodingStandard 5+.
 - Add new fixers from PHP-CS-Fixer 2.14 and 2.13:
     - `CombineNestedDirnameFixer` - replace multiple nested calls of `dirname` by only one call with second `$level` parameter.
