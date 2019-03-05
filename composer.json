@@ -46,7 +46,7 @@
             "vendor/bin/yaml-sort-checker"
         ],
         "analyze": [
-            "vendor/bin/ecs check src/ tests/ -vvv --ansi",
+            "vendor/bin/ecs check src/ tests/ -vv --ansi",
             "vendor/bin/phpstan.phar analyze ./src ./tests -c phpstan.neon --level 7 --ansi"
         ],
         "test": [
