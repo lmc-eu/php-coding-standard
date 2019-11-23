@@ -21,6 +21,7 @@
         }
     },
     "require": {
+        "php":  "^7.2",
         "symplify/easy-coding-standard": "^7.0.0",
         "symplify/set-config-resolver": "^7.0"
     },

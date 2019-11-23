@@ -5,6 +5,7 @@
 <!-- There is always Unreleased section on the top. Subsections (Added, Changed, Fixed, Removed) should be added as needed. -->
 
 ## Unreleased
+- Drop PHP 7.1 support.
 - Require EasyCodingStandard 7+.
 
 ## 1.3.0 - 2019-01-23
