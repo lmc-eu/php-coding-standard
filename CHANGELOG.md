@@ -5,6 +5,7 @@
 <!-- There is always Unreleased section on the top. Subsections (Added, Changed, Fixed, Removed) should be added as needed. -->
 
 ## Unreleased
+- Require EasyCodingStandard 7+.
 
 ## 1.3.0 - 2019-01-23
 - Require EasyCodingStandard 5+.
