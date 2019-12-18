@@ -106,11 +106,9 @@ class SpecifyArgSeparatorFixer implements DefinedFixerInterface
         }
 
         // Add third argument (arg separator): ", &"
-        if ($argumentCount < 3) {
-            $tokensToInsert[] = new Token(',');
-            $tokensToInsert[] = new Token([T_WHITESPACE, ' ']);
-            $tokensToInsert[] = new Token([T_STRING, "'&'"]);
-        }
+        $tokensToInsert[] = new Token(',');
+        $tokensToInsert[] = new Token([T_WHITESPACE, ' ']);
+        $tokensToInsert[] = new Token([T_STRING, "'&'"]);
 
         if (!empty($tokensToInsert)) {
             $beforeCloseParenthesisIndex = $tokens->getPrevNonWhitespace($closeParenthesisIndex);
