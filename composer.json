@@ -1,15 +1,29 @@
 {
     "name": "lmc/coding-standard",
-    "description": "Coding standard used in LMC projects",
     "type": "library",
+    "description": "Coding standard used in LMC projects",
     "license": "MIT",
-    "prefer-stable": true,
     "authors": [
         {
             "name": "LMC s.r.o.",
             "homepage": "https://github.com/lmc-eu"
         }
     ],
+    "require": {
+        "php": "^7.2",
+        "symplify/easy-coding-standard": "^7.0.0"
+    },
+    "require-dev": {
+        "j13k/yaml-lint": "^1.1",
+        "mhujer/yaml-sort-checker": "^1.2",
+        "phpstan/extension-installer": "^1.0",
+        "phpstan/phpstan": "^0.12.0",
+        "phpstan/phpstan-phpunit": "^0.12.0",
+        "phpunit/phpunit": "^7.1 || ^8.0"
+    },
+    "config": {
+        "sort-packages": true
+    },
     "autoload": {
         "psr-4": {
             "Lmc\\CodingStandard\\": "src/"
@@ -20,18 +34,7 @@
             "Lmc\\CodingStandard\\": "tests/"
         }
     },
-    "require": {
-        "php":  "^7.2",
-        "symplify/easy-coding-standard": "^7.0.0"
-    },
-    "require-dev": {
-        "j13k/yaml-lint": "^1.1",
-        "mhujer/yaml-sort-checker": "^1.2",
-        "phpstan/extension-installer": "^1.0",
-        "phpstan/phpstan-phpunit": "^0.12.0",
-        "phpstan/phpstan": "^0.12.0",
-        "phpunit/phpunit": "^7.1 || ^8.0"
-    },
+    "prefer-stable": true,
     "scripts": {
         "all": [
             "@lint",
@@ -43,13 +46,13 @@
             "@analyze",
             "@test-ci"
         ],
+        "analyze": [
+            "vendor/bin/ecs check src/ tests/ -vv --ansi",
+            "vendor/bin/phpstan.phar analyze -c phpstan.neon --ansi"
+        ],
         "lint": [
             "for FILE_NAME in *.yml *.yaml; do vendor/bin/yaml-lint \"$FILE_NAME\"; done",
             "vendor/bin/yaml-sort-checker"
-        ],
-        "analyze": [
-            "vendor/bin/ecs check src/ tests/ -vv --ansi",
-            "vendor/bin/phpstan.phar analyze ./src ./tests -c phpstan.neon --level 7 --ansi"
         ],
         "test": [
             "./vendor/bin/phpunit --colors=always"
@@ -57,8 +60,5 @@
         "test-ci": [
             "./vendor/bin/phpunit --colors=always --coverage-clover coverage-clover.xml"
         ]
-    },
-    "config": {
-        "sort-packages": true
     }
 }

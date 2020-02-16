@@ -1,4 +1,8 @@
 parameters:
+    level: 7
+    paths:
+        - src/
+        - tests/
     ignoreErrors:
         - message: '#Parameter \#2 \$items of method PhpCsFixer\\Tokenizer\\Tokens::insertAt\(\) expects#'
           path: %currentWorkingDirectory%/src/Fixer/SpecifyArgSeparatorFixer.php
