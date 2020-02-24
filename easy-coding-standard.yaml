@@ -99,7 +99,12 @@ services:
             - method
     PhpCsFixer\Fixer\ClassNotation\NoBlankLinesAfterClassOpeningFixer: ~
     PhpCsFixer\Fixer\ClassNotation\SelfAccessorFixer: ~
-    PhpCsFixer\Fixer\ClassNotation\VisibilityRequiredFixer: ~
+    # Visibility MUST be declared on all properties, methods and class constants
+    PhpCsFixer\Fixer\ClassNotation\VisibilityRequiredFixer:
+        elements:
+            - const
+            - method
+            - property
     PhpCsFixer\Fixer\Comment\NoEmptyCommentFixer: ~
     PhpCsFixer\Fixer\ControlStructure\NoUselessElseFixer: ~
     PhpCsFixer\Fixer\ControlStructure\YodaStyleFixer:
