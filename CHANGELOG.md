@@ -9,6 +9,12 @@
 - Require EasyCodingStandard 7+.
 - `VisibilityRequiredFixer` now check visibility is declared also on class constants.
 - Add `Symplify\ParamReturnAndVarTagMalformsFixer` - the `@param`, `@return` and `@var` annotations should keep standard format.
+- Add new fixers from PHP-CS-Fixer 2.15 and 2.16:
+    - `NativeFunctionTypeDeclarationCasingFixer` - native type hints for functions should use the correct case.
+    - `SingleTraitInsertPerStatementFixer` - each trait `use` must be done as single statement.
+    - `PhpUnitDedicateAssertInternalTypeFixer` - PHPUnit assertions like `assertIsArray()` should be used over `assertInternalType()` (PHPUnit 7.5+ required).
+    - `PhpUnitMockShortWillReturnFixer` - Use of eg. `->will($this->returnValue(..))` must be replaced by its shorter equivalent such as `->willReturn(...)`.
+- `NoSuperfluousPhpdocTagsFixer` now also removes superfluous `@inheritdoc` tags.
 
 ## 1.3.0 - 2019-01-23
 - Require EasyCodingStandard 5+.

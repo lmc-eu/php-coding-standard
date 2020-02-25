@@ -91,6 +91,8 @@ services:
     PhpCsFixer\Fixer\Basic\Psr4Fixer: ~
     PhpCsFixer\Fixer\Casing\MagicMethodCasingFixer: ~
     PhpCsFixer\Fixer\Casing\NativeFunctionCasingFixer: ~
+    # Native type hints for functions should use the correct case
+    PhpCsFixer\Fixer\Casing\NativeFunctionTypeDeclarationCasingFixer:
     PhpCsFixer\Fixer\CastNotation\CastSpacesFixer: ~
     PhpCsFixer\Fixer\CastNotation\LowercaseCastFixer: ~
     PhpCsFixer\Fixer\CastNotation\ShortScalarCastFixer: ~
@@ -99,6 +101,8 @@ services:
             - method
     PhpCsFixer\Fixer\ClassNotation\NoBlankLinesAfterClassOpeningFixer: ~
     PhpCsFixer\Fixer\ClassNotation\SelfAccessorFixer: ~
+    # Each trait `use` must be done as single statement
+    PhpCsFixer\Fixer\ClassNotation\SingleTraitInsertPerStatementFixer: ~
     # Visibility MUST be declared on all properties, methods and class constants
     PhpCsFixer\Fixer\ClassNotation\VisibilityRequiredFixer:
         elements:
@@ -148,6 +152,8 @@ services:
     # Removes `@param` and `@return` tags that don't provide any useful information
     PhpCsFixer\Fixer\Phpdoc\NoSuperfluousPhpdocTagsFixer:
         allow_mixed: true # allow `@mixed` annotations to be preserved
+        allow_unused_params: false # whether param annotation without actual signature is allowed
+        remove_inheritdoc: true # remove @inheritDoc tags
     PhpCsFixer\Fixer\Phpdoc\PhpdocAddMissingParamAnnotationFixer: ~
     PhpCsFixer\Fixer\Phpdoc\PhpdocIndentFixer: ~
     PhpCsFixer\Fixer\Phpdoc\PhpdocNoAccessFixer: ~
@@ -163,9 +169,14 @@ services:
     PhpCsFixer\Fixer\Phpdoc\PhpdocVarAnnotationCorrectOrderFixer: ~
     PhpCsFixer\Fixer\PhpTag\FullOpeningTagFixer: ~
     PhpCsFixer\Fixer\PhpUnit\PhpUnitConstructFixer: ~
+    # PHPUnit assertions like assertInternalType, assertFileExists, should be used over assertTrue
     PhpCsFixer\Fixer\PhpUnit\PhpUnitDedicateAssertFixer: ~
+    # PHPUnit assertions like assertIsArray should be used over assertInternalType
+    PhpCsFixer\Fixer\PhpUnit\PhpUnitDedicateAssertInternalTypeFixer:
     # Use dedicated helper methods createMock() and createPartialMock() where possible
     PhpCsFixer\Fixer\PhpUnit\PhpUnitMockFixer: ~
+    # Use of eg. ->will($this->returnValue(..)) must be replaced by its shorter equivalent such as ->willReturn(...)
+    PhpCsFixer\Fixer\PhpUnit\PhpUnitMockShortWillReturnFixer: ~
     # Use expectedException*() methods instead of @expectedException* annotation (both following fixers must be applied to do so)
     PhpCsFixer\Fixer\PhpUnit\PhpUnitNoExpectationAnnotationFixer: ~
     PhpCsFixer\Fixer\PhpUnit\PhpUnitExpectationFixer: ~
