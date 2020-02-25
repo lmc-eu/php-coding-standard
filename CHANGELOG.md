@@ -8,6 +8,7 @@
 - Drop PHP 7.1 support.
 - Require EasyCodingStandard 7+.
 - `VisibilityRequiredFixer` now check visibility is declared also on class constants.
+- Add `Symplify\ParamReturnAndVarTagMalformsFixer` - the `@param`, `@return` and `@var` annotations should keep standard format.
 
 ## 1.3.0 - 2019-01-23
 - Require EasyCodingStandard 5+.
