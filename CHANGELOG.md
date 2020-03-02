@@ -5,6 +5,7 @@
 <!-- There is always Unreleased section on the top. Subsections (Added, Changed, Fixed, Removed) should be added as needed. -->
 
 ## Unreleased
+- BC: change the way the standard is imported to your `easy-coding-standard.yaml` (change `%vendor_dir%` placeholder directly to name of the vendor directory like `vendor`). See example in [README](https://github.com/lmc-eu/php-coding-standard#usage).
 - Drop PHP 7.1 support.
 - Require EasyCodingStandard 7+.
 - `VisibilityRequiredFixer` now check visibility is declared also on class constants.
