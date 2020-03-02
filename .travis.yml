@@ -5,9 +5,15 @@ php:
   - '7.3'
   - '7.4'
 
+matrix:
+    include:
+        - name: 'Lowest dependencies'
+          php: 7.2
+          env: DEPENDENCIES="--prefer-lowest --prefer-stable"
+
 install:
   - travis_retry composer self-update && composer --version
-  - travis_retry composer update --no-interaction
+  - travis_retry composer update --no-interaction $DEPENDENCIES
 
 script:
   - composer all-ci
