@@ -5,6 +5,8 @@
 <!-- There is always Unreleased section on the top. Subsections (Added, Changed, Fixed, Removed) should be added as needed. -->
 
 ## Unreleased
+
+## 2.0.2 - 2020-04-23
 - Increase required version of symplify/easy-coding-standard to ^7.2.3.
 
 ## 2.0.1 - 2020-04-23
