@@ -258,6 +258,8 @@ parameters:
         PHP_CodeSniffer\Standards\Squiz\Sniffs\Arrays\ArrayDeclarationSniff.KeyNotAligned: ~
         PHP_CodeSniffer\Standards\Squiz\Sniffs\Arrays\ArrayDeclarationSniff.MultiLineNotAllowed: ~
         PHP_CodeSniffer\Standards\Squiz\Sniffs\Arrays\ArrayDeclarationSniff.SingleLineNotAllowed: ~
+        # Temporarily disable ValueNoNewline because of bug in PHP_CodeSniffer 3.5.5 https://github.com/squizlabs/PHP_CodeSniffer/issues/2937
+        PHP_CodeSniffer\Standards\Squiz\Sniffs\Arrays\ArrayDeclarationSniff.ValueNoNewline: ~
         PHP_CodeSniffer\Standards\Squiz\Sniffs\Arrays\ArrayDeclarationSniff.ValueNotAligned: ~
 
          # There could be more than one space after star (eg. in Doctrine annotations)
