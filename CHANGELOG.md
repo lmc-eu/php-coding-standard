@@ -5,6 +5,7 @@
 <!-- There is always Unreleased section on the top. Subsections (Added, Changed, Fixed, Removed) should be added as needed. -->
 
 ## Unreleased
+- Increase required version of symplify/easy-coding-standard to ^7.2.3.
 
 ## 2.0.1 - 2020-04-23
 - Temporarily disable `ArrayDeclarationSniff.ValueNoNewline` because of [bug](https://github.com/squizlabs/PHP_CodeSniffer/issues/2937) in PHP_CodeSniffer 3.5.5.
