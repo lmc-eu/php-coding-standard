@@ -11,8 +11,14 @@
     ],
     "require": {
         "php": "^7.2",
+        "friendsofphp/php-cs-fixer": "^2.16.3",
+        "symplify/auto-bind-parameter": "<7.2.20",
+        "symplify/autowire-array-parameter": "<7.2.20",
+        "symplify/coding-standard": "<7.2.20",
         "symplify/easy-coding-standard": "^7.2.3",
-        "friendsofphp/php-cs-fixer": "^2.16.3"
+        "symplify/package-builder": "<7.2.20",
+        "symplify/set-config-resolver": "<7.2.20",
+        "symplify/smart-file-system": "<7.2.20"
     },
     "require-dev": {
         "j13k/yaml-lint": "dev-master",
