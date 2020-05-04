@@ -5,6 +5,8 @@
 <!-- There is always Unreleased section on the top. Subsections (Added, Changed, Fixed, Removed) should be added as needed. -->
 
 ## Unreleased
+
+## 2.0.3 - 2020-05-04
 - Fix PSR-2 checks to be used again (they were unintentionally not loaded since coding-standard version 2.0.0).
 - Lock dependency of `symplify/coding-standard` to <7.2.20 to avoid deprecation errors.
 
