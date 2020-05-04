@@ -5,6 +5,7 @@
 <!-- There is always Unreleased section on the top. Subsections (Added, Changed, Fixed, Removed) should be added as needed. -->
 
 ## Unreleased
+- Fix PSR-2 checks to be used again (they were unintentionally not loaded since coding-standard version 2.0.0).
 
 ## 2.0.2 - 2020-04-23
 - Increase required version of symplify/easy-coding-standard to ^7.2.3.
