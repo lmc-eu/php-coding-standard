@@ -60,4 +60,4 @@ This library is open source software licensed under the [MIT license](LICENCE.md
 [PHP-CS-Fixer]: https://github.com/FriendsOfPHP/PHP-CS-Fixer
 [PHP_CodeSniffer]: https://github.com/squizlabs/PHP_CodeSniffer
 [EasyCodingStandard]: https://github.com/Symplify/EasyCodingStandard
-[easy-coding-standard.yml]: https://github.com/lmc-eu/php-coding-standard/blob/master/easy-coding-standard.yml
+[easy-coding-standard.yml]: https://github.com/lmc-eu/php-coding-standard/blob/main/easy-coding-standard.yml
