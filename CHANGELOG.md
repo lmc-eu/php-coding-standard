@@ -5,7 +5,9 @@
 <!-- There is always Unreleased section on the top. Subsections (Added, Changed, Fixed, Removed) should be added as needed. -->
 
 ## Unreleased
-- Fix an improper fix of PSR-2 checks to really make them being used again.
+
+## 2.0.4 - 2020-09-23
+- Fix an improper fix of PSR-2 checks made in 2.0.3 to really make them being used again.
 
 ## 2.0.3 - 2020-05-04
 - Fix PSR-2 checks to be used again (they were unintentionally not loaded since coding-standard version 2.0.0).
