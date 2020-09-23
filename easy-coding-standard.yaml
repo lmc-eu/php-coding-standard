@@ -1,5 +1,7 @@
 imports:
-    - { resource: '../../easy-coding-standard/config/set/psr2.yaml', ignore_errors: not_found }
+    # Import path of PSR2 rules when this package is installed as a dependency (in vendor dir)
+    - { resource: '../../symplify/easy-coding-standard/config/set/psr2.yaml', ignore_errors: not_found }
+    # Import path of PSR2 rules when this package is used directly (during development)
     - { resource: 'vendor/symplify/easy-coding-standard/config/set/psr2.yaml', ignore_errors: not_found }
 
 services:
