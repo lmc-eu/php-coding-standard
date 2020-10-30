@@ -23,7 +23,6 @@
     "require-dev": {
         "j13k/yaml-lint": "dev-master",
         "mhujer/yaml-sort-checker": "^1.2",
-        "php-coveralls/php-coveralls": "^2.2",
         "phpstan/extension-installer": "^1.0",
         "phpstan/phpstan": "^0.12.0",
         "phpstan/phpstan-phpunit": "^0.12.0",
