@@ -48,11 +48,6 @@
             "@analyze",
             "@test"
         ],
-        "all-ci": [
-            "@lint",
-            "@analyze",
-            "@test-ci"
-        ],
         "analyze": [
             "vendor/bin/ecs check src/ tests/ -vv --ansi",
             "vendor/bin/phpstan.phar analyze -c phpstan.neon --ansi"
@@ -63,9 +58,6 @@
         ],
         "test": [
             "./vendor/bin/phpunit --colors=always"
-        ],
-        "test-ci": [
-            "./vendor/bin/phpunit --colors=always --coverage-clover coverage-clover.xml"
         ]
     }
 }
