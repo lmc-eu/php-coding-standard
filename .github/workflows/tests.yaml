@@ -28,7 +28,7 @@ jobs:
           php-version: ${{ matrix.php-version }}
           extensions: mbstring, intl, zip
           coverage: xdebug
-          tools: composer:v1 # TODO update to v2
+          tools: composer:v2
 
       - name: Install dependencies
         run: composer update --no-progress ${{ matrix.dependencies }}
@@ -54,7 +54,7 @@ jobs:
           with:
             php-version: '7.4'
             extensions: mbstring, intl
-            tools: composer:v1 # TODO update to v2
+            tools: composer:v2
 
         - name: Install dependencies
           run: composer update --no-progress
