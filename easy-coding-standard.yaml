@@ -39,16 +39,47 @@ services:
     # Some functions should not appear in the code
     PHP_CodeSniffer\Standards\Generic\Sniffs\PHP\ForbiddenFunctionsSniff:
         forbiddenFunctions:
-            var_dump: null
-            dump: null
-            echo: null
-            require: null
-            require_once: null
+            # Program execution functions, inspired by https://github.com/spaze/phpstan-disallowed-calls
+            exec: null
+            passthru: null
+            proc_open: null
+            shell_exec: null
+            system: null
+            pcntl_exec: null
+            popen: null
+
+            # Dangerous function calls, inspired by https://github.com/spaze/phpstan-disallowed-calls
+            apache_setenv: null # might overwrite existing variables
+            dl: null # removed from most SAPIs, might load untrusted code
+            eval: null # eval is evil, please write more code and do not use eval()
+            extract: null # do not use extract() and especially not on untrusted data
+            highlight_file: null # might reveal source code or config files
+            pfsockopen: null # use fsockopen() to create non-persistent socket connections
+            posix_getpwuid: null # might reveal system user information
+            posix_kill: null # do not send signals to processes from the script
+            posix_mkfifo: null # do not create named pipes in the script
+            posix_mknod: null # do not create special files in the script
+            proc_nice: null # changes the priority of the current process
+            putenv: null # might overwrite existing variables
+            show_source: null # might reveal source code or config files (alias of highlight_file())
+            socket_create_listen: null # do not accept new socket connections in the PHP script
+            socket_listen: null # do not accept new socket connections in the PHP script
+
+            # PHP include/require functions, use autoloading instead
             include: null
             include_once: null
+            require: null
+            require_once: null
+
+            # Probably forgotten debug calls, use logger instead
+            dump: null
+            echo: null
             phpinfo: null
-            eval: null
+            print_r: null
             printf: null
+            var_export: null
+            var_dump: null
+
     # When referencing arrays you should not put whitespace around the opening bracket or before the closing bracket
     PHP_CodeSniffer\Standards\Squiz\Sniffs\Arrays\ArrayBracketSpacingSniff: ~
     # Various array declaration rules (but some of the rules are skipped)

@@ -5,6 +5,7 @@
 <!-- There is always Unreleased section on the top. Subsections (Added, Changed, Fixed, Removed) should be added as needed. -->
 
 ## Unreleased
+- Add various dangerous function calls to forbidden functions.
 
 ## 2.0.4 - 2020-09-23
 - Fix an improper fix of PSR-2 checks made in 2.0.3 to really make them being used again.
