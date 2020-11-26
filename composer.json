@@ -12,13 +12,17 @@
     "require": {
         "php": "^7.2",
         "friendsofphp/php-cs-fixer": "^2.16.3",
-        "symplify/auto-bind-parameter": "<7.2.20",
-        "symplify/autowire-array-parameter": "<7.2.20",
-        "symplify/coding-standard": "<7.2.20",
-        "symplify/easy-coding-standard": "^7.2.3",
-        "symplify/package-builder": "<7.2.20",
-        "symplify/set-config-resolver": "<7.2.20",
-        "symplify/smart-file-system": "<7.2.20"
+        "slevomat/coding-standard": "^6.4.1",
+        "symplify/auto-bind-parameter":  "<8.1.21",
+        "symplify/autowire-array-parameter": "<8.1.21",
+        "symplify/coding-standard":  "<8.1.21",
+        "symplify/console-color-diff": "<8.1.21",
+        "symplify/easy-coding-standard": "<8.1.21",
+        "symplify/package-builder": "<8.1.21",
+        "symplify/parameter-name-guard":  "<8.1.21",
+        "symplify/phpstan-extensions": "<8.1.21",
+        "symplify/set-config-resolver": "<8.1.21",
+        "symplify/smart-file-system":  "<8.1.21"
     },
     "require-dev": {
         "j13k/yaml-lint": "dev-master",
@@ -52,8 +56,11 @@
             "@test"
         ],
         "analyze": [
-            "vendor/bin/ecs check src/ tests/ -vv --ansi",
+            "vendor/bin/ecs check src/ tests/ --ansi",
             "vendor/bin/phpstan.phar analyze -c phpstan.neon --ansi"
+        ],
+        "fix": [
+            "./vendor/bin/ecs check ./src/ ./tests/ --ansi --fix"
         ],
         "lint": [
             "for FILE_NAME in *.yml *.yaml; do vendor/bin/yaml-lint \"$FILE_NAME\"; done",
