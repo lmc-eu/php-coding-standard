@@ -29,7 +29,10 @@
         "phpunit/phpunit": "^7.1 || ^8.0"
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "preferred-install": {
+            "squizlabs/php_codesniffer": "source"
+        }
     },
     "autoload": {
         "psr-4": {
