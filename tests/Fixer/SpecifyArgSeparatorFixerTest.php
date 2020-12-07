@@ -31,8 +31,8 @@ class SpecifyArgSeparatorFixerTest extends TestCase
     public function provideFiles(): array
     {
         return [
-            'Correct file should not be changed' => ['Correct.txt', 'Correct.txt'],
-            'Wrong file should be fixed' => ['Wrong.txt', 'Fixed.txt'],
+            'Correct file should not be changed' => ['Correct.php.inc', 'Correct.php.inc'],
+            'Wrong file should be fixed' => ['Wrong.php.inc', 'Fixed.php.inc'],
         ];
     }
 }

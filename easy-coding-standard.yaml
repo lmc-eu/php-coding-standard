@@ -7,6 +7,14 @@ imports:
 services:
     #  Function http_build_query() should always have specified `$arg_separator` parameter
     Lmc\CodingStandard\Fixer\SpecifyArgSeparatorFixer: ~
+    # Abstract class should have prefix "Abstract"
+    Lmc\CodingStandard\Sniffs\Naming\AbstractClassNameSniff: ~
+    # Classes should have suffix by theirs parent class/interface
+    Lmc\CodingStandard\Sniffs\Naming\ClassNameSuffixByParentSniff:
+    # Interface should have suffix "Interface"
+    Lmc\CodingStandard\Sniffs\Naming\InterfaceNameSniff: ~
+    # Trait should have suffix "Trait"
+    Lmc\CodingStandard\Sniffs\Naming\TraitNameSniff: ~
 
     # Class and Interface names should be unique in a project, they should never be duplicated
     PHP_CodeSniffer\Standards\Generic\Sniffs\Classes\DuplicateClassNameSniff: ~
@@ -250,25 +258,6 @@ services:
     SlevomatCodingStandard\Sniffs\Exceptions\ReferenceThrowableOnlySniff: ~
     # The @param, @return, @var and inline @var annotations should keep standard format
     Symplify\CodingStandard\Fixer\Commenting\ParamReturnAndVarTagMalformsFixer: ~
-    # Abstract class should have prefix "Abstract"
-    Symplify\CodingStandard\Sniffs\Naming\AbstractClassNameSniff: ~
-    # Classes should have suffix by theirs parent class/interface
-    Symplify\CodingStandard\Sniffs\Naming\ClassNameSuffixByParentSniff:
-        defaultParentClassToSuffixMap:
-            '*Command': 'Command'
-            '*Controller': 'Controller'
-            '*Repository': 'Repository'
-            '*Presenter': 'Presenter'
-            '*Request': 'Request'
-            '*Response': 'Response'
-            '*FixerInterface': 'Fixer'
-            '*Sniff': 'Sniff'
-            '*Exception': 'Exception'
-            '*Handler': 'Handler'
-    # Interface should have suffix "Interface"
-    Symplify\CodingStandard\Sniffs\Naming\InterfaceNameSniff: ~
-    # Trait should have suffix "Trait"
-    Symplify\CodingStandard\Sniffs\Naming\TraitNameSniff: ~
 
 parameters:
     skip:

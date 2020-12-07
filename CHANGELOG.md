@@ -5,6 +5,7 @@
 <!-- There is always Unreleased section on the top. Subsections (Added, Changed, Fixed, Removed) should be added as needed. -->
 
 ## Unreleased
+- Replace `Symplify\CodingStandard\Sniffs\Naming\[AbstractClassNameSniff, ClassNameSuffixByParentSniff, InterfaceNameSniff and TraitNameSniff]` with equivalent versions backported to this repository.
 
 ## 2.1.0 - 2020-11-25
 - Add various dangerous function calls to list of forbidden functions.
