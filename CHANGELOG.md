@@ -6,6 +6,9 @@
 
 ## Unreleased
 
+## 2.1.1 - 2021-01-27
+- Lock `symfony/dependency-injection` version to `<5.2.2` to avoid fatal errors.
+
 ## 2.1.0 - 2020-11-25
 - Add various dangerous function calls to list of forbidden functions.
 
