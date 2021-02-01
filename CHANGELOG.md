@@ -7,6 +7,8 @@
 ## Unreleased
 - Replace `Symplify\CodingStandard\Sniffs\Naming\[AbstractClassNameSniff, ClassNameSuffixByParentSniff, InterfaceNameSniff and TraitNameSniff]` with equivalent versions backported to this repository.
 - Drop PHP 7.2 support.
+- Change YAML config to PHP
+- Upgrade to easy-coding-standard 9
 
 ## 2.1.0 - 2020-11-25
 - Add various dangerous function calls to list of forbidden functions.
