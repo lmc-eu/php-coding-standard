@@ -5,6 +5,7 @@
 <!-- There is always Unreleased section on the top. Subsections (Added, Changed, Fixed, Removed) should be added as needed. -->
 
 ## Unreleased
+- Lock `symfony/dependency-injection` also to `<4.4.19` (to extend the workaround from 2.1.1).
 
 ## 2.1.1 - 2021-01-27
 - Lock `symfony/dependency-injection` version to `<5.2.2` to avoid fatal errors.
