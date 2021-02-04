@@ -125,10 +125,13 @@ use Symplify\CodingStandard\Fixer\Commenting\ParamReturnAndVarTagMalformsFixer;
 use Symplify\EasyCodingStandard\ValueObject\Option;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
-    // Import path of PSR2 rules when this package is installed as a dependency (in vendor dir)
-    $containerConfigurator->import(__DIR__ . '/../../symplify/easy-coding-standard/config/set/psr2.php', null, 'not_found');
-    // Import path of PSR2 rules when this package is used directly (during development)
-    $containerConfigurator->import(__DIR__ . '/vendor/symplify/easy-coding-standard/config/set/psr2.php', null, 'not_found');
+    $vendorDir = __DIR__ . '/vendor'; // When used directly (during development)
+    if (!is_dir($vendorDir)) {
+        $vendorDir = __DIR__ . '/../..'; // When installed as a dependency (in vendor dir)
+    }
+
+    $containerConfigurator->import($vendorDir . '/symplify/easy-coding-standard/config/set/php_cs_fixer/php-cs-fixer-psr2.php');
+    $containerConfigurator->import($vendorDir . '/symplify/easy-coding-standard/config/set/php_codesniffer/php-codesniffer-psr2.php');
 
     $services = $containerConfigurator->services();
     (function () use ($services): void {
