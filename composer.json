@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "php": "^7.3",
+        "php": "^7.3 || ^8.0",
         "friendsofphp/php-cs-fixer": "^2.16.3",
         "slevomat/coding-standard": "^6.4.1",
         "symplify/easy-coding-standard": "^9.0.50"
