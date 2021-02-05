@@ -16,14 +16,12 @@
         "symplify/easy-coding-standard": "^9.0.50"
     },
     "require-dev": {
-        "ergebnis/composer-normalize": "^2.11",
-        "j13k/yaml-lint": "dev-master",
-        "mhujer/yaml-sort-checker": "^1.2",
-        "php-parallel-lint/php-parallel-lint": "^1.2",
-        "phpstan/extension-installer": "^1.0",
-        "phpstan/phpstan": "^0.12.0",
-        "phpstan/phpstan-phpunit": "^0.12.0",
-        "phpunit/phpunit": "^9.4.3"
+        "ergebnis/composer-normalize": "^2.13.2",
+        "php-parallel-lint/php-parallel-lint": "^1.2.0",
+        "phpstan/extension-installer": "^1.1",
+        "phpstan/phpstan": "^0.12.71",
+        "phpstan/phpstan-phpunit": "^0.12.17",
+        "phpunit/phpunit": "^9.5.2"
     },
     "config": {
         "preferred-install": {
@@ -50,7 +48,7 @@
         ],
         "analyze": [
             "vendor/bin/ecs check src/ tests/ ecs.php --ansi",
-            "vendor/bin/phpstan.phar analyze -c phpstan.neon --ansi"
+            "vendor/bin/phpstan analyze -c phpstan.neon --ansi"
         ],
         "fix": [
             "@composer normalize",
