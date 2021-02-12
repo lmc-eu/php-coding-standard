@@ -5,9 +5,9 @@
 <!-- There is always Unreleased section on the top. Subsections (Added, Changed, Fixed, Removed) should be added as needed. -->
 
 ## Unreleased
+- **[BC break]** Change YAML config to PHP. See [UPGRADE-3.0.md](UPGRADE-3.0.md) for step-by-step upgrade howto.
 - Replace `Symplify\CodingStandard\Sniffs\Naming\[AbstractClassNameSniff, ClassNameSuffixByParentSniff, InterfaceNameSniff and TraitNameSniff]` with equivalent versions backported to this repository.
 - Drop PHP 7.2 support.
-- **[BC break]** Change YAML config to PHP.
 - Upgrade to easy-coding-standard 9.
 
 ## 2.1.0 - 2020-11-25

@@ -35,7 +35,8 @@ composer remove symplify/config-transformer --dev # the migration tool can now b
 Because of the nature of how ECS process the configuration (which is, in fact, the behavior of underlying
 symfony/dependency-injection), you must follow the order in which you add your customizations.
 
-In your `ecs.php` add import of the lmc/coding-standard **after** you add `skip` parameter but **before** your custom code-style ajdustements:
+In your `ecs.php` add import of the lmc/coding-standard **after** you add `skip` parameter but **before** your custom
+code-style adjustments:
 
 ```diff
 // ...
@@ -46,7 +47,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     $parameters = $containerConfigurator->parameters();
     $parameters->set(Option::SKIP, [__DIR__ . '/foo/bar']);
 
-+    $containerConfigurator->import(__DIR__. '/vendor/lmc/coding-standard/ecs.php');
++    $containerConfigurator->import(__DIR__ . '/vendor/lmc/coding-standard/ecs.php');
 
     // Your code style customizations and overrides of the default code-style must be placed AFTER the import
     $services->set(PhpUnitExpectationFixer::class)
@@ -66,16 +67,17 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     $parameters = $containerConfigurator->parameters();
 
 -    $parameters->set('skip', [ForbiddenFunctionsSniff::class => ['src-tests/bootstrap.php']]);
--    $parameters->set('exclude_files', ['src/foo/bar.php']);
-+    $parameters->set(Option::SKIP, [
-+            ForbiddenFunctionsSniff::class => ['src-tests/bootstrap.php'],
-+            'src/foo/bar.php',
+-    $parameters->set('exclude_files', [__DIR__ . '/src/foo/bar.php']);
++    $parameters->set(
++        Option::SKIP,
++        [
++            ForbiddenFunctionsSniff::class => [__DIR__ . '/src-tests/bootstrap.php'],
++            __DIR__ . '/src/foo/bar.php',
 +        ]
 +    );
 
     $containerConfigurator->import(__DIR__ . '/vendor/lmc/coding-standard/ecs.php');
 };
-
 ```
 
 See [ECS documentation](https://github.com/symplify/easy-coding-standard/tree/master#configuration) for more configuration options.
