@@ -41,8 +41,6 @@ code-style adjustments:
 ```diff
 // ...
 return static function (ContainerConfigurator $containerConfigurator): void {
-    $parameters = $containerConfigurator->parameters();
-
     // Your skips - excluding fixers of paths must be placed BEFORE the import
     $parameters = $containerConfigurator->parameters();
     $parameters->set(Option::SKIP, [__DIR__ . '/foo/bar']);
@@ -50,6 +48,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 +    $containerConfigurator->import(__DIR__ . '/vendor/lmc/coding-standard/ecs.php');
 
     // Your code style customizations and overrides of the default code-style must be placed AFTER the import
+    $services = $containerConfigurator->services();
     $services->set(PhpUnitExpectationFixer::class)
         ->call('configure', [['target' => '5.6']]);
 };
