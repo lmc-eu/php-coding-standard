@@ -19,6 +19,7 @@ use PHP_CodeSniffer\Standards\Generic\Sniffs\Files\OneInterfacePerFileSniff;
 use PHP_CodeSniffer\Standards\Generic\Sniffs\Files\OneTraitPerFileSniff;
 use PHP_CodeSniffer\Standards\Generic\Sniffs\Formatting\SpaceAfterCastSniff;
 use PHP_CodeSniffer\Standards\Generic\Sniffs\PHP\ForbiddenFunctionsSniff;
+use PHP_CodeSniffer\Standards\Generic\Sniffs\VersionControl\GitMergeConflictSniff;
 use PHP_CodeSniffer\Standards\Squiz\Sniffs\Arrays\ArrayBracketSpacingSniff;
 use PHP_CodeSniffer\Standards\Squiz\Sniffs\Arrays\ArrayDeclarationSniff;
 use PHP_CodeSniffer\Standards\Squiz\Sniffs\Classes\SelfMemberReferenceSniff;
@@ -242,6 +243,8 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         $services->set(IncrementDecrementUsageSniff::class);
         // Verifies that class members have scope modifiers
         $services->set(MemberVarScopeSniff::class);
+        // Detects merge conflict artifacts left in files
+        $services->set(GitMergeConflictSniff::class);
         // Casts should not have whitespace inside the parentheses
         $services->set(CastSpacingSniff::class);
         // The php constructs like echo, return, include, etc. should have one space after them

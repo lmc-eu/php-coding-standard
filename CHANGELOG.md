@@ -19,6 +19,8 @@
     - `TernaryToElvisOperatorFixer` - Use the Elvis operator `?:` where possible.
     - `PhpdocOrderByValueFixer`  Order phpdoc tags by value (order by default contents of 'covers', 'group' and 'throws').
     - `HeredocIndentationFixer` - Heredoc/nowdoc content must be properly indented.
+- Add new PHP_CodeSniffer sniffs:
+    - `GitMergeConflictSniff` - Detects merge conflict artifacts left in files.
 
 ## 2.1.0 - 2020-11-25
 - Add various dangerous function calls to list of forbidden functions.
