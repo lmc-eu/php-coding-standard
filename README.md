@@ -126,7 +126,7 @@ See [EasyCodingStandard docs](https://github.com/symplify/easy-coding-standard#c
 For integration with PHPStorm etc. follow instructions in EasyCodingStandard [README](https://github.com/symplify/easy-coding-standard#your-ide-integration).
 
 ## Changelog
-For latest changes see [CHANGELOG.md](CHANGELOG.md) file. We follow [Semantic Versioning](http://semver.org/).
+For latest changes see [CHANGELOG.md](CHANGELOG.md) file. We follow [Semantic Versioning](https://semver.org/).
 
 ## License
 This library is open source software licensed under the [MIT license](LICENCE.md).
