@@ -9,6 +9,18 @@
 - Replace `Symplify\CodingStandard\Sniffs\Naming\[AbstractClassNameSniff, ClassNameSuffixByParentSniff, InterfaceNameSniff and TraitNameSniff]` with equivalent versions backported to this repository.
 - Drop PHP 7.2 support.
 - Upgrade to easy-coding-standard 9.
+- Add new fixers from PHP-CS-Fixer 2.17:
+    - `ArrayPushFixer` - Converts simple usages of `array_push($x, $y);` to `$x[] = $y;`.
+    - `SwitchContinueToBreakFixer` - Switch case must not be ended with `continue` but with `break`.
+    - `LambdaNotUsedImportFixer` - Lambda must not import variables it doesn't use.
+    - `NoUselessSprintfFixer` - There must be no `sprintf` calls with only the first argument.
+    - `SingleSpaceAfterConstructFixer` - Ensures a single space after language constructs.
+    - `CleanNamespaceFixer` - Namespace must not contain spacing, comments or PHPDoc.
+    - `TernaryToElvisOperatorFixer` - Use the Elvis operator `?:` where possible.
+    - `PhpdocOrderByValueFixer`  Order phpdoc tags by value (order by default contents of 'covers', 'group' and 'throws').
+    - `HeredocIndentationFixer` - Heredoc/nowdoc content must be properly indented.
+- Add new PHP_CodeSniffer sniffs:
+    - `GitMergeConflictSniff` - Detects merge conflict artifacts left in files.
 
 ## 2.1.0 - 2020-11-25
 - Add various dangerous function calls to list of forbidden functions.

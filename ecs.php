@@ -19,6 +19,7 @@ use PHP_CodeSniffer\Standards\Generic\Sniffs\Files\OneInterfacePerFileSniff;
 use PHP_CodeSniffer\Standards\Generic\Sniffs\Files\OneTraitPerFileSniff;
 use PHP_CodeSniffer\Standards\Generic\Sniffs\Formatting\SpaceAfterCastSniff;
 use PHP_CodeSniffer\Standards\Generic\Sniffs\PHP\ForbiddenFunctionsSniff;
+use PHP_CodeSniffer\Standards\Generic\Sniffs\VersionControl\GitMergeConflictSniff;
 use PHP_CodeSniffer\Standards\Squiz\Sniffs\Arrays\ArrayBracketSpacingSniff;
 use PHP_CodeSniffer\Standards\Squiz\Sniffs\Arrays\ArrayDeclarationSniff;
 use PHP_CodeSniffer\Standards\Squiz\Sniffs\Classes\SelfMemberReferenceSniff;
@@ -32,6 +33,7 @@ use PHP_CodeSniffer\Standards\Squiz\Sniffs\WhiteSpace\LogicalOperatorSpacingSnif
 use PHP_CodeSniffer\Standards\Squiz\Sniffs\WhiteSpace\OperatorSpacingSniff;
 use PHP_CodeSniffer\Standards\Squiz\Sniffs\WhiteSpace\ScopeKeywordSpacingSniff;
 use PHP_CodeSniffer\Standards\Squiz\Sniffs\WhiteSpace\SemicolonSpacingSniff;
+use PhpCsFixer\Fixer\Alias\ArrayPushFixer;
 use PhpCsFixer\Fixer\Alias\MbStrFunctionsFixer;
 use PhpCsFixer\Fixer\Alias\NoAliasFunctionsFixer;
 use PhpCsFixer\Fixer\Alias\RandomApiMigrationFixer;
@@ -43,7 +45,7 @@ use PhpCsFixer\Fixer\ArrayNotation\TrailingCommaInMultilineArrayFixer;
 use PhpCsFixer\Fixer\ArrayNotation\TrimArraySpacesFixer;
 use PhpCsFixer\Fixer\ArrayNotation\WhitespaceAfterCommaInArrayFixer;
 use PhpCsFixer\Fixer\Basic\BracesFixer;
-use PhpCsFixer\Fixer\Basic\Psr4Fixer;
+use PhpCsFixer\Fixer\Basic\PsrAutoloadingFixer;
 use PhpCsFixer\Fixer\Casing\MagicMethodCasingFixer;
 use PhpCsFixer\Fixer\Casing\NativeFunctionCasingFixer;
 use PhpCsFixer\Fixer\Casing\NativeFunctionTypeDeclarationCasingFixer;
@@ -57,13 +59,16 @@ use PhpCsFixer\Fixer\ClassNotation\SingleTraitInsertPerStatementFixer;
 use PhpCsFixer\Fixer\ClassNotation\VisibilityRequiredFixer;
 use PhpCsFixer\Fixer\Comment\NoEmptyCommentFixer;
 use PhpCsFixer\Fixer\ControlStructure\NoUselessElseFixer;
+use PhpCsFixer\Fixer\ControlStructure\SwitchContinueToBreakFixer;
 use PhpCsFixer\Fixer\ControlStructure\YodaStyleFixer;
 use PhpCsFixer\Fixer\FunctionNotation\CombineNestedDirnameFixer;
 use PhpCsFixer\Fixer\FunctionNotation\FopenFlagOrderFixer;
 use PhpCsFixer\Fixer\FunctionNotation\FopenFlagsFixer;
 use PhpCsFixer\Fixer\FunctionNotation\FunctionTypehintSpaceFixer;
 use PhpCsFixer\Fixer\FunctionNotation\ImplodeCallFixer;
+use PhpCsFixer\Fixer\FunctionNotation\LambdaNotUsedImportFixer;
 use PhpCsFixer\Fixer\FunctionNotation\NoUnreachableDefaultArgumentValueFixer;
+use PhpCsFixer\Fixer\FunctionNotation\NoUselessSprintfFixer;
 use PhpCsFixer\Fixer\FunctionNotation\ReturnTypeDeclarationFixer;
 use PhpCsFixer\Fixer\FunctionNotation\VoidReturnFixer;
 use PhpCsFixer\Fixer\Import\NoLeadingImportSlashFixer;
@@ -71,7 +76,9 @@ use PhpCsFixer\Fixer\Import\NoUnusedImportsFixer;
 use PhpCsFixer\Fixer\Import\OrderedImportsFixer;
 use PhpCsFixer\Fixer\LanguageConstruct\DeclareEqualNormalizeFixer;
 use PhpCsFixer\Fixer\LanguageConstruct\IsNullFixer;
+use PhpCsFixer\Fixer\LanguageConstruct\SingleSpaceAfterConstructFixer;
 use PhpCsFixer\Fixer\ListNotation\ListSyntaxFixer;
+use PhpCsFixer\Fixer\NamespaceNotation\CleanNamespaceFixer;
 use PhpCsFixer\Fixer\NamespaceNotation\NoLeadingNamespaceWhitespaceFixer;
 use PhpCsFixer\Fixer\NamespaceNotation\SingleBlankLineBeforeNamespaceFixer;
 use PhpCsFixer\Fixer\Operator\BinaryOperatorSpacesFixer;
@@ -80,6 +87,7 @@ use PhpCsFixer\Fixer\Operator\NewWithBracesFixer;
 use PhpCsFixer\Fixer\Operator\ObjectOperatorWithoutWhitespaceFixer;
 use PhpCsFixer\Fixer\Operator\StandardizeNotEqualsFixer;
 use PhpCsFixer\Fixer\Operator\TernaryOperatorSpacesFixer;
+use PhpCsFixer\Fixer\Operator\TernaryToElvisOperatorFixer;
 use PhpCsFixer\Fixer\Operator\TernaryToNullCoalescingFixer;
 use PhpCsFixer\Fixer\Operator\UnaryOperatorSpacesFixer;
 use PhpCsFixer\Fixer\Phpdoc\NoBlankLinesAfterPhpdocFixer;
@@ -90,6 +98,7 @@ use PhpCsFixer\Fixer\Phpdoc\PhpdocIndentFixer;
 use PhpCsFixer\Fixer\Phpdoc\PhpdocNoAccessFixer;
 use PhpCsFixer\Fixer\Phpdoc\PhpdocNoEmptyReturnFixer;
 use PhpCsFixer\Fixer\Phpdoc\PhpdocNoPackageFixer;
+use PhpCsFixer\Fixer\Phpdoc\PhpdocOrderByValueFixer;
 use PhpCsFixer\Fixer\Phpdoc\PhpdocOrderFixer;
 use PhpCsFixer\Fixer\Phpdoc\PhpdocReturnSelfReferenceFixer;
 use PhpCsFixer\Fixer\Phpdoc\PhpdocScalarFixer;
@@ -105,7 +114,6 @@ use PhpCsFixer\Fixer\PhpUnit\PhpUnitExpectationFixer;
 use PhpCsFixer\Fixer\PhpUnit\PhpUnitMockFixer;
 use PhpCsFixer\Fixer\PhpUnit\PhpUnitMockShortWillReturnFixer;
 use PhpCsFixer\Fixer\PhpUnit\PhpUnitNoExpectationAnnotationFixer;
-use PhpCsFixer\Fixer\PhpUnit\PhpUnitOrderedCoversFixer;
 use PhpCsFixer\Fixer\PhpUnit\PhpUnitSetUpTearDownVisibilityFixer;
 use PhpCsFixer\Fixer\PhpUnit\PhpUnitTestCaseStaticMethodCallsFixer;
 use PhpCsFixer\Fixer\ReturnNotation\NoUselessReturnFixer;
@@ -117,6 +125,7 @@ use PhpCsFixer\Fixer\Strict\StrictParamFixer;
 use PhpCsFixer\Fixer\StringNotation\SingleQuoteFixer;
 use PhpCsFixer\Fixer\Whitespace\BlankLineBeforeStatementFixer;
 use PhpCsFixer\Fixer\Whitespace\CompactNullableTypehintFixer;
+use PhpCsFixer\Fixer\Whitespace\HeredocIndentationFixer;
 use PhpCsFixer\Fixer\Whitespace\NoExtraBlankLinesFixer;
 use PhpCsFixer\Fixer\Whitespace\NoWhitespaceInBlankLineFixer;
 use SlevomatCodingStandard\Sniffs\Exceptions\ReferenceThrowableOnlySniff;
@@ -234,6 +243,8 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         $services->set(IncrementDecrementUsageSniff::class);
         // Verifies that class members have scope modifiers
         $services->set(MemberVarScopeSniff::class);
+        // Detects merge conflict artifacts left in files
+        $services->set(GitMergeConflictSniff::class);
         // Casts should not have whitespace inside the parentheses
         $services->set(CastSpacingSniff::class);
         // The php constructs like echo, return, include, etc. should have one space after them
@@ -247,6 +258,8 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         $services->set(ScopeKeywordSpacingSniff::class);
         // Semicolons should not have spaces before them
         $services->set(SemicolonSpacingSniff::class);
+        // Converts simple usages of `array_push($x, $y);` to `$x[] = $y;`.
+        $services->set(ArrayPushFixer::class);
         // Replace non multibyte-safe functions with corresponding mb function
         $services->set(MbStrFunctionsFixer::class);
         // Master functions shall be used instead of aliases
@@ -270,9 +283,13 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         $services->set(WhitespaceAfterCommaInArrayFixer::class);
         // The body of each structure MUST be enclosed by braces. Braces should be properly placed
         $services->set(BracesFixer::class)
-            ->call('configure', [['allow_single_line_closure' => true]]);
-        // Class names should match the file name according to PSR-4
-        $services->set(Psr4Fixer::class);
+            ->call(
+                'configure',
+                [['allow_single_line_closure' => true, 'allow_single_line_anonymous_class_with_empty_body' => true]]
+            );
+        // Classes must be in a path that matches their namespace
+        $services->set(PsrAutoloadingFixer::class);
+
         // Magic method definitions and calls must be using the correct casing
         $services->set(MagicMethodCasingFixer::class);
         // Function defined by PHP should be called using the correct casing
@@ -287,7 +304,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         $services->set(ShortScalarCastFixer::class);
         // Class, trait and interface elements must be separated with one or none blank line
         $services->set(ClassAttributesSeparationFixer::class)
-            ->call('configure', [['elements' => ['method']]]);
+            ->call('configure', [['elements' => ['method' => 'one']]]);
         // There should be no empty lines after class opening brace
         $services->set(NoBlankLinesAfterClassOpeningFixer::class);
         // Inside class or interface element `self` should be preferred to the class name itself
@@ -301,6 +318,8 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         $services->set(NoEmptyCommentFixer::class);
         // There should not be useless `else` cases
         $services->set(NoUselessElseFixer::class);
+        // Switch case must not be ended with `continue` but with `break`.
+        $services->set(SwitchContinueToBreakFixer::class);
         // Conditions must be written in non-Yoda style
         $services->set(YodaStyleFixer::class)
             ->call('configure', [['equal' => false, 'identical' => false, 'less_and_greater' => false]]);
@@ -314,8 +333,12 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         $services->set(FunctionTypehintSpaceFixer::class);
         // Function `implode` must be called with 2 arguments in the documented order.
         $services->set(ImplodeCallFixer::class);
-
+        // Lambda must not import variables it doesn't use.
+        $services->set(LambdaNotUsedImportFixer::class);
+        // In function arguments there must not be arguments with default values before non-default ones.
         $services->set(NoUnreachableDefaultArgumentValueFixer::class);
+        // There must be no `sprintf` calls with only the first argument.
+        $services->set(NoUselessSprintfFixer::class);
 
         $services->set(ReturnTypeDeclarationFixer::class);
 
@@ -331,12 +354,16 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 
         $services->set(IsNullFixer::class)
             ->call('configure', [['use_yoda_style' => false]]);
+        // Ensures a single space after language constructs.
+        $services->set(SingleSpaceAfterConstructFixer::class);
 
         $services->set(ListSyntaxFixer::class)
             ->call('configure', [['syntax' => 'short']]);
-
+        // Namespace must not contain spacing, comments or PHPDoc.
+        $services->set(CleanNamespaceFixer::class);
+        // The namespace declaration line shouldn\'t contain leading whitespace.
         $services->set(NoLeadingNamespaceWhitespaceFixer::class);
-
+        // There should be exactly one blank line before a namespace declaration.
         $services->set(SingleBlankLineBeforeNamespaceFixer::class);
 
         $services->set(BinaryOperatorSpacesFixer::class);
@@ -349,9 +376,11 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         $services->set(ObjectOperatorWithoutWhitespaceFixer::class);
 
         $services->set(StandardizeNotEqualsFixer::class);
-
+        // Standardize spaces around ternary operator.
         $services->set(TernaryOperatorSpacesFixer::class);
-
+        // Use the Elvis operator `?:` where possible.
+        $services->set(TernaryToElvisOperatorFixer::class);
+        // Use `null` coalescing operator `??` where possible.
         $services->set(TernaryToNullCoalescingFixer::class);
 
         $services->set(UnaryOperatorSpacesFixer::class);
@@ -371,27 +400,33 @@ return static function (ContainerConfigurator $containerConfigurator): void {
                     ],
                 ]
             );
-
+        // PHPDoc should contain `@param` for all params.
         $services->set(PhpdocAddMissingParamAnnotationFixer::class);
-
+        // Docblocks should have the same indentation as the documented subject.
         $services->set(PhpdocIndentFixer::class);
-
+        // `@access` annotations should be omitted from PHPDoc.
         $services->set(PhpdocNoAccessFixer::class);
-
+        // `@return void` and `@return null` annotations should be omitted from PHPDoc.
         $services->set(PhpdocNoEmptyReturnFixer::class);
-
+        // `@package` and `@subpackage` annotations should be omitted from PHPDoc.
         $services->set(PhpdocNoPackageFixer::class);
-
+        // Order phpdoc tags by value.
+        $services->set(PhpdocOrderByValueFixer::class)
+            ->call(
+                'configure',
+                [['annotations' => ['covers', 'group', 'throws']]]
+            );
+        // Annotations in PHPDoc should be ordered.
         $services->set(PhpdocOrderFixer::class);
-
+        // The type of `@return` annotations of methods returning a reference to itself must the configured one.
         $services->set(PhpdocReturnSelfReferenceFixer::class);
-
+        // Scalar types should always be written in the same form.
         $services->set(PhpdocScalarFixer::class);
-
+        // Single line `@var` PHPDoc should have proper spacing.
         $services->set(PhpdocSingleLineVarSpacingFixer::class);
-
+        // PHPDoc should start and end with content
         $services->set(PhpdocTrimFixer::class);
-
+        // The correct case must be used for standard PHP types in PHPDoc.
         $services->set(PhpdocTypesFixer::class);
         // `@var` and `@type` annotations must have type and name in the correct order
         $services->set(PhpdocVarAnnotationCorrectOrderFixer::class);
@@ -411,8 +446,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         $services->set(PhpUnitNoExpectationAnnotationFixer::class);
         // Usages of ->setExpectedException* methods MUST be replaced by ->expectException* methods
         $services->set(PhpUnitExpectationFixer::class);
-        // Order `@covers` annotation of PHPUnit tests
-        $services->set(PhpUnitOrderedCoversFixer::class);
         // Visibility of setUp() and tearDown() method should be kept protected
         $services->set(PhpUnitSetUpTearDownVisibilityFixer::class);
         // Calls to `PHPUnit\Framework\TestCase` static methods must all be of the same type (`$this->...`)
@@ -437,6 +470,8 @@ return static function (ContainerConfigurator $containerConfigurator): void {
             ->call('configure', [['statements' => ['return', 'try']]]);
         // Remove extra spaces in a nullable typehint
         $services->set(CompactNullableTypehintFixer::class);
+        // Heredoc/nowdoc content must be properly indented.
+        $services->set(HeredocIndentationFixer::class);
         // Removes extra blank lines and/or blank lines following configuration
         $services->set(NoExtraBlankLinesFixer::class)
             ->call(
@@ -480,6 +515,9 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 
                 // There could be more than one space after star (eg. in Doctrine annotations)
                 'PHP_CodeSniffer\Standards\Squiz\Sniffs\Commenting\DocCommentAlignmentSniff.SpaceAfterStar' => null,
+
+                // Allow single line closures
+                'PHP_CodeSniffer\Standards\Squiz\Sniffs\WhiteSpace\ScopeClosingBraceSniff.ContentBefore' => null,
             ]
         );
     })();
