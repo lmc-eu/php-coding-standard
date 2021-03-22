@@ -32,11 +32,11 @@ composer remove symplify/config-transformer --dev # the migration tool can now b
 
 ### 4. Add import of the base `ecs.php` from lmc/coding-standard
 
-Because of the nature of how ECS process the configuration (which is, in fact, the behavior of underlying
+Because of the nature of how ECS processes the configuration (which is, in fact, the behavior of underlying
 symfony/dependency-injection), you must follow the order in which you add your customizations.
 
-⚠️ In your `ecs.php` add import of the lmc/coding-standard **after** you add `skip` parameter but **before** your custom
-code-style adjustments:
+⚠️ **IMPORTANT:** In your `ecs.php` the import of the lmc/coding-standard must be placed  **after your own `SKIP` parameter**
+(if you use it) but **before** your custom code-style adjustments (if you use any).
 
 ```diff
 // ...
