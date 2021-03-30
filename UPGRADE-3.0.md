@@ -38,6 +38,13 @@ symfony/dependency-injection), you must follow the order in which you add your c
 ⚠️ **IMPORTANT:** In your `ecs.php` the import of the lmc/coding-standard must be placed  **after your own `SKIP` parameter**
 (if you use it) but **before** your custom code-style adjustments (if you use any).
 
+⚠ **REALLY READ THIS:** If you migrated the config as in step 3., you will need to rearrange the order of statements
+in `ecs.php`, so that they are as following. **If you don't do this, the code style will not work properly.**
+
+1) Your skips using `$parameters->set()`
+2) Import of `lmc/coding-standard/ecs.php` using `$containerConfigurator->import()`
+3) Your rules configuration using `$services->set()`
+
 ```diff
 // ...
 return static function (ContainerConfigurator $containerConfigurator): void {
