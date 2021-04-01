@@ -97,7 +97,7 @@ vendor/bin/ecs show
 
 The result should end with something like:
 ```
- [OK] Loaded 164 checkers in total
+ [OK] Loaded 173 checkers in total
 ```
 
 (or some close number, depending on your custom code-style settings).
