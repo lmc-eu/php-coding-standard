@@ -5,6 +5,7 @@
 <!-- There is always Unreleased section on the top. Subsections (Added, Changed, Fixed, Removed) should be added as needed. -->
 
 ## Unreleased
+- Lock `friendsofphp/php-cs-fixer` dependency to <2.18.6 until [symplify#3130](https://github.com/symplify/symplify/issues/3130) is resolved.
 
 ## 3.0.0 - 2021-03-02
 - **[BC break]** Change YAML config to PHP. See [UPGRADE-3.0.md](UPGRADE-3.0.md) for step-by-step upgrade howto.
