@@ -4,6 +4,9 @@
 
 <!-- There is always Unreleased section on the top. Subsections (Added, Changed, Fixed, Removed) should be added as needed. -->
 
+## 2.1.3 - 2021-04-21
+- Lock `friendsofphp/php-cs-fixer` dependency to `<2.18.6` because of [symplify#3130](https://github.com/symplify/symplify/issues/3130).
+
 ## 2.1.2 - 2021-02-01
 - Lock `symfony/dependency-injection` also to `<4.4.19` (to extend the workaround from 2.1.1).
 
