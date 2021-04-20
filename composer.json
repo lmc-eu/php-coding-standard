@@ -11,7 +11,7 @@
     ],
     "require": {
         "php": "^7.2",
-        "friendsofphp/php-cs-fixer": "^2.16.3",
+        "friendsofphp/php-cs-fixer": "^2.16.3 <2.18.6",
         "symfony/dependency-injection": "<4.4.19 || >=5.0.0 <5.2.2",
         "symplify/auto-bind-parameter": "<7.2.20",
         "symplify/autowire-array-parameter": "<7.2.20",
