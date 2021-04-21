@@ -444,8 +444,13 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         $services->set(PhpUnitMockShortWillReturnFixer::class);
         // Use expectedException*() methods instead of @expectedException* annotation (both following fixers must be applied to do so)
         $services->set(PhpUnitNoExpectationAnnotationFixer::class);
-        // Usages of ->setExpectedException* methods MUST be replaced by ->expectException* methods
-        $services->set(PhpUnitExpectationFixer::class);
+
+        // Following check fails on PHP <8.0. See https://github.com/symplify/symplify/issues/3130
+        if (PHP_VERSION_ID >= 80000) {
+            // Usages of ->setExpectedException* methods MUST be replaced by ->expectException* methods
+            $services->set(PhpUnitExpectationFixer::class);
+        }
+
         // Visibility of setUp() and tearDown() method should be kept protected
         $services->set(PhpUnitSetUpTearDownVisibilityFixer::class);
         // Calls to `PHPUnit\Framework\TestCase` static methods must all be of the same type (`$this->...`)

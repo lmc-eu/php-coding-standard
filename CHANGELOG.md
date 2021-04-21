@@ -5,6 +5,7 @@
 <!-- There is always Unreleased section on the top. Subsections (Added, Changed, Fixed, Removed) should be added as needed. -->
 
 ## Unreleased
+- `PhpUnitExpectationFixer` is used only on PHP 8.0+ See [symplify#3130](https://github.com/symplify/symplify/issues/3130).
 
 ## 3.0.0 - 2021-03-02
 - **[BC break]** Change YAML config to PHP. See [UPGRADE-3.0.md](UPGRADE-3.0.md) for step-by-step upgrade howto.
