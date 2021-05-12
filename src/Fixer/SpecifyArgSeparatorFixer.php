@@ -2,7 +2,7 @@
 
 namespace Lmc\CodingStandard\Fixer;
 
-use PhpCsFixer\Fixer\DefinedFixerInterface;
+use PhpCsFixer\Fixer\FixerInterface;
 use PhpCsFixer\FixerDefinition\CodeSample;
 use PhpCsFixer\FixerDefinition\FixerDefinition;
 use PhpCsFixer\FixerDefinition\FixerDefinitionInterface;
@@ -12,7 +12,7 @@ use PhpCsFixer\Tokenizer\CT;
 use PhpCsFixer\Tokenizer\Token;
 use PhpCsFixer\Tokenizer\Tokens;
 
-class SpecifyArgSeparatorFixer implements DefinedFixerInterface
+class SpecifyArgSeparatorFixer implements FixerInterface
 {
     public function getDefinition(): FixerDefinitionInterface
     {
@@ -25,8 +25,6 @@ class SpecifyArgSeparatorFixer implements DefinedFixerInterface
             . 'however when its default value "&" is changed, query string assembled by the method will be '
             . 'unexpectedly invalid. This Fixer forces you to not rely on ini settings and rather define '
             . '`$arg_separator` in third argument of the function.',
-            null,
-            null,
             'Risky when other than default "&" argument separator should be used in query strings.'
         );
     }

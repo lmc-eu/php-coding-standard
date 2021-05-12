@@ -41,7 +41,6 @@ use PhpCsFixer\Fixer\Alias\SetTypeToCastFixer;
 use PhpCsFixer\Fixer\ArrayNotation\ArraySyntaxFixer;
 use PhpCsFixer\Fixer\ArrayNotation\NormalizeIndexBraceFixer;
 use PhpCsFixer\Fixer\ArrayNotation\NoTrailingCommaInSinglelineArrayFixer;
-use PhpCsFixer\Fixer\ArrayNotation\TrailingCommaInMultilineArrayFixer;
 use PhpCsFixer\Fixer\ArrayNotation\TrimArraySpacesFixer;
 use PhpCsFixer\Fixer\ArrayNotation\WhitespaceAfterCommaInArrayFixer;
 use PhpCsFixer\Fixer\Basic\BracesFixer;
@@ -60,6 +59,7 @@ use PhpCsFixer\Fixer\ClassNotation\VisibilityRequiredFixer;
 use PhpCsFixer\Fixer\Comment\NoEmptyCommentFixer;
 use PhpCsFixer\Fixer\ControlStructure\NoUselessElseFixer;
 use PhpCsFixer\Fixer\ControlStructure\SwitchContinueToBreakFixer;
+use PhpCsFixer\Fixer\ControlStructure\TrailingCommaInMultilineFixer;
 use PhpCsFixer\Fixer\ControlStructure\YodaStyleFixer;
 use PhpCsFixer\Fixer\FunctionNotation\CombineNestedDirnameFixer;
 use PhpCsFixer\Fixer\FunctionNotation\FopenFlagOrderFixer;
@@ -275,8 +275,8 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         $services->set(NormalizeIndexBraceFixer::class);
         // PHP single-line arrays should not have trailing comma
         $services->set(NoTrailingCommaInSinglelineArrayFixer::class);
-        // PHP multi-line arrays should have a trailing comma
-        $services->set(TrailingCommaInMultilineArrayFixer::class);
+        // Multi-line arrays, arguments list and parameters list must have a trailing comma
+        $services->set(TrailingCommaInMultilineFixer::class);
         // Arrays should be formatted like function/method arguments
         $services->set(TrimArraySpacesFixer::class);
         // In array declaration, there MUST be a whitespace after each comma
@@ -351,9 +351,8 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         $services->set(OrderedImportsFixer::class);
 
         $services->set(DeclareEqualNormalizeFixer::class);
-
-        $services->set(IsNullFixer::class)
-            ->call('configure', [['use_yoda_style' => false]]);
+        // Replaces `is_null($var)` expression with `null === $var`
+        $services->set(IsNullFixer::class);
         // Ensures a single space after language constructs.
         $services->set(SingleSpaceAfterConstructFixer::class);
 

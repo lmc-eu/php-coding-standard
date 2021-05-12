@@ -4,8 +4,8 @@ parameters:
         - src/
         - tests/
     bootstrapFiles:
-        - vendor/squizlabs/php_codesniffer/autoload.php
-        - vendor/squizlabs/php_codesniffer/src/Util/Tokens.php
+        - vendor/symplify/easy-coding-standard/vendor/squizlabs/php_codesniffer/autoload.php
+        - vendor/symplify/easy-coding-standard/vendor/squizlabs/php_codesniffer/src/Util/Tokens.php
     ignoreErrors:
         - message: '#Parameter \#(2|3) \$(argumentStart|argumentEnd) of method PhpCsFixer\\Tokenizer\\Analyzer\\ArgumentsAnalyzer::getArgumentInfo\(\) expects int#'
           path: %currentWorkingDirectory%/src/Fixer/SpecifyArgSeparatorFixer.php
