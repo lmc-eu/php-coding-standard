@@ -5,6 +5,8 @@
 <!-- There is always Unreleased section on the top. Subsections (Added, Changed, Fixed, Removed) should be added as needed. -->
 
 ## Unreleased
+- Use php-cs-fixer 3.0.
+- Use new prefixed version of symplify/easy-coding-standard.
 
 ## 3.0.1 - 2021-04-21
 - `PhpUnitExpectationFixer` is now used only on PHP 8.0+. See [symplify#3130](https://github.com/symplify/symplify/issues/3130).
