@@ -8,6 +8,10 @@ class Correct
     {
         $queryString1 = http_build_query(['foo' => 'bar'], null, '&');
 
+        $queryString1WithMultipleWhitespaces = http_build_query(['foo' => 'bar'], null,   '&');
+
+        $queryString1WithWhitespacesAndComments = http_build_query(['foo' => 'bar'], null, /* comment */  '&' /* x */);
+
         $queryString1WithComment = http_build_query(['foo' => 'bar'], /* Comment, with commas, */ null ,  '&');
 
         $queryString1WithObject = http_build_query((object) ['foo' => 'bar'], null, '&');
