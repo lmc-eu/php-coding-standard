@@ -6,6 +6,7 @@
 
 ## Unreleased
 - Fix SpecifyArgSeparatorFixer not compatible with php-cs-fixer 3.0.
+- Add new `ecs-7.4.php` coding standard declaration file for PHP 7.4+.
 
 ## 3.1.0 - 2021-05-13
 - Use php-cs-fixer 3.0.
