@@ -6,7 +6,6 @@ use PhpCsFixer\Fixer\FixerInterface;
 use PhpCsFixer\FixerDefinition\CodeSample;
 use PhpCsFixer\FixerDefinition\FixerDefinition;
 use PhpCsFixer\FixerDefinition\FixerDefinitionInterface;
-use PhpCsFixer\Tokenizer\Analyzer\Analysis\TypeAnalysis;
 use PhpCsFixer\Tokenizer\Analyzer\ArgumentsAnalyzer;
 use PhpCsFixer\Tokenizer\CT;
 use PhpCsFixer\Tokenizer\Token;
@@ -91,13 +90,14 @@ class SpecifyArgSeparatorFixer implements FixerInterface
 
         // When third argument is already present and it is null, override its value.
         if ($argumentCount >= 3) {
-            $thirdArgumentType = $this->getThirdArgumentInfo($tokens, $openParenthesisIndex, $closeParenthesisIndex);
-            if ($thirdArgumentType === null) {
+            $thirdArgumentTuple = $this->getThirdArgumentTokenTuple($tokens, $openParenthesisIndex, $closeParenthesisIndex);
+            if ($thirdArgumentTuple === []) {
                 return;
             }
 
-            if ($thirdArgumentType->getName() === 'null') {
-                $this->setArgumentValueToAmp($tokens, $thirdArgumentType->getStartIndex());
+            $thirdArgumentToken = reset($thirdArgumentTuple);
+            if ($thirdArgumentToken->getContent() === 'null') {
+                $this->setArgumentValueToAmp($tokens, key($thirdArgumentTuple));
             }
 
             return;
@@ -112,7 +112,7 @@ class SpecifyArgSeparatorFixer implements FixerInterface
             $tokensToInsert[] = new Token([T_STRING, 'null']);
         }
 
-        // Add third argument (arg separator): ", &"
+        // Add third argument (arg separator): ", '&'"
         $tokensToInsert[] = new Token(',');
         $tokensToInsert[] = new Token([T_WHITESPACE, ' ']);
         $tokensToInsert[] = new Token([T_STRING, "'&'"]);
@@ -139,19 +139,28 @@ class SpecifyArgSeparatorFixer implements FixerInterface
 
     /**
      * @param Tokens<Token> $tokens
+     * @return array<int, Token>
      */
-    private function getThirdArgumentInfo(
+    private function getThirdArgumentTokenTuple(
         Tokens $tokens,
         int $openParenthesisIndex,
         int $closeParenthesisIndex
-    ): ?TypeAnalysis {
+    ): array {
         $argumentsAnalyzer = new ArgumentsAnalyzer();
+        $allArguments = $argumentsAnalyzer->getArguments($tokens, $openParenthesisIndex, $closeParenthesisIndex);
+        $thirdArgumentIndex = array_slice($allArguments, 2, 1, true);
 
-        $arguments = $argumentsAnalyzer->getArguments($tokens, $openParenthesisIndex, $closeParenthesisIndex);
-        $argumentIndex = array_slice($arguments, 2, 1, true);
-        $argumentInfo = $argumentsAnalyzer->getArgumentInfo($tokens, key($argumentIndex), reset($argumentIndex));
+        for ($index = key($thirdArgumentIndex); $index <= reset($thirdArgumentIndex); $index++) {
+            /** @var int $index */
+            /** @var Token $token */
+            $token = $tokens[$index];
 
-        return $argumentInfo->getTypeAnalysis();
+            if (!$token->isWhitespace() && !$token->isComment()) {
+                return [$index => $token];
+            }
+        }
+
+        return [];
     }
 
     /**

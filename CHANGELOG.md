@@ -5,6 +5,7 @@
 <!-- There is always Unreleased section on the top. Subsections (Added, Changed, Fixed, Removed) should be added as needed. -->
 
 ## Unreleased
+- Fix SpecifyArgSeparatorFixer not compatible with php-cs-fixer 3.0.
 
 ## 3.1.0 - 2021-05-13
 - Use php-cs-fixer 3.0.

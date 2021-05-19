@@ -7,8 +7,6 @@ parameters:
         - vendor/symplify/easy-coding-standard/vendor/squizlabs/php_codesniffer/autoload.php
         - vendor/symplify/easy-coding-standard/vendor/squizlabs/php_codesniffer/src/Util/Tokens.php
     ignoreErrors:
-        - message: '#Parameter \#(2|3) \$(argumentStart|argumentEnd) of method PhpCsFixer\\Tokenizer\\Analyzer\\ArgumentsAnalyzer::getArgumentInfo\(\) expects int#'
-          path: %currentWorkingDirectory%/src/Fixer/SpecifyArgSeparatorFixer.php
         - message: '#Parameter \#1 \$code of static method PhpCsFixer\\Tokenizer\\Tokens::fromCode\(\) expects string, string\|false given#'
           path: %currentWorkingDirectory%/tests/Fixer/SpecifyArgSeparatorFixerTest.php
         - message: '#Parameter \#1 \$filename of function file_get_contents expects string, string\|false given.#'
