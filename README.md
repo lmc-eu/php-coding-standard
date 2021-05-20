@@ -26,6 +26,9 @@ use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigura
 
 return static function (ContainerConfigurator $containerConfigurator): void {
     $containerConfigurator->import(__DIR__ . '/vendor/lmc/coding-standard/ecs.php');
+
+    // If you only need PHP 7.4+ in your project, uncomment this to import additional checks:
+    //$containerConfigurator->import(__DIR__ . '/vendor/lmc/coding-standard/ecs-7.4.php');
 };
 ```
 
