@@ -25,7 +25,7 @@ Run following commands:
 
 ```sh
 composer require symplify/config-transformer --dev
-vendor/bin/config-transformer switch-format easy-coding-standard.yaml --input-format yaml --output-format php
+vendor/bin/config-transformer switch-format easy-coding-standard.yaml
 mv easy-coding-standard.php ecs.php # rename to ecs.php
 composer remove symplify/config-transformer --dev # the migration tool can now be removed again
 ```
