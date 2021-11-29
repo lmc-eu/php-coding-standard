@@ -117,10 +117,8 @@ class SpecifyArgSeparatorFixer implements FixerInterface
         $tokensToInsert[] = new Token([T_WHITESPACE, ' ']);
         $tokensToInsert[] = new Token([T_STRING, "'&'"]);
 
-        if (!empty($tokensToInsert)) {
-            $beforeCloseParenthesisIndex = $tokens->getPrevNonWhitespace($closeParenthesisIndex);
-            $tokens->insertAt($beforeCloseParenthesisIndex + 1, $tokensToInsert);
-        }
+        $beforeCloseParenthesisIndex = $tokens->getPrevNonWhitespace($closeParenthesisIndex);
+        $tokens->insertAt($beforeCloseParenthesisIndex + 1, $tokensToInsert);
     }
 
     /**
