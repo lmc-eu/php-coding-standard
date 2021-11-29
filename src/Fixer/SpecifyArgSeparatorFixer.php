@@ -28,9 +28,6 @@ class SpecifyArgSeparatorFixer implements FixerInterface
         );
     }
 
-    /**
-     * @param Tokens<Token> $tokens
-     */
     public function isCandidate(Tokens $tokens): bool
     {
         return $tokens->isTokenKindFound(T_STRING);
@@ -41,9 +38,6 @@ class SpecifyArgSeparatorFixer implements FixerInterface
         return true;
     }
 
-    /**
-     * @param Tokens<Token> $tokens
-     */
     public function fix(\SplFileInfo $file, Tokens $tokens): void
     {
         foreach ($tokens as $index => $token) {
@@ -73,9 +67,6 @@ class SpecifyArgSeparatorFixer implements FixerInterface
         return true;
     }
 
-    /**
-     * @param Tokens<Token> $tokens
-     */
     private function fixFunction(Tokens $tokens, int $functionIndex): void
     {
         $openParenthesisIndex = $tokens->getNextTokenOfKind($functionIndex, ['(']);
@@ -123,8 +114,6 @@ class SpecifyArgSeparatorFixer implements FixerInterface
 
     /**
      * Detect if this is most probably function call (and not function import or function definition).
-     *
-     * @param Tokens<Token> $tokens
      */
     private function isFunctionCall(Tokens $tokens, int $index): bool
     {
@@ -136,7 +125,6 @@ class SpecifyArgSeparatorFixer implements FixerInterface
     }
 
     /**
-     * @param Tokens<Token> $tokens
      * @return array<int, Token>
      */
     private function getThirdArgumentTokenTuple(
@@ -161,9 +149,6 @@ class SpecifyArgSeparatorFixer implements FixerInterface
         return [];
     }
 
-    /**
-     * @param Tokens<Token> $tokens
-     */
     private function setArgumentValueToAmp(Tokens $tokens, int $argumentStartIndex): void
     {
         $ampToken = new Token([T_STRING, "'&'"]);
