@@ -1,8 +1,8 @@
 {
     "name": "lmc/coding-standard",
-    "type": "library",
     "description": "Coding standard used in LMC projects",
     "license": "MIT",
+    "type": "library",
     "authors": [
         {
             "name": "LMC s.r.o.",
@@ -25,12 +25,7 @@
         "phpstan/phpstan-phpunit": "^1.0.0",
         "phpunit/phpunit": "^9.5.2"
     },
-    "config": {
-        "preferred-install": {
-            "squizlabs/php_codesniffer": "source"
-        },
-        "sort-packages": true
-    },
+    "prefer-stable": true,
     "autoload": {
         "psr-4": {
             "Lmc\\CodingStandard\\": "src/"
@@ -41,7 +36,12 @@
             "Lmc\\CodingStandard\\": "tests/"
         }
     },
-    "prefer-stable": true,
+    "config": {
+        "preferred-install": {
+            "squizlabs/php_codesniffer": "source"
+        },
+        "sort-packages": true
+    },
     "scripts": {
         "all": [
             "@lint",
