@@ -81,7 +81,11 @@ class SpecifyArgSeparatorFixer implements FixerInterface
 
         // When third argument is already present and it is null, override its value.
         if ($argumentCount >= 3) {
-            $thirdArgumentTuple = $this->getThirdArgumentTokenTuple($tokens, $openParenthesisIndex, $closeParenthesisIndex);
+            $thirdArgumentTuple = $this->getThirdArgumentTokenTuple(
+                $tokens,
+                $openParenthesisIndex,
+                $closeParenthesisIndex
+            );
             if ($thirdArgumentTuple === []) {
                 return;
             }
@@ -100,7 +104,7 @@ class SpecifyArgSeparatorFixer implements FixerInterface
         if ($argumentCount === 1) {
             $tokensToInsert[] = new Token(',');
             $tokensToInsert[] = new Token([T_WHITESPACE, ' ']);
-            $tokensToInsert[] = new Token([T_STRING, 'null']);
+            $tokensToInsert[] = new Token([T_STRING, "''"]);
         }
 
         // Add third argument (arg separator): ", '&'"
