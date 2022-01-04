@@ -5,6 +5,7 @@
 <!-- There is always Unreleased section on the top. Subsections (Added, Changed, Fixed, Removed) should be added as needed. -->
 
 ## Unreleased
+- Fix SpecifyArgSeparatorFixer type error when adding empty `$numeric_prefix` parameter in PHP 7.4+.
 
 ## 3.2.0 - 2021-05-20
 - Fix SpecifyArgSeparatorFixer not compatible with php-cs-fixer 3.0.

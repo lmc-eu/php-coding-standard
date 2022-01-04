@@ -6,20 +6,20 @@ class Correct
 {
     public function assembleQueryString(): void
     {
-        $queryString1 = http_build_query(['foo' => 'bar'], null, '&');
+        $queryString1 = http_build_query(['foo' => 'bar'], '', '&');
 
-        $queryString1WithMultipleWhitespaces = http_build_query(['foo' => 'bar'], null,   '&');
+        $queryString1WithMultipleWhitespaces = http_build_query(['foo' => 'bar'], 'prefix',   '&');
 
-        $queryString1WithWhitespacesAndComments = http_build_query(['foo' => 'bar'], null, /* comment */  '&' /* x */);
+        $queryString1WithWhitespacesAndComments = http_build_query(['foo' => 'bar'], '', /* comment */  '&' /* x */);
 
-        $queryString1WithComment = http_build_query(['foo' => 'bar'], /* Comment, with commas, */ null ,  '&');
+        $queryString1WithComment = http_build_query(['foo' => 'bar'], /* Comment, with commas, */ '' ,  '&');
 
-        $queryString1WithObject = http_build_query((object) ['foo' => 'bar'], null, '&');
+        $queryString1WithObject = http_build_query((object) ['foo' => 'bar'], '', '&');
 
-        $queryString2 = http_build_query(['foo' => 'bar', 'baz' => 'bat'], null, '&');
+        $queryString2 = http_build_query(['foo' => 'bar', 'baz' => 'bat'], '', '&');
 
-        $queryString3 = http_build_query(['foo' => 'bar'], null, '&amp;');
+        $queryString3 = http_build_query(['foo' => 'bar'], '', '&amp;');
 
-        $queryString4 = http_build_query(['foo' => 'bar'], null, ';');
+        $queryString4 = http_build_query(['foo' => 'bar'], '', ';');
     }
 }
