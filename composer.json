@@ -40,7 +40,12 @@
         "preferred-install": {
             "squizlabs/php_codesniffer": "source"
         },
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "ergebnis/composer-normalize": true,
+            "phpstan/extension-installer": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
     },
     "scripts": {
         "all": [
