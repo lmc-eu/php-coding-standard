@@ -9,6 +9,9 @@
 - Allow `slevomat/coding-standard` ^7
 - Add new `ecs-8.0.php` coding standard declaration file for PHP 8.0+.
 - Add new `ecs-8.1.php` coding standard declaration file for PHP 8.1+.
+- Use forked version of ecs and php-cs-fixer with a better support for PHP 8+
+  - Fix `mixed` type in phpdocs
+  - Fix `union-types` type in phpdocs
 
 ## 3.2.1 - 2022-01-04
 - Fix SpecifyArgSeparatorFixer type error when adding empty `$numeric_prefix` parameter in PHP 7.4+.

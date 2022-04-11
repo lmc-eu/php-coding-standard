@@ -11,11 +11,11 @@
     ],
     "require": {
         "php": "^7.3 || ^8.0",
-        "friendsofphp/php-cs-fixer": "^3.0",
+        "friendsofphp/php-cs-fixer": "dev-feature/fix-union-types-in-phpdocs as 3.8.0",
         "nette/utils": "^3.2",
         "slevomat/coding-standard": "^6.4.1 || ^7.0",
         "squizlabs/php_codesniffer": "^3.6",
-        "symplify/easy-coding-standard": "^10.0"
+        "symplify/easy-coding-standard": "dev-feature/use-dev-version-of-php-cs-fixer as 10.1.4"
     },
     "require-dev": {
         "ergebnis/composer-normalize": "^2.13.2",
@@ -25,6 +25,16 @@
         "phpstan/phpstan-phpunit": "^1.0.0",
         "phpunit/phpunit": "^9.5.2"
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/MortalFlesh/PHP-CS-Fixer"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/MortalFlesh/easy-coding-standard"
+        }
+    ],
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
