@@ -5,6 +5,7 @@ on: [pull_request]
 jobs:
   block-fixup-merge:
     runs-on: ubuntu-latest
+    name: Block fixup commits
 
     steps:
       - uses: actions/checkout@v2
