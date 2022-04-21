@@ -6,6 +6,7 @@
 
 ## Unreleased
 - Update to symplify/easy-coding-standard ^10.0
+- Allow using `slevomat/coding-standard` ^7
 
 ## 3.2.1 - 2022-01-04
 - Fix SpecifyArgSeparatorFixer type error when adding empty `$numeric_prefix` parameter in PHP 7.4+.
