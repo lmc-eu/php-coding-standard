@@ -54,16 +54,16 @@
             "@test"
         ],
         "analyze": [
-            "vendor/bin/ecs check src/ tests/ ecs.php ecs-7.4.php --ansi",
+            "vendor/bin/ecs check src/ tests/ ecs.php ecs-7.4.php ecs-8.0.php ecs-8.1.php --ansi",
             "vendor/bin/ecs check-markdown README.md --ansi",
             "vendor/bin/phpstan analyze -c phpstan.neon --ansi"
         ],
         "fix": [
             "@composer normalize",
-            "vendor/bin/ecs check ./src/ ./tests/ ecs.php ecs-7.4.php --ansi --fix"
+            "vendor/bin/ecs check ./src/ ./tests/ ecs.php ecs-7.4.php ecs-8.0.php ecs-8.1.php --ansi --fix"
         ],
         "lint": [
-            "vendor/bin/parallel-lint -j 10 -e php ./src ./tests ecs.php ecs-7.4.php",
+            "vendor/bin/parallel-lint -j 10 -e php ./src ./tests ecs.php ecs-7.4.php ecs-8.0.php ecs-8.1.php",
             "@composer validate",
             "@composer normalize --dry-run"
         ],

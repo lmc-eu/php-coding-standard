@@ -27,7 +27,11 @@ use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigura
 return static function (ContainerConfigurator $containerConfigurator): void {
     $containerConfigurator->import(__DIR__ . '/vendor/lmc/coding-standard/ecs.php');
 
-    // If you only need PHP 7.4+ in your project, uncomment this to import additional checks:
+    // Be default only checks compatible with  PHP 7.3 are enabled.
+    // Depending on the lowest PHP version your project need to support, you can enable additional checks for PHP 7.4, 8.0 or 8.1.
+
+
+    // Import one of ecs-7.4.php, ecs-8.0.php or ecs-8.1.php. Use only one file (for the highest possible PHP version).
     //$containerConfigurator->import(__DIR__ . '/vendor/lmc/coding-standard/ecs-7.4.php');
 };
 ```

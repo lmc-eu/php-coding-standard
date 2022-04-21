@@ -6,7 +6,9 @@
 
 ## Unreleased
 - Update to symplify/easy-coding-standard ^10.0
-- Allow using `slevomat/coding-standard` ^7
+- Allow `slevomat/coding-standard` ^7
+- Add new `ecs-8.0.php` coding standard declaration file for PHP 8.0+.
+- Add new `ecs-8.1.php` coding standard declaration file for PHP 8.1+.
 
 ## 3.2.1 - 2022-01-04
 - Fix SpecifyArgSeparatorFixer type error when adding empty `$numeric_prefix` parameter in PHP 7.4+.
