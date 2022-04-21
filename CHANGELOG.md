@@ -5,6 +5,8 @@
 <!-- There is always Unreleased section on the top. Subsections (Added, Changed, Fixed, Removed) should be added as needed. -->
 
 ## Unreleased
+
+## 3.3.0 - 2022-04-21
 - Update to symplify/easy-coding-standard ^10.0
 - Allow `slevomat/coding-standard` ^7
 - Add new `ecs-8.0.php` coding standard declaration file for PHP 8.0+.
