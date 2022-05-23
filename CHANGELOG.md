@@ -5,6 +5,8 @@
 <!-- There is always Unreleased section on the top. Subsections (Added, Changed, Fixed, Removed) should be added as needed. -->
 
 ## Unreleased
+
+## 3.3.1 - 2022-05-23
 - Lock `symplify/easy-coding-standard` to <10.2.4 because of backward incompatibilities introduced in its bugfix releases.
 
 ## 3.3.0 - 2022-04-21
