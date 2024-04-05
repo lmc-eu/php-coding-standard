@@ -21,7 +21,7 @@ class SpecifyArgSeparatorFixerTest extends TestCase
 
         $this->assertStringEqualsFile(
             __DIR__ . '/Fixtures/' . $expectedOutputFile,
-            $tokens->generateCode()
+            $tokens->generateCode(),
         );
     }
 

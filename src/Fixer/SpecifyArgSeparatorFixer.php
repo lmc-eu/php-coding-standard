@@ -24,7 +24,7 @@ class SpecifyArgSeparatorFixer implements FixerInterface
             . 'however when its default value "&" is changed, query string assembled by the method will be '
             . 'unexpectedly invalid. This Fixer forces you to not rely on ini settings and rather define '
             . '`$arg_separator` in third argument of the function.',
-            'Risky when other than default "&" argument separator should be used in query strings.'
+            'Risky when other than default "&" argument separator should be used in query strings.',
         );
     }
 
@@ -84,7 +84,7 @@ class SpecifyArgSeparatorFixer implements FixerInterface
             $thirdArgumentTuple = $this->getThirdArgumentTokenTuple(
                 $tokens,
                 $openParenthesisIndex,
-                $closeParenthesisIndex
+                $closeParenthesisIndex,
             );
             if ($thirdArgumentTuple === []) {
                 return;
@@ -134,7 +134,7 @@ class SpecifyArgSeparatorFixer implements FixerInterface
     private function getThirdArgumentTokenTuple(
         Tokens $tokens,
         int $openParenthesisIndex,
-        int $closeParenthesisIndex
+        int $closeParenthesisIndex,
     ): array {
         $argumentsAnalyzer = new ArgumentsAnalyzer();
         $allArguments = $argumentsAnalyzer->getArguments($tokens, $openParenthesisIndex, $closeParenthesisIndex);
