@@ -6,6 +6,9 @@ on:
   schedule:
     - cron:  '0 3 * * *'
 
+env:
+    COVERALLS_SERVICE_NUMBER: ${{ github.run_id }}-${{ github.run_attempt }}
+
 jobs:
   tests:
     runs-on: ubuntu-latest
