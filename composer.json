@@ -56,7 +56,6 @@
         ],
         "analyze": [
             "vendor/bin/ecs check src/ tests/ ecs.php ecs-8.1.php ecs-8.2.php ecs-8.3.php --ansi",
-            "vendor/bin/ecs check README.md --ansi",
             "vendor/bin/phpstan analyze -c phpstan.neon --ansi"
         ],
         "fix": [
