@@ -25,6 +25,8 @@ composer require --dev lmc/coding-standard
 use Symplify\EasyCodingStandard\Config\ECSConfig;
 
 return ECSConfig::configure()
+    ->withPaths([__DIR__ . '/src', __DIR__ . '/tests']) // optionally add 'config' or other directories with PHP files
+    ->withRootFiles() // to include ecs.php and all other php files in the root directory
     ->withSets(
         [
             __DIR__ . '/vendor/lmc/coding-standard/ecs.php',
@@ -32,11 +34,10 @@ return ECSConfig::configure()
     );
     
     // Be default only checks compatible with PHP 8.0 are enabled.
-    // Depending on the lowest PHP version your project need to support, you can enable additional checks for
-    // PHP 8.1, 8.2 and 8.3.
+    // Depending on the lowest PHP version your project needs to support, you can enable additional checks.
 
-
-    // Import one of ecs-8.1.php, ecs-8.2.php or ecs-8.3.php. Use only one file (for the highest possible PHP version).
+    // Import one of ecs-8.1.php, ecs-8.2.php or ecs-8.3.php. Use only one additional file (for the highest possible
+    // PHP version), the configs for previous versions are automatically included.
     //->withSets(
     //    [
     //        __DIR__ . '/vendor/lmc/coding-standard/ecs.php',
@@ -45,10 +46,10 @@ return ECSConfig::configure()
     //);
 ```
 
-2. Run the check command (for `src/` and `tests/` directories):
+2. Run the check command
 
 ```bash
-vendor/bin/ecs check src/ tests/
+vendor/bin/ecs check
 ```
 
 3. Optionally we recommend adding this to `scripts` section of your `composer.json`:
@@ -56,12 +57,12 @@ vendor/bin/ecs check src/ tests/
 ```json
     "scripts": {
         "analyze": [
-            "vendor/bin/ecs check src/ tests/ --ansi",
+            "vendor/bin/ecs check --ansi",
             "[... other scripts, like PHPStan etc.]"
         ],
         "fix": [
             "...",
-            "vendor/bin/ecs check ./src/ ./tests/ --ansi --fix"
+            "vendor/bin/ecs check --ansi --fix"
         ],
     }
 ```
@@ -83,6 +84,7 @@ use PhpCsFixer\Fixer\PhpUnit\PhpUnitTestAnnotationFixer;
 use Symplify\EasyCodingStandard\Config\ECSConfig;
 
 return ECSConfig::configure()
+    /* (...) */
     ->withSets(
         [
             __DIR__ . '/vendor/lmc/coding-standard/ecs.php',
@@ -92,6 +94,7 @@ return ECSConfig::configure()
     ->withConfiguredRule(LineLengthSniff::class, ['absoluteLineLimit' => 120])
     // Tests must have @test annotation
     ->withConfiguredRule(PhpUnitTestAnnotationFixer::class, ['style' => 'annotation']);
+    /* (...) */
 ```
 
 See [EasyCodingStandard docs](https://github.com/symplify/easy-coding-standard#configuration) for more configuration options.
@@ -111,6 +114,7 @@ use PHP_CodeSniffer\Standards\Squiz\Sniffs\Arrays\ArrayDeclarationSniff;
 use Symplify\EasyCodingStandard\Config\ECSConfig;
 
 return ECSConfig::configure()
+    /* (...) */
     ->withSkip([
         // Ignore specific check only in specific files
         ForbiddenFunctionsSniff::class => [__DIR__ . '/src-tests/bootstrap.php'],
@@ -126,6 +130,7 @@ return ECSConfig::configure()
             __DIR__ . '/vendor/lmc/coding-standard/ecs.php',
         ]
     );
+    /* (...) */
 ```
 
 See [EasyCodingStandard docs](https://github.com/symplify/easy-coding-standard#configuration) for more configuration options.
