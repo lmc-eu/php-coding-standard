@@ -5,6 +5,14 @@
 <!-- There is always Unreleased section on the top. Subsections (Added, Changed, Fixed, Removed) should be added as needed. -->
 
 ## Unreleased
+- Require PHP ^8.0
+- Update to slevomat/coding-standard ^8.0
+- Update to squizlabs/php_codesniffer ^3.9
+- Update to symplify/easy-coding-standard ^12.1
+- Move coding standard declarations from `ecs-7.4.php` and `ecs-8.0.php` to `ecs.php` and remove the former files
+- Change deprecated rules to new ones
+- Add new `ecs-8.2.php` coding standard declaration file for PHP 8.2+
+- Add new `ecs-8.3.php` coding standard declaration file for PHP 8.3+
 
 ## 3.3.1 - 2022-05-23
 - Lock `symplify/easy-coding-standard` to <10.2.4 because of backward incompatibilities introduced in its bugfix releases.

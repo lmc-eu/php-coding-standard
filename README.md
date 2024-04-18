@@ -4,8 +4,8 @@
 
 PHP coding standard used in [LMC](https://www.lmc.eu/en/) projects.
 
-Standard is based on [PSR-2](https://www.php-fig.org/psr/psr-2/) and adds various checks to make sure the code is readable,
-does follow the same conventions and does not contain common mistakes.
+Standard is based on [PSR-12](https://www.php-fig.org/psr/psr-12/) and adds
+various checks to make sure the code is readable, does follow the same conventions and does not contain common mistakes.
 
 We use [EasyCodingStandard] to define and execute checks created for both [PHP-CS-Fixer] and [PHP_CodeSniffer].
 
@@ -22,18 +22,27 @@ composer require --dev lmc/coding-standard
 ```php
 <?php declare(strict_types=1);
 
-use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Symplify\EasyCodingStandard\Config\ECSConfig;
 
-return static function (ContainerConfigurator $containerConfigurator): void {
-    $containerConfigurator->import(__DIR__ . '/vendor/lmc/coding-standard/ecs.php');
+return ECSConfig::configure()
+    ->withSets(
+        [
+            __DIR__ . '/vendor/lmc/coding-standard/ecs.php',
+        ]
+    );
+    
+    // Be default only checks compatible with PHP 8.0 are enabled.
+    // Depending on the lowest PHP version your project need to support, you can enable additional checks for
+    // PHP 8.1, 8.2 and 8.3.
 
-    // Be default only checks compatible with  PHP 7.3 are enabled.
-    // Depending on the lowest PHP version your project need to support, you can enable additional checks for PHP 7.4, 8.0 or 8.1.
 
-
-    // Import one of ecs-7.4.php, ecs-8.0.php or ecs-8.1.php. Use only one file (for the highest possible PHP version).
-    //$containerConfigurator->import(__DIR__ . '/vendor/lmc/coding-standard/ecs-7.4.php');
-};
+    // Import one of ecs-8.1.php, ecs-8.2.php or ecs-8.3.php. Use only one file (for the highest possible PHP version).
+    //->withSets(
+    //    [
+    //        __DIR__ . '/vendor/lmc/coding-standard/ecs.php',
+    //        __DIR__ . '/vendor/lmc/coding-standard/ecs-8.3.php',
+    //    ]
+    //);
 ```
 
 2. Run the check command (for `src/` and `tests/` directories):
@@ -71,21 +80,18 @@ Be aware you must add these settings **after** import of the base LMC code-style
 
 use PHP_CodeSniffer\Standards\Generic\Sniffs\Files\LineLengthSniff;
 use PhpCsFixer\Fixer\PhpUnit\PhpUnitTestAnnotationFixer;
-use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Symplify\EasyCodingStandard\Config\ECSConfig;
 
-return static function (ContainerConfigurator $containerConfigurator): void {
-    $containerConfigurator->import(__DIR__ . '/vendor/lmc/coding-standard/ecs.php');
-
-    $services = $containerConfigurator->services();
-
+return ECSConfig::configure()
+    ->withSets(
+        [
+            __DIR__ . '/vendor/lmc/coding-standard/ecs.php',
+        ]
+    )
     // Enforce line-length to 120 characters
-    $services->set(LineLengthSniff::class)
-        ->property('absoluteLineLimit', 120);
-
+    ->withConfiguredRule(LineLengthSniff::class, ['absoluteLineLimit' => 120])
     // Tests must have @test annotation
-    $services->set(PhpUnitTestAnnotationFixer::class)
-        ->call('configure', [['style' => 'annotation']]);
-};
+    ->withConfiguredRule(PhpUnitTestAnnotationFixer::class, ['style' => 'annotation']);
 ```
 
 See [EasyCodingStandard docs](https://github.com/symplify/easy-coding-standard#configuration) for more configuration options.
@@ -102,28 +108,24 @@ Unlike adding/modifying checks, skips must be added **before** import of the bas
 
 use PHP_CodeSniffer\Standards\Generic\Sniffs\PHP\ForbiddenFunctionsSniff;
 use PHP_CodeSniffer\Standards\Squiz\Sniffs\Arrays\ArrayDeclarationSniff;
-use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-use Symplify\EasyCodingStandard\ValueObject\Option;
+use Symplify\EasyCodingStandard\Config\ECSConfig;
 
-return static function (ContainerConfigurator $containerConfigurator): void {
-    $parameters = $containerConfigurator->parameters();
-
-    $parameters->set(
-        Option::SKIP,
+return ECSConfig::configure()
+    ->withSkip([
+        // Ignore specific check only in specific files
+        ForbiddenFunctionsSniff::class => [__DIR__ . '/src-tests/bootstrap.php'],
+        // Disable check entirely
+        ArrayDeclarationSniff::class,
+        // Skip one file
+        __DIR__ . '/file/to/be/skipped.php',
+        // Skip entire directory
+        __DIR__ . '/ignored/directory/*',
+    ])
+    ->withSets(
         [
-            // Ignore specific check only in specific files
-            ForbiddenFunctionsSniff::class => [__DIR__ . '/src-tests/bootstrap.php'],
-            // Disable check entirely
-            ArrayDeclarationSniff::class,
-            // Skip one file
-            __DIR__ . '/file/to/be/skipped.php',
-            // Skip entire directory
-            __DIR__ . '/ignored/directory/*',
+            __DIR__ . '/vendor/lmc/coding-standard/ecs.php',
         ]
     );
-
-    $containerConfigurator->import(__DIR__ . '/vendor/lmc/coding-standard/ecs.php');
-};
 ```
 
 See [EasyCodingStandard docs](https://github.com/symplify/easy-coding-standard#configuration) for more configuration options.

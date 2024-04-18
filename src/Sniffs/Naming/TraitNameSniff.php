@@ -39,15 +39,9 @@ final class TraitNameSniff implements Sniff
      */
     private const ERROR_MESSAGE = 'Trait should have suffix "Trait".';
 
-    /**
-     * @var int
-     */
-    private $position;
+    private int $position;
 
-    /**
-     * @var File
-     */
-    private $file;
+    private File $file;
 
     /**
      * @return int[]
@@ -57,19 +51,16 @@ final class TraitNameSniff implements Sniff
         return [T_TRAIT];
     }
 
-    /**
-     * @param int $position
-     */
-    public function process(File $file, $position): void
+    public function process(File $phpcsFile, $stackPtr): void
     {
-        $this->file = $file;
-        $this->position = $position;
+        $this->file = $phpcsFile;
+        $this->position = $stackPtr;
 
         if (Strings::endsWith($this->getTraitName(), 'Trait')) {
             return;
         }
 
-        $file->addError(self::ERROR_MESSAGE, $position, self::class);
+        $phpcsFile->addError(self::ERROR_MESSAGE, $stackPtr, self::class);
     }
 
     private function getTraitName(): string

@@ -33,26 +33,8 @@ use SlevomatCodingStandard\Helpers\TokenHelper;
 
 final class SniffClassWrapper
 {
-    /**
-     * @var int
-     */
-    private $position;
-
-    /**
-     * @var File
-     */
-    private $file;
-
-    /**
-     * @var Naming
-     */
-    private $naming;
-
-    public function __construct(File $file, int $position, Naming $naming)
+    public function __construct(private File $file, private int $position, private Naming $naming)
     {
-        $this->file = $file;
-        $this->position = $position;
-        $this->naming = $naming;
     }
 
     public function getClassName(): ?string
@@ -111,10 +93,7 @@ final class SniffClassWrapper
         return $this->naming->getClassName($this->file, $parentClassPosition);
     }
 
-    /**
-     * @return bool|int
-     */
-    private function getImplementsPosition()
+    private function getImplementsPosition(): bool|int
     {
         return $this->file->findNext(T_IMPLEMENTS, $this->position, $this->position + 15);
     }

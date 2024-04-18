@@ -42,12 +42,12 @@ final class Naming
     /**
      * @var mixed[][]
      */
-    private $referencedNamesByFilePath = [];
+    private array $referencedNamesByFilePath = [];
 
     /**
      * @var string[][]
      */
-    private $fqnClassNameByFilePathAndClassName = [];
+    private array $fqnClassNameByFilePathAndClassName = [];
 
     public function getClassName(File $file, int $classNameStartPosition): string
     {
@@ -97,7 +97,7 @@ final class Naming
             $resolvedName = NamespaceHelper::resolveClassName(
                 $file,
                 $referencedName->getNameAsReferencedInFile(),
-                $classTokenPosition
+                $classTokenPosition,
             );
 
             if ($referencedName->getNameAsReferencedInFile() === $className) {

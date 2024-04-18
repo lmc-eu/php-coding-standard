@@ -44,7 +44,7 @@ final class ClassNameSuffixByParentSniff implements Sniff
     /**
      * @var string[]
      */
-    public $defaultParentClassToSuffixMap = [
+    public array $defaultParentClassToSuffixMap = [
         'Command',
         'Controller',
         'Repository',
@@ -60,7 +60,7 @@ final class ClassNameSuffixByParentSniff implements Sniff
     /**
      * @var string[]
      */
-    public $extraParentTypesToSuffixes = [];
+    public array $extraParentTypesToSuffixes = [];
 
     /**
      * @return int[]
@@ -70,12 +70,9 @@ final class ClassNameSuffixByParentSniff implements Sniff
         return [T_CLASS];
     }
 
-    /**
-     * @param int $position
-     */
-    public function process(File $file, $position): void
+    public function process(File $phpcsFile, $stackPtr): void
     {
-        $classWrapper = $this->getWrapperForFirstClassInFile($file);
+        $classWrapper = $this->getWrapperForFirstClassInFile($phpcsFile);
         if ($classWrapper === null) {
             return;
         }
@@ -87,11 +84,11 @@ final class ClassNameSuffixByParentSniff implements Sniff
 
         $parentClassName = $classWrapper->getParentClassName();
         if ($parentClassName) {
-            $this->processType($file, $parentClassName, $className, $position);
+            $this->processType($phpcsFile, $parentClassName, $className, $stackPtr);
         }
 
         foreach ($classWrapper->getPartialInterfaceNames() as $interfaceName) {
-            $this->processType($file, $interfaceName, $className, $position);
+            $this->processType($phpcsFile, $interfaceName, $className, $stackPtr);
         }
     }
 

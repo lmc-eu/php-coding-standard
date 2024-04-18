@@ -39,15 +39,8 @@ final class AbstractClassNameSniff implements Sniff
      */
     private const ERROR_MESSAGE = 'Abstract class should have prefix "Abstract".';
 
-    /**
-     * @var int
-     */
-    private $position;
-
-    /**
-     * @var File
-     */
-    private $file;
+    private int $position;
+    private File $file;
 
     /**
      * @return int[]
@@ -57,19 +50,16 @@ final class AbstractClassNameSniff implements Sniff
         return [T_CLASS];
     }
 
-    /**
-     * @param int $position
-     */
-    public function process(File $file, $position): void
+    public function process(File $phpcsFile, $stackPtr): void
     {
-        $this->file = $file;
-        $this->position = $position;
+        $this->file = $phpcsFile;
+        $this->position = $stackPtr;
 
         if ($this->shouldBeSkipped()) {
             return;
         }
 
-        $file->addError(self::ERROR_MESSAGE, $position, self::class);
+        $phpcsFile->addError(self::ERROR_MESSAGE, $stackPtr, self::class);
     }
 
     private function shouldBeSkipped(): bool
