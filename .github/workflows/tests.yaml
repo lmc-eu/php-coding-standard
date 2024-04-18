@@ -6,9 +6,6 @@ on:
   schedule:
     - cron:  '0 3 * * *'
 
-env:
-    COVERALLS_SERVICE_NUMBER: ${{ github.run_id }}-${{ github.run_attempt }}
-
 jobs:
   tests:
     runs-on: ubuntu-latest
@@ -40,11 +37,21 @@ jobs:
         run: vendor/bin/phpunit --coverage-clover coverage-clover.xml
 
       - name: Submit coverage to Coveralls
-        env:
-          COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          composer global require --no-progress --dev php-coveralls/php-coveralls guzzlehttp/guzzle:^6.5
-          ~/.composer/vendor/bin/php-coveralls -v
+        uses: coverallsapp/github-action@v2
+        with:
+            flag-name: ${{ github.job }}-PHP-${{ matrix.php-version }} ${{ matrix.dependencies }}
+            file: coverage-clover.xml
+            parallel: true
+
+  tests-finished:
+      needs: tests
+      if: ${{ always() }}
+      runs-on: ubuntu-latest
+      steps:
+        - name: Notify Coveralls of finished builds
+          uses: coverallsapp/github-action@v2
+          with:
+            parallel-finished: true
 
   codestyle:
       name: "Code style and static analysis"
