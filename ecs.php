@@ -461,7 +461,10 @@ return ECSConfig::configure()
     ->withConfiguredRule(ArraySyntaxFixer::class, ['syntax' => 'short'])
     // The body of each structure MUST be enclosed by braces. Braces should be properly placed
     // @TODO move configuration to BracesPositionFixer after BracesFixer is not included in PSR-12 check anymore
-    ->withConfiguredRule(BracesFixer::class, ['allow_single_line_closure' => true, 'allow_single_line_anonymous_class_with_empty_body' => true])
+    ->withConfiguredRule(
+        BracesFixer::class,
+        ['allow_single_line_closure' => true, 'allow_single_line_anonymous_class_with_empty_body' => true],
+    )
     // Class, trait and interface elements must be separated with one or none blank line
     ->withConfiguredRule(ClassAttributesSeparationFixer::class, ['elements' => ['method' => 'one']])
     // Visibility MUST be declared on all properties, methods and class constants

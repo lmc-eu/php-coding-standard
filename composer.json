@@ -55,12 +55,12 @@
             "@test"
         ],
         "analyze": [
-            "vendor/bin/ecs check src/ tests/ ecs.php ecs-8.1.php ecs-8.2.php ecs-8.3.php --ansi",
+            "vendor/bin/ecs check --config=ecs-internal.php --ansi",
             "vendor/bin/phpstan analyze -c phpstan.neon --ansi"
         ],
         "fix": [
             "@composer normalize",
-            "vendor/bin/ecs check ./src/ ./tests/ ecs.php ecs-8.1.php ecs-8.2.php ecs-8.3.php --ansi --fix"
+            "vendor/bin/ecs check --config=ecs-internal.php --ansi --fix"
         ],
         "lint": [
             "vendor/bin/parallel-lint -j 10 -e php ./src ./tests ecs.php ecs-8.1.php ecs-8.2.php ecs-8.3.php",
