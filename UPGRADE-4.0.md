@@ -84,7 +84,7 @@ $ vendor/bin/ecs check --ansi # new
 ```
 
 ### 5. Sanity check
-Besides running your code style checks, you can ensure all predefined LMC checks are loaded as well, by running:
+Besides running your code style checks, you can ensure all predefined checks are loaded as well, by running:
 
 ```sh
 vendor/bin/ecs list-checkers

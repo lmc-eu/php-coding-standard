@@ -1,8 +1,8 @@
-# LMC Coding Standard for PHP
+# Alma Career Czechia Coding Standard for PHP
 
 [![Latest Stable Version](https://img.shields.io/packagist/v/lmc/coding-standard.svg?style=flat-square)](https://packagist.org/packages/lmc/coding-standard)
 
-PHP coding standard used in [LMC](https://www.lmc.eu/en/) projects.
+PHP coding standard used in [Alma Career Czechia](https://www.almacareer.com/) (formerly LMC) products.
 
 Standard is based on [PSR-12](https://www.php-fig.org/psr/psr-12/) and adds
 various checks to make sure the code is readable, does follow the same conventions and does not contain common mistakes.
@@ -17,7 +17,7 @@ composer require --dev lmc/coding-standard
 
 ## Usage
 
-1. Create `ecs.php` file in the root directory of your project and import the LMC code-style rules:
+1. Create `ecs.php` file in the root directory of your project and import the code-style rules:
 
 ```php
 <?php declare(strict_types=1);
@@ -74,7 +74,7 @@ Now you will be able to run the fix using `composer analyze` and execute automat
 On top of default code-style rules you are free to add any rules from [PHP-CS-Fixer] or [PHP_CodeSniffer].
 If needed, you can also override some default settings.
 
-Be aware you must add these settings **after** import of the base LMC code-style:
+Be aware you must add these settings **after** import of the base Alma Career Czechia (LMC) code-style:
 
 ```php
 <?php declare(strict_types=1);
@@ -104,7 +104,7 @@ See [EasyCodingStandard docs](https://github.com/symplify/easy-coding-standard#c
 
 You can configure your `ecs.php` to entirely skip some files, disable specific checks of suppress specific errors.
 
-Unlike adding/modifying checks, skips must be added **before** import of the base LMC code-style.
+Unlike adding/modifying checks, skips must be added **before** import of the base Alma Career Czechia (LMC) code-style.
 
 ```php
 <?php declare(strict_types=1);
@@ -143,7 +143,7 @@ For integration with PHPStorm etc. follow instructions in EasyCodingStandard [RE
 For latest changes see [CHANGELOG.md](CHANGELOG.md) file. We follow [Semantic Versioning](https://semver.org/).
 
 ## License
-This library is open source software licensed under the [MIT license](LICENCE.md).
+This library is open source software licensed under the [MIT license](LICENSE.md).
 
 [PHP-CS-Fixer]: https://github.com/FriendsOfPHP/PHP-CS-Fixer
 [PHP_CodeSniffer]: https://github.com/squizlabs/PHP_CodeSniffer
