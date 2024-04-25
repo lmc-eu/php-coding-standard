@@ -5,7 +5,7 @@
 PHP coding standard used in [Alma Career Czechia](https://www.almacareer.com/) (formerly LMC) products.
 
 Standard is based on [PSR-12](https://www.php-fig.org/psr/psr-12/) and adds
-various checks to make sure the code is readable, does follow the same conventions and does not contain common mistakes.
+various checks to make sure the code is readable, follows the same conventions, and does not contain common mistakes.
 
 We use [EasyCodingStandard] to define and execute checks created for both [PHP-CS-Fixer] and [PHP_CodeSniffer].
 
@@ -33,7 +33,7 @@ return ECSConfig::configure()
         ]
     );
     
-    // Be default only checks compatible with PHP 8.0 are enabled.
+    // By default, only checks compatible with PHP 8.0 are enabled.
     // Depending on the lowest PHP version your project needs to support, you can enable additional checks.
 
     // Import one of ecs-8.1.php, ecs-8.2.php or ecs-8.3.php. Use only one additional file (for the highest possible
@@ -74,8 +74,6 @@ Now you will be able to run the fix using `composer analyze` and execute automat
 On top of default code-style rules you are free to add any rules from [PHP-CS-Fixer] or [PHP_CodeSniffer].
 If needed, you can also override some default settings.
 
-Be aware you must add these settings **after** import of the base Alma Career Czechia (LMC) code-style:
-
 ```php
 <?php declare(strict_types=1);
 
@@ -102,9 +100,7 @@ See [EasyCodingStandard docs](https://github.com/symplify/easy-coding-standard#c
 
 ### Exclude (skip) checks or files
 
-You can configure your `ecs.php` to entirely skip some files, disable specific checks of suppress specific errors.
-
-Unlike adding/modifying checks, skips must be added **before** import of the base Alma Career Czechia (LMC) code-style.
+You can configure your `ecs.php` to entirely skip some files, disable specific checks or suppress specific errors.
 
 ```php
 <?php declare(strict_types=1);
@@ -115,21 +111,18 @@ use Symplify\EasyCodingStandard\Config\ECSConfig;
 
 return ECSConfig::configure()
     /* (...) */
-    ->withSkip([
-        // Ignore specific check only in specific files
-        ForbiddenFunctionsSniff::class => [__DIR__ . '/src-tests/bootstrap.php'],
-        // Disable check entirely
-        ArrayDeclarationSniff::class,
-        // Skip one file
-        __DIR__ . '/file/to/be/skipped.php',
-        // Skip entire directory
-        __DIR__ . '/ignored/directory/*',
-    ])
-    ->withSets(
+    ->withSkip(
         [
-            __DIR__ . '/vendor/lmc/coding-standard/ecs.php',
+            // Ignore specific check only in specific files
+            ForbiddenFunctionsSniff::class => [__DIR__ . '/src-tests/bootstrap.php'],
+            // Disable check entirely
+            ArrayDeclarationSniff::class,
+            // Skip one file
+            __DIR__ . '/file/to/be/skipped.php',
+            // Skip entire directory
+            __DIR__ . '/ignored/directory/*',
         ]
-    );
+    )
     /* (...) */
 ```
 
@@ -140,7 +133,7 @@ See [EasyCodingStandard docs](https://github.com/symplify/easy-coding-standard#c
 For integration with PHPStorm etc. follow instructions in EasyCodingStandard [README](https://github.com/symplify/easy-coding-standard#your-ide-integration).
 
 ## Changelog
-For latest changes see [CHANGELOG.md](CHANGELOG.md) file. We follow [Semantic Versioning](https://semver.org/).
+For the latest changes see [CHANGELOG.md](CHANGELOG.md) file. We follow [Semantic Versioning](https://semver.org/).
 
 ## License
 This library is open source software licensed under the [MIT license](LICENSE.md).
