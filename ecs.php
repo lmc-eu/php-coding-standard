@@ -122,6 +122,7 @@ use PhpCsFixer\Fixer\Semicolon\NoEmptyStatementFixer;
 use PhpCsFixer\Fixer\Semicolon\NoSinglelineWhitespaceBeforeSemicolonsFixer;
 use PhpCsFixer\Fixer\Semicolon\SpaceAfterSemicolonFixer;
 use PhpCsFixer\Fixer\Strict\DeclareStrictTypesFixer;
+use PhpCsFixer\Fixer\Strict\StrictComparisonFixer;
 use PhpCsFixer\Fixer\Strict\StrictParamFixer;
 use PhpCsFixer\Fixer\StringNotation\SingleQuoteFixer;
 use PhpCsFixer\Fixer\Whitespace\BlankLineBeforeStatementFixer;
@@ -358,6 +359,8 @@ return ECSConfig::configure()
             DeclareStrictTypesFixer::class,
             // Functions should be used with `$strict` param set to `true`
             StrictParamFixer::class,
+            // Comparisons should be strict, `===` or `!==` must be used for comparisons
+            StrictComparisonFixer::class,
             // Convert double quotes to single quotes for simple strings
             SingleQuoteFixer::class,
             // Remove extra spaces in a nullable typehint
