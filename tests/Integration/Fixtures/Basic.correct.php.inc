@@ -14,8 +14,8 @@ class Basic
         $lambdaWithUnusedImport = function () { return 'foo'; };
         // NoUselessSprintfFixer
         $uselessSprintf = 'bar';
-        // SingleSpaceAfterConstructFixer
-        if ($a == $b) {
+        // SingleSpaceAfterConstructFixer, StrictComparisonFixer
+        if ($a === $b || $bazLength !== 3) {
             return true;
         }
 
