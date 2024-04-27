@@ -106,6 +106,7 @@ use PhpCsFixer\Fixer\Phpdoc\PhpdocOrderFixer;
 use PhpCsFixer\Fixer\Phpdoc\PhpdocReturnSelfReferenceFixer;
 use PhpCsFixer\Fixer\Phpdoc\PhpdocScalarFixer;
 use PhpCsFixer\Fixer\Phpdoc\PhpdocSingleLineVarSpacingFixer;
+use PhpCsFixer\Fixer\Phpdoc\PhpdocToCommentFixer;
 use PhpCsFixer\Fixer\Phpdoc\PhpdocTrimFixer;
 use PhpCsFixer\Fixer\Phpdoc\PhpdocTypesFixer;
 use PhpCsFixer\Fixer\Phpdoc\PhpdocVarAnnotationCorrectOrderFixer;
@@ -331,6 +332,8 @@ return ECSConfig::configure()
             PhpdocSingleLineVarSpacingFixer::class,
             // PHPDoc should start and end with content
             PhpdocTrimFixer::class,
+            // Docblocks should only be used on structural elements.
+            PhpdocToCommentFixer::class,
             // The correct case must be used for standard PHP types in PHPDoc.
             PhpdocTypesFixer::class,
             // `@var` and `@type` annotations must have type and name in the correct order
