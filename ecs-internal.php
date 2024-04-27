@@ -5,7 +5,7 @@ use PhpCsFixer\Fixer\PhpUnit\PhpUnitTestAnnotationFixer;
 use Symplify\CodingStandard\Fixer\LineLength\LineLengthFixer;
 use Symplify\EasyCodingStandard\Config\ECSConfig;
 
-/**
+/*
  * Internal rules configuration for the lmc/coding-standard project itself
  */
 return ECSConfig::configure()

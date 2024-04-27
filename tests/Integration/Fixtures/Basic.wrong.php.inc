@@ -20,6 +20,13 @@ class Basic
 
     public function fooBar(mixed $foo): mixed
     {
+        // PhpdocToCommentFixer
+        /**
+         * Phpdoc used instead of plain comment
+         */
+        if ($foo === 'bar') {
+            $baz = 'bat';
+        }
         // TernaryToElvisOperatorFixer
         return ($foo ? $foo : 'not true');
     }
