@@ -214,8 +214,6 @@ return ECSConfig::configure()
             ArrayPushFixer::class,
             // Replace non multibyte-safe functions with corresponding mb function
             MbStrFunctionsFixer::class,
-            // Master functions shall be used instead of aliases
-            NoAliasFunctionsFixer::class,
             // Replaces `rand`, `srand`, `getrandmax` functions calls with their `mt_*` analogs
             RandomApiMigrationFixer::class,
             // Cast shall be used, not `settype()`
@@ -456,6 +454,8 @@ return ECSConfig::configure()
             'var_dump' => null,
         ],
     ])
+    // Master functions shall be used instead of aliases
+    ->withConfiguredRule(NoAliasFunctionsFixer::class, ['sets' => ['@all']])
     // There should be exactly one blank line before a namespace declaration.
     ->withConfiguredRule(BlankLinesBeforeNamespaceFixer::class, ['min_line_breaks' => 2, 'max_line_breaks' => 2])
     // Proper operator spacing

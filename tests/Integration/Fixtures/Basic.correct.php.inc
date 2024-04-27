@@ -29,8 +29,10 @@ class Basic
          * Phpdoc used instead of plain comment
          */
         if ($foo === 'bar') {
-            $baz = 'bat';
+            // NoAliasFunctionsFixer
+            $baz = implode(',', ['foo', 'bar']);
         }
+
         // TernaryToElvisOperatorFixer
         return ($foo ?: 'not true');
     }
