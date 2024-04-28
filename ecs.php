@@ -135,6 +135,7 @@ use PhpCsFixer\Fixer\Whitespace\HeredocIndentationFixer;
 use PhpCsFixer\Fixer\Whitespace\NoExtraBlankLinesFixer;
 use PhpCsFixer\Fixer\Whitespace\NoWhitespaceInBlankLineFixer;
 use PhpCsFixer\Fixer\Whitespace\TypeDeclarationSpacesFixer;
+use PhpCsFixer\Fixer\Whitespace\TypesSpacesFixer;
 use SlevomatCodingStandard\Sniffs\Classes\RequireConstructorPropertyPromotionSniff;
 use SlevomatCodingStandard\Sniffs\ControlStructures\RequireNullSafeObjectOperatorSniff;
 use SlevomatCodingStandard\Sniffs\Exceptions\ReferenceThrowableOnlySniff;
@@ -143,7 +144,6 @@ use SlevomatCodingStandard\Sniffs\Functions\RequireTrailingCommaInDeclarationSni
 use SlevomatCodingStandard\Sniffs\TypeHints\ParameterTypeHintSniff;
 use SlevomatCodingStandard\Sniffs\TypeHints\PropertyTypeHintSniff;
 use SlevomatCodingStandard\Sniffs\TypeHints\ReturnTypeHintSniff;
-use SlevomatCodingStandard\Sniffs\TypeHints\UnionTypeHintFormatSniff;
 use Symplify\CodingStandard\Fixer\Commenting\ParamReturnAndVarTagMalformsFixer;
 use Symplify\EasyCodingStandard\Config\ECSConfig;
 
@@ -263,6 +263,8 @@ return ECSConfig::configure()
             FopenFlagsFixer::class,
             // Add missing space between function's argument and its typehint.
             TypeDeclarationSpacesFixer::class,
+            // None space should be around union type and intersection type operators.
+            TypesSpacesFixer::class,
             // Function `implode` must be called with 2 arguments in the documented order.
             ImplodeCallFixer::class,
             // Lambda must not import variables it doesn't use.
@@ -505,8 +507,6 @@ return ECSConfig::configure()
             'use_trait',
         ],
     ])
-    // Format union types
-    ->withConfiguredRule(UnionTypeHintFormatSniff::class, ['withSpaces' => 'no'])
     ->withSkip([
         // We allow empty catch statements (but they must have comment - see EmptyCatchCommentSniff)
         EmptyStatementSniff::class . '.DetectedCatch' => null,

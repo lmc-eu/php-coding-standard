@@ -12,7 +12,7 @@ class NewPhpFeatures
     }
 
     public function php80features(
-        string | bool $foo, // UnionTypeHintFormatSniff
+        string | bool $foo, // TypesSpacesFixer
         int $bar // RequireTrailingCommaInDeclarationSniff
     ): string | bool {
         $value = mt_rand(
