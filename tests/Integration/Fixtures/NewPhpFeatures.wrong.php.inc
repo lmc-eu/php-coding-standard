@@ -23,6 +23,9 @@ class NewPhpFeatures
         $dateOrNull = $this->mayReturnDateTimeOrNull();
         $timestamp = $dateOrNull !== null ? $dateOrNull->getTimestamp() : null; // RequireNullSafeObjectOperatorSniff
 
+        // AssignNullCoalescingToCoalesceEqualFixer
+        $name = isset($_GET['name']) ? $_GET['name'] : 'default';
+
         return $foo;
     }
 
