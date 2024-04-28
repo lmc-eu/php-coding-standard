@@ -20,6 +20,9 @@ class NewPhpFeatures
         $dateOrNull = $this->mayReturnDateTimeOrNull();
         $timestamp = $dateOrNull?->getTimestamp(); // RequireNullSafeObjectOperatorSniff
 
+        // AssignNullCoalescingToCoalesceEqualFixer
+        $name = $_GET['name'] ?? 'default';
+
         return $foo;
     }
 
