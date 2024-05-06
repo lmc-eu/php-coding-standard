@@ -18,6 +18,8 @@ class Basic
         $useStrictParam = in_array(1337, $fooBar, true);
         // NoSpaceAroundDoubleColonFixer
         $className = DateTime::class;
+        // ClassReferenceNameCasingFixer
+        $date = new \DateTime();
         // SingleSpaceAfterConstructFixer, StrictComparisonFixer
         if ($a === $b || $bazLength !== 3) {
             return true;
