@@ -15,6 +15,8 @@ class Basic
     {
         // TrimArraySpacesFixer
         $fooBar = ['a', 'b'];
+        // NoTrailingCommaInSinglelineFixer
+        mb_strlen('foobar');
         // MbStrFunctionsFixer
         $bazLength = mb_strlen('baz');
         // LambdaNotUsedImportFixer
@@ -55,5 +57,24 @@ class Basic
 
         // TernaryToElvisOperatorFixer
         return ($foo ?: 'not true');
+    }
+
+    public function arrayDeclarations(): void
+    {
+        $empty = [];
+
+        $singleLineArray = ['foo', 'bar', 'baz'];
+        $singleLineArray2 = [1, 2, 3];
+
+        $multiLineAssociative = [
+            'foo' => 'bar',
+            'baz' => 'bat',
+        ];
+
+        $multiLineAssociative2 = [
+            'firstKey' => 'bar',
+            'thisIsSecondKey' => 'bat',
+            'third' => 'bat',
+        ];
     }
 }
