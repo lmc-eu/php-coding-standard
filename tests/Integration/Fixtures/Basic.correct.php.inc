@@ -4,7 +4,7 @@ class Basic
 {
     public const FOO = 'foo'; // ClassAttributesSeparationFixer
 
-    public function isEqual($a, $b) // VisibilityRequiredFixer
+    public function isEqual($a, ?string $b): ?bool // VisibilityRequiredFixer, CompactNullableTypeDeclarationFixer
     {
         // TrimArraySpacesFixer
         $fooBar = ['a', 'b'];
@@ -14,6 +14,8 @@ class Basic
         $lambdaWithUnusedImport = function () { return 'foo'; };
         // NoUselessSprintfFixer
         $uselessSprintf = 'bar';
+        // NoSpaceAroundDoubleColonFixer
+        $className = DateTime::class;
         // SingleSpaceAfterConstructFixer
         if ($a == $b) {
             return true;
