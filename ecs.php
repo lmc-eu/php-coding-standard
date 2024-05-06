@@ -102,6 +102,7 @@ use PhpCsFixer\Fixer\Phpdoc\NoBlankLinesAfterPhpdocFixer;
 use PhpCsFixer\Fixer\Phpdoc\NoEmptyPhpdocFixer;
 use PhpCsFixer\Fixer\Phpdoc\NoSuperfluousPhpdocTagsFixer;
 use PhpCsFixer\Fixer\Phpdoc\PhpdocAddMissingParamAnnotationFixer;
+use PhpCsFixer\Fixer\Phpdoc\PhpdocAlignFixer;
 use PhpCsFixer\Fixer\Phpdoc\PhpdocIndentFixer;
 use PhpCsFixer\Fixer\Phpdoc\PhpdocNoAccessFixer;
 use PhpCsFixer\Fixer\Phpdoc\PhpdocNoEmptyReturnFixer;
@@ -497,6 +498,8 @@ return ECSConfig::configure()
         'allow_unused_params' => false, // whether param annotation without actual signature is allowed
         'remove_inheritdoc' => true, // remove @inheritDoc tags
     ])
+    // All items of the given PHPDoc tags must be left-aligned.
+    ->withConfiguredRule(PhpdocAlignFixer::class, ['align' => 'left'])
     // Order phpdoc tags by value.
     ->withConfiguredRule(PhpdocOrderByValueFixer::class, ['annotations' => ['covers', 'group', 'throws']])
     // Calls to `PHPUnit\Framework\TestCase` static methods must all be of the same type (`$this->...`)
