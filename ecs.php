@@ -135,6 +135,7 @@ use PhpCsFixer\Fixer\Strict\DeclareStrictTypesFixer;
 use PhpCsFixer\Fixer\Strict\StrictComparisonFixer;
 use PhpCsFixer\Fixer\Strict\StrictParamFixer;
 use PhpCsFixer\Fixer\StringNotation\SingleQuoteFixer;
+use PhpCsFixer\Fixer\Whitespace\ArrayIndentationFixer;
 use PhpCsFixer\Fixer\Whitespace\BlankLineBeforeStatementFixer;
 use PhpCsFixer\Fixer\Whitespace\CompactNullableTypeDeclarationFixer;
 use PhpCsFixer\Fixer\Whitespace\HeredocIndentationFixer;
@@ -385,6 +386,8 @@ return ECSConfig::configure()
             StrictComparisonFixer::class,
             // Convert double quotes to single quotes for simple strings
             SingleQuoteFixer::class,
+            // Each element of an array must be indented exactly once.
+            ArrayIndentationFixer::class,
             // Remove extra spaces in a nullable typehint
             CompactNullableTypeDeclarationFixer::class,
             // Heredoc/nowdoc content must be properly indented.
