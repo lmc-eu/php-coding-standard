@@ -16,6 +16,8 @@ class Basic
         $uselessSprintf = 'bar';
         // NoSpaceAroundDoubleColonFixer
         $className = DateTime::class;
+        // ClassReferenceNameCasingFixer
+        $date = new \DateTime();
         // SingleSpaceAfterConstructFixer
         if ($a == $b) {
             return true;
