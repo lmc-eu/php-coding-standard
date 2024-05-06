@@ -4,7 +4,12 @@ use Bar\Foo; // NoUnneededImportAliasFixer
 
 class Basic
 {
+    use SomeUsefulTrait; // OrderedClassElementsFixer
     public const FOO = 'foo'; // ClassAttributesSeparationFixer
+
+    public const MY_PUBLIC_CONST = 333; // OrderedClassElementsFixer
+
+    protected int $myProperty = 666; // OrderedClassElementsFixer
 
     public function isEqual($a, ?string $b): ?bool // VisibilityRequiredFixer, CompactNullableTypeDeclarationFixer
     {
