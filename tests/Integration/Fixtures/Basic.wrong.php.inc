@@ -101,4 +101,12 @@ class Basic
     {
         return $first . $third;
     }
+
+    public function emptyFunction1(): void {
+    } // SingleLineEmptyBodyFixer
+
+    public function emptyFunction2(
+        $arg
+    ): void {
+    } // SingleLineEmptyBodyFixer
 }
