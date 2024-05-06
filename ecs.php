@@ -87,6 +87,7 @@ use PhpCsFixer\Fixer\NamespaceNotation\NoLeadingNamespaceWhitespaceFixer;
 use PhpCsFixer\Fixer\Operator\BinaryOperatorSpacesFixer;
 use PhpCsFixer\Fixer\Operator\ConcatSpaceFixer;
 use PhpCsFixer\Fixer\Operator\NewWithParenthesesFixer;
+use PhpCsFixer\Fixer\Operator\NoSpaceAroundDoubleColonFixer;
 use PhpCsFixer\Fixer\Operator\ObjectOperatorWithoutWhitespaceFixer;
 use PhpCsFixer\Fixer\Operator\StandardizeNotEqualsFixer;
 use PhpCsFixer\Fixer\Operator\TernaryOperatorSpacesFixer;
@@ -295,6 +296,8 @@ return ECSConfig::configure()
             NoLeadingNamespaceWhitespaceFixer::class,
 
             BinaryOperatorSpacesFixer::class,
+            // There must be no space around scope resolution double colons
+            NoSpaceAroundDoubleColonFixer::class,
 
             NewWithParenthesesFixer::class,
 

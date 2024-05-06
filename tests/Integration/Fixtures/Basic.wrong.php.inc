@@ -3,7 +3,7 @@
 class Basic
 {
     const FOO = 'foo'; // ClassAttributesSeparationFixer
-    function isEqual($a, $b) // VisibilityRequiredFixer
+    function isEqual($a, ? string $b): ? bool // VisibilityRequiredFixer, CompactNullableTypeDeclarationFixer
     {
         // TrimArraySpacesFixer
         $fooBar = [ 'a', 'b'];
@@ -15,6 +15,8 @@ class Basic
         $uselessSprintf = sprintf('bar');
         // StrictParamFixer
         $useStrictParam = in_array(1337, $fooBar);
+        // NoSpaceAroundDoubleColonFixer
+        $className = DateTime :: class;
         // SingleSpaceAfterConstructFixer, StrictComparisonFixer
         if ($a == $b || $bazLength != 3) { return  true; }
         return false; // BlankLineBeforeStatementFixer
