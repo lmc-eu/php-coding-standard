@@ -29,6 +29,8 @@ class Basic
         return false; // BlankLineBeforeStatementFixer
     }
 
+    public const MY_PUBLIC_CONST = 333; // OrderedClassElementsFixer
+
     public function fooBar(mixed $foo): mixed
     {
         // PhpdocToCommentFixer
@@ -47,4 +49,8 @@ class Basic
         // TernaryToElvisOperatorFixer
         return ($foo ? $foo : 'not true');
     }
+
+    protected int $myProperty = 666; // OrderedClassElementsFixer
+
+    use SomeUsefulTrait; // OrderedClassElementsFixer
 }
