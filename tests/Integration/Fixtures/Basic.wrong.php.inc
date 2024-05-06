@@ -38,6 +38,10 @@ class Basic
             $baz = join(',', ['foo', 'bar']);
         }
 
+        // SingleLineCommentSpacingFixer
+        //This comment should have space on the beginning
+        /*So should this one, also with space on the end*/
+
         // TernaryToElvisOperatorFixer
         return ($foo ? $foo : 'not true');
     }
