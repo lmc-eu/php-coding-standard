@@ -68,6 +68,7 @@ use PhpCsFixer\Fixer\ControlStructure\YodaStyleFixer;
 use PhpCsFixer\Fixer\FunctionNotation\CombineNestedDirnameFixer;
 use PhpCsFixer\Fixer\FunctionNotation\FopenFlagOrderFixer;
 use PhpCsFixer\Fixer\FunctionNotation\FopenFlagsFixer;
+use PhpCsFixer\Fixer\FunctionNotation\FunctionDeclarationFixer;
 use PhpCsFixer\Fixer\FunctionNotation\ImplodeCallFixer;
 use PhpCsFixer\Fixer\FunctionNotation\LambdaNotUsedImportFixer;
 use PhpCsFixer\Fixer\FunctionNotation\NoUnreachableDefaultArgumentValueFixer;
@@ -540,6 +541,11 @@ return ECSConfig::configure()
                 'method',
             ],
         ],
+    )
+    // Spaces should be properly placed in a function declaration.
+    ->withConfiguredRule(
+        FunctionDeclarationFixer::class,
+        ['closure_fn_spacing' => 'none'], // Defined in PER 2.0
     )
     ->withSkip([
         // We allow empty catch statements (but they must have comment - see EmptyCatchCommentSniff)
