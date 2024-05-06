@@ -46,6 +46,7 @@ use PhpCsFixer\Fixer\ArrayNotation\WhitespaceAfterCommaInArrayFixer;
 use PhpCsFixer\Fixer\Basic\BracesFixer;
 use PhpCsFixer\Fixer\Basic\NoTrailingCommaInSinglelineFixer;
 use PhpCsFixer\Fixer\Basic\PsrAutoloadingFixer;
+use PhpCsFixer\Fixer\Casing\ClassReferenceNameCasingFixer;
 use PhpCsFixer\Fixer\Casing\MagicMethodCasingFixer;
 use PhpCsFixer\Fixer\Casing\NativeFunctionCasingFixer;
 use PhpCsFixer\Fixer\Casing\NativeTypeDeclarationCasingFixer;
@@ -232,6 +233,8 @@ return ECSConfig::configure()
             WhitespaceAfterCommaInArrayFixer::class,
             // Classes must be in a path that matches their namespace
             PsrAutoloadingFixer::class,
+            // When referencing an internal class it must be written using the correct casing.
+            ClassReferenceNameCasingFixer::class,
             // Magic method definitions and calls must be using the correct casing
             MagicMethodCasingFixer::class,
             // Function defined by PHP should be called using the correct casing
