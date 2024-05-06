@@ -63,12 +63,17 @@ class Basic
         $singleLineArray = ['foo', 'bar', 'baz',];
         $singleLineArray2 = [1,2,3];
 
-        $multiLineAssociative = [
-            'foo'=>'bar',
-            'baz'=>'bat'
+        $multiLineAssociative1 = [
+            'foo' => 'bar', 'baz' => 'bat',
         ];
 
         $multiLineAssociative2 = [
+            'foo'=>'bar',
+                'baz'=>'bat',
+        'bak'=>'baz'
+        ];
+
+        $multiLineAssociative3 = [
             'firstKey'        => 'bar',
             'thisIsSecondKey' => 'bat',
             'third'           => 'bat',
