@@ -9,6 +9,8 @@ class Basic
     {
         // TrimArraySpacesFixer
         $fooBar = [ 'a', 'b'];
+        // NoTrailingCommaInSinglelineFixer
+        mb_strlen('foobar', );
         // MbStrFunctionsFixer
         $bazLength = strlen('baz');
         // LambdaNotUsedImportFixer
@@ -53,4 +55,23 @@ class Basic
     protected int $myProperty = 666; // OrderedClassElementsFixer
 
     use SomeUsefulTrait; // OrderedClassElementsFixer
+
+    public function arrayDeclarations(): void
+    {
+        $empty = array();
+
+        $singleLineArray = ['foo', 'bar', 'baz',];
+        $singleLineArray2 = [1,2,3];
+
+        $multiLineAssociative = [
+            'foo'=>'bar',
+            'baz'=>'bat'
+        ];
+
+        $multiLineAssociative2 = [
+            'firstKey'        => 'bar',
+            'thisIsSecondKey' => 'bat',
+            'third'           => 'bat',
+        ];
+    }
 }
