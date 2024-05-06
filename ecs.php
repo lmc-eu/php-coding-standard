@@ -225,7 +225,7 @@ return ECSConfig::configure()
             SetTypeToCastFixer::class,
             // Array index should always be written by using square braces
             NormalizeIndexBraceFixer::class,
-            // PHP single-line arrays should not have trailing comma
+            // Values separated by a comma on a single line should not have a trailing comma.
             NoTrailingCommaInSinglelineFixer::class,
             // Multi-line arrays, arguments list and parameters list must have a trailing comma
             TrailingCommaInMultilineFixer::class,
