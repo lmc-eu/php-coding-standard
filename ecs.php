@@ -76,6 +76,7 @@ use PhpCsFixer\Fixer\FunctionNotation\PhpdocToReturnTypeFixer;
 use PhpCsFixer\Fixer\FunctionNotation\ReturnTypeDeclarationFixer;
 use PhpCsFixer\Fixer\FunctionNotation\VoidReturnFixer;
 use PhpCsFixer\Fixer\Import\NoLeadingImportSlashFixer;
+use PhpCsFixer\Fixer\Import\NoUnneededImportAliasFixer;
 use PhpCsFixer\Fixer\Import\NoUnusedImportsFixer;
 use PhpCsFixer\Fixer\Import\OrderedImportsFixer;
 use PhpCsFixer\Fixer\LanguageConstruct\DeclareEqualNormalizeFixer;
@@ -281,13 +282,15 @@ return ECSConfig::configure()
             ReturnTypeDeclarationFixer::class,
 
             VoidReturnFixer::class,
-
+            // Remove leading slashes in `use` clauses.
             NoLeadingImportSlashFixer::class,
-
+            // Imports should not be aliased as the same name.
+            NoUnneededImportAliasFixer::class,
+            // Unused `use` statements must be removed.
             NoUnusedImportsFixer::class,
-
+            // Order `use` statements.
             OrderedImportsFixer::class,
-
+            // Equal sign in declare statement should not be surrounded by spaces.
             DeclareEqualNormalizeFixer::class,
             // Replaces `is_null($var)` expression with `null === $var`
             IsNullFixer::class,
