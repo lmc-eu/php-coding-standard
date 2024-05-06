@@ -59,6 +59,7 @@ use PhpCsFixer\Fixer\ClassNotation\SelfAccessorFixer;
 use PhpCsFixer\Fixer\ClassNotation\SingleTraitInsertPerStatementFixer;
 use PhpCsFixer\Fixer\ClassNotation\VisibilityRequiredFixer;
 use PhpCsFixer\Fixer\Comment\NoEmptyCommentFixer;
+use PhpCsFixer\Fixer\Comment\SingleLineCommentSpacingFixer;
 use PhpCsFixer\Fixer\ControlStructure\NoUselessElseFixer;
 use PhpCsFixer\Fixer\ControlStructure\SwitchContinueToBreakFixer;
 use PhpCsFixer\Fixer\ControlStructure\TrailingCommaInMultilineFixer;
@@ -255,6 +256,8 @@ return ECSConfig::configure()
             SingleTraitInsertPerStatementFixer::class,
             // There should not be any empty comments
             NoEmptyCommentFixer::class,
+            // Single-line comments must have proper spacing.
+            SingleLineCommentSpacingFixer::class,
             // There should not be useless `else` cases
             NoUselessElseFixer::class,
             // Switch case must not be ended with `continue` but with `break`.
