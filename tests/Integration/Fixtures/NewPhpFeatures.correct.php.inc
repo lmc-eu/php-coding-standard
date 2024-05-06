@@ -5,8 +5,7 @@ namespace Lmc\CodingStandard\Integration\Fixtures;
 class NewPhpFeatures
 {
     public function __construct(private string $someString) // RequireConstructorPropertyPromotionSniff
-    {
-    }
+    {}
 
     public function php80features(
         string|bool $foo, // TypesSpacesFixer

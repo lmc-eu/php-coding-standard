@@ -46,6 +46,7 @@ use PhpCsFixer\Fixer\ArrayNotation\WhitespaceAfterCommaInArrayFixer;
 use PhpCsFixer\Fixer\Basic\BracesFixer;
 use PhpCsFixer\Fixer\Basic\NoTrailingCommaInSinglelineFixer;
 use PhpCsFixer\Fixer\Basic\PsrAutoloadingFixer;
+use PhpCsFixer\Fixer\Basic\SingleLineEmptyBodyFixer;
 use PhpCsFixer\Fixer\Casing\ClassReferenceNameCasingFixer;
 use PhpCsFixer\Fixer\Casing\MagicMethodCasingFixer;
 use PhpCsFixer\Fixer\Casing\NativeFunctionCasingFixer;
@@ -228,6 +229,8 @@ return ECSConfig::configure()
             SetTypeToCastFixer::class,
             // Array index should always be written by using square braces
             NormalizeIndexBraceFixer::class,
+            // Empty body of class, interface, trait, enum or function must be abbreviated as {} and placed on the same line as the previous symbol, separated by a single space.
+            SingleLineEmptyBodyFixer::class, // Defined in PER 2.0
             // Values separated by a comma on a single line should not have a trailing comma.
             NoTrailingCommaInSinglelineFixer::class,
             // Multi-line arrays, arguments list and parameters list must have a trailing comma

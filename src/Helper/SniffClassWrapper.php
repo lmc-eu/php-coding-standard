@@ -33,9 +33,7 @@ use SlevomatCodingStandard\Helpers\TokenHelper;
 
 final class SniffClassWrapper
 {
-    public function __construct(private File $file, private int $position, private Naming $naming)
-    {
-    }
+    public function __construct(private File $file, private int $position, private Naming $naming) {}
 
     public function getClassName(): ?string
     {
