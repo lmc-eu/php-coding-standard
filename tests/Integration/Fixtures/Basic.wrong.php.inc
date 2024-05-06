@@ -31,8 +31,16 @@ class Basic
 
     public const MY_PUBLIC_CONST = 333; // OrderedClassElementsFixer
 
-    public function fooBar(mixed $foo): mixed
+    public function fooBar ( mixed    $foo ): mixed // FunctionDeclarationFixer
     {
+        $value = 5;
+        // FunctionDeclarationFixer
+        $function = function($foo)use($value) {
+            return $foo + $value;
+        };
+        // FunctionDeclarationFixer
+        $fn = fn ($foo) => $foo + $value;
+
         // PhpdocToCommentFixer
         /**
          * Phpdoc used instead of plain comment
