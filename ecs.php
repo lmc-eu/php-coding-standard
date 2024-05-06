@@ -337,8 +337,6 @@ return ECSConfig::configure()
             PhpdocNoEmptyReturnFixer::class,
             // `@package` and `@subpackage` annotations should be omitted from PHPDoc.
             PhpdocNoPackageFixer::class,
-            // Annotations in PHPDoc should be ordered.
-            PhpdocOrderFixer::class,
             // The type of `@return` annotations of methods returning a reference to itself must the configured one.
             PhpdocReturnSelfReferenceFixer::class,
             // Scalar types should always be written in the same form.
@@ -502,6 +500,8 @@ return ECSConfig::configure()
     ])
     // All items of the given PHPDoc tags must be left-aligned.
     ->withConfiguredRule(PhpdocAlignFixer::class, ['align' => 'left'])
+    // Annotations in PHPDoc should be ordered in defined sequence.
+    ->withConfiguredRule(PhpdocOrderFixer::class, ['order' => ['param', 'return', 'throws']])
     // Order phpdoc tags by value.
     ->withConfiguredRule(PhpdocOrderByValueFixer::class, ['annotations' => ['covers', 'group', 'throws']])
     // Calls to `PHPUnit\Framework\TestCase` static methods must all be of the same type (`$this->...`)
