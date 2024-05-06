@@ -55,6 +55,7 @@ use PhpCsFixer\Fixer\CastNotation\LowercaseCastFixer;
 use PhpCsFixer\Fixer\CastNotation\ShortScalarCastFixer;
 use PhpCsFixer\Fixer\ClassNotation\ClassAttributesSeparationFixer;
 use PhpCsFixer\Fixer\ClassNotation\NoBlankLinesAfterClassOpeningFixer;
+use PhpCsFixer\Fixer\ClassNotation\OrderedClassElementsFixer;
 use PhpCsFixer\Fixer\ClassNotation\SelfAccessorFixer;
 use PhpCsFixer\Fixer\ClassNotation\SingleTraitInsertPerStatementFixer;
 use PhpCsFixer\Fixer\ClassNotation\VisibilityRequiredFixer;
@@ -516,6 +517,23 @@ return ECSConfig::configure()
             'use_trait',
         ],
     ])
+    // Elements of classes/interfaces/traits/enums should be in the defined order
+    ->withConfiguredRule(
+        OrderedClassElementsFixer::class,
+        [
+            'order' => [
+                'use_trait',
+                'case', // enum values should be before other elements
+                'constant',
+                'property',
+                'construct',
+                'destruct',
+                'magic',
+                'phpunit', // phpunit special methods like setUp should be before test methods
+                'method',
+            ],
+        ],
+    )
     ->withSkip([
         // We allow empty catch statements (but they must have comment - see EmptyCatchCommentSniff)
         EmptyStatementSniff::class . '.DetectedCatch' => null,
