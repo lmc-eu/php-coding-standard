@@ -1,5 +1,7 @@
 <?php declare(strict_types=1);
 
+use Bar\Foo; // NoUnneededImportAliasFixer
+
 class Basic
 {
     public const FOO = 'foo'; // ClassAttributesSeparationFixer
@@ -18,6 +20,9 @@ class Basic
         $className = DateTime::class;
         // ClassReferenceNameCasingFixer
         $date = new \DateTime();
+
+        $aliasedClass = new Foo();
+
         // SingleSpaceAfterConstructFixer
         if ($a == $b) {
             return true;
