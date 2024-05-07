@@ -61,6 +61,14 @@ class Basic extends \Some\Other\Namespace\AbstractBasic implements \Lmc\CodingSt
         $text = 'foo';
         $text = $text . 'bar'; // LongToShorthandOperatorFixer
 
+        switch ($i) {
+            case (1): // NoUnneededControlParenthesesFixer
+                $i++;
+                break;
+            default:
+                break;
+        }
+
         // HeredocIndentationFixer
         $heredoc = <<<HEREDOC
 This is a
