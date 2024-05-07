@@ -55,6 +55,21 @@ class Basic extends \Some\Other\Namespace\AbstractBasic implements \Lmc\CodingSt
             $baz = join(',', ['foo', 'bar']);
         }
 
+        // HeredocIndentationFixer
+        $heredoc = <<<HEREDOC
+This is a
+multiline heredoc string. It contains $foo.
+It should be indented, though.
+HEREDOC;
+        // HeredocIndentationFixer
+        $newdoc = <<<'NEWDOC'
+This is a $newdoc, where variables are not expanded.
+NEWDOC;
+        // MultilineStringToHeredocFixer
+        $multilineString = 'This string
+spans multiple lines
+but should be heredoc instead';
+
         // SingleLineCommentSpacingFixer
         //This comment should have space on the beginning
         /*So should this one, also with space on the end*/
