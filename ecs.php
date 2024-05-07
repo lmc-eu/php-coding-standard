@@ -149,7 +149,6 @@ use SlevomatCodingStandard\Sniffs\Classes\RequireConstructorPropertyPromotionSni
 use SlevomatCodingStandard\Sniffs\ControlStructures\RequireNullSafeObjectOperatorSniff;
 use SlevomatCodingStandard\Sniffs\Exceptions\ReferenceThrowableOnlySniff;
 use SlevomatCodingStandard\Sniffs\Functions\RequireTrailingCommaInCallSniff;
-use SlevomatCodingStandard\Sniffs\Functions\RequireTrailingCommaInDeclarationSniff;
 use SlevomatCodingStandard\Sniffs\TypeHints\ParameterTypeHintSniff;
 use SlevomatCodingStandard\Sniffs\TypeHints\PropertyTypeHintSniff;
 use SlevomatCodingStandard\Sniffs\TypeHints\ReturnTypeHintSniff;
@@ -234,8 +233,6 @@ return ECSConfig::configure()
             SingleLineEmptyBodyFixer::class, // Defined in PER 2.0
             // Values separated by a comma on a single line should not have a trailing comma.
             NoTrailingCommaInSinglelineFixer::class,
-            // Multi-line arrays, arguments list and parameters list must have a trailing comma
-            TrailingCommaInMultilineFixer::class,
             // Arrays should be formatted like function/method arguments
             TrimArraySpacesFixer::class,
             // In array declaration, there MUST be a whitespace after each comma
@@ -422,10 +419,8 @@ return ECSConfig::configure()
             // > it may probably be a phpstan rule, more than cs rule - since it needs a class hierarchy to solve this
             // @see https://github.com/FriendsOfPHP/PHP-CS-Fixer/issues/6235
 
-            // Multi-line arguments list in function/method declaration must have a trailing comma
-            RequireTrailingCommaInDeclarationSniff::class,
             // Multi-line arguments list in function/method call must have a trailing comma
-            RequireTrailingCommaInCallSniff::class,
+            RequireTrailingCommaInCallSniff::class, // TODO: will be redundant after https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/pull/7989 is merged and released
 
             // Use `null-safe` operator `?->` where possible
             RequireNullSafeObjectOperatorSniff::class,
@@ -551,6 +546,11 @@ return ECSConfig::configure()
     ->withConfiguredRule(
         FunctionDeclarationFixer::class,
         ['closure_fn_spacing' => 'none'], // Defined in PER 2.0
+    )
+    // Multi-line arrays, arguments list and parameters list must have a trailing comma
+    ->withConfiguredRule(
+        TrailingCommaInMultilineFixer::class,
+        ['after_heredoc' => true, 'elements' => ['arguments', 'arrays', 'match', 'parameters']], // Defined in PER 2.0
     )
     ->withSkip([
         // We allow empty catch statements (but they must have comment - see EmptyCatchCommentSniff)

@@ -110,4 +110,29 @@ class Basic
     public function emptyFunction2(
         $arg,
     ): void {} // SingleLineEmptyBodyFixer
+
+    // TrailingCommaInMultilineFixer
+    public function multiline(
+        $arg1,
+        $arg2,
+        $arg3,
+    ): void {
+        // TrailingCommaInMultilineFixer
+        $isSet = isset(
+            $arg1,
+            $arg2,
+            $arg3,
+        );
+
+        $sprintf = sprintf(
+            '%s%s',
+            'bar',
+            'baz',
+        );
+
+        foo(
+            1,
+            2,
+        );
+    }
 }
