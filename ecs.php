@@ -43,6 +43,7 @@ use PhpCsFixer\Fixer\ArrayNotation\ArraySyntaxFixer;
 use PhpCsFixer\Fixer\ArrayNotation\NormalizeIndexBraceFixer;
 use PhpCsFixer\Fixer\ArrayNotation\TrimArraySpacesFixer;
 use PhpCsFixer\Fixer\ArrayNotation\WhitespaceAfterCommaInArrayFixer;
+use PhpCsFixer\Fixer\AttributeNotation\AttributeEmptyParenthesesFixer;
 use PhpCsFixer\Fixer\Basic\BracesFixer;
 use PhpCsFixer\Fixer\Basic\NoTrailingCommaInSinglelineFixer;
 use PhpCsFixer\Fixer\Basic\PsrAutoloadingFixer;
@@ -72,6 +73,7 @@ use PhpCsFixer\Fixer\FunctionNotation\FopenFlagsFixer;
 use PhpCsFixer\Fixer\FunctionNotation\FunctionDeclarationFixer;
 use PhpCsFixer\Fixer\FunctionNotation\ImplodeCallFixer;
 use PhpCsFixer\Fixer\FunctionNotation\LambdaNotUsedImportFixer;
+use PhpCsFixer\Fixer\FunctionNotation\MethodArgumentSpaceFixer;
 use PhpCsFixer\Fixer\FunctionNotation\NoUnreachableDefaultArgumentValueFixer;
 use PhpCsFixer\Fixer\FunctionNotation\NoUselessSprintfFixer;
 use PhpCsFixer\Fixer\FunctionNotation\PhpdocToParamTypeFixer;
@@ -147,6 +149,8 @@ use PhpCsFixer\Fixer\Whitespace\NoExtraBlankLinesFixer;
 use PhpCsFixer\Fixer\Whitespace\NoWhitespaceInBlankLineFixer;
 use PhpCsFixer\Fixer\Whitespace\TypeDeclarationSpacesFixer;
 use PhpCsFixer\Fixer\Whitespace\TypesSpacesFixer;
+use SlevomatCodingStandard\Sniffs\Attributes\DisallowAttributesJoiningSniff;
+use SlevomatCodingStandard\Sniffs\Attributes\DisallowMultipleAttributesPerLineSniff;
 use SlevomatCodingStandard\Sniffs\Classes\RequireConstructorPropertyPromotionSniff;
 use SlevomatCodingStandard\Sniffs\ControlStructures\RequireNullSafeObjectOperatorSniff;
 use SlevomatCodingStandard\Sniffs\Exceptions\ReferenceThrowableOnlySniff;
@@ -229,6 +233,8 @@ return ECSConfig::configure()
             RandomApiMigrationFixer::class,
             // Cast shall be used, not `settype()`
             SetTypeToCastFixer::class,
+            // Attributes declared without arguments must not be followed by empty parentheses.
+            AttributeEmptyParenthesesFixer::class,
             // Array index should always be written by using square braces
             NormalizeIndexBraceFixer::class,
             // Empty body of class, interface, trait, enum or function must be abbreviated as {} and placed on the same line as the previous symbol, separated by a single space.
@@ -409,6 +415,10 @@ return ECSConfig::configure()
             PhpdocToParamTypeFixer::class,
             // Takes `@return` annotation of non-mixed types and adjusts accordingly the function signature.
             PhpdocToReturnTypeFixer::class,
+            // Requires that only one attribute can be placed inside #[].
+            DisallowAttributesJoiningSniff::class,
+            // Disallows multiple attributes of some target on same line.
+            DisallowMultipleAttributesPerLineSniff::class,
             // Promote constructor properties
             // @see https://github.com/FriendsOfPHP/PHP-CS-Fixer/issues/5956
             RequireConstructorPropertyPromotionSniff::class,
@@ -518,13 +528,15 @@ return ECSConfig::configure()
     // Removes extra blank lines and/or blank lines following configuration
     ->withConfiguredRule(NoExtraBlankLinesFixer::class, [
         'tokens' => [
-            'break',
+            'attribute',
+            'case',
             'continue',
             'curly_brace_block',
+            'default',
             'extra',
             'parenthesis_brace_block',
-            'return',
             'square_brace_block',
+            'switch',
             'throw',
             'use',
             'use_trait',
@@ -561,6 +573,11 @@ return ECSConfig::configure()
     ->withConfiguredRule(
         FullyQualifiedStrictTypesFixer::class,
         ['import_symbols' => true], // Also import symbols from other namespaces than in current file
+    )
+    // Spaces and newlines in method arguments and attributes
+    ->withConfiguredRule(
+        MethodArgumentSpaceFixer::class,
+        ['attribute_placement' => 'standalone', 'on_multiline' => 'ensure_fully_multiline'],
     )
     ->withSkip([
         // We allow empty catch statements (but they must have comment - see EmptyCatchCommentSniff)
