@@ -63,6 +63,12 @@ class Basic extends AbstractBasic implements InterfaceFromThisNamespace // Fully
             $baz = implode(',', ['foo', 'bar']);
         }
 
+        $i = 3;
+        $i += 6; // LongToShorthandOperatorFixer
+        $i *= 2; // LongToShorthandOperatorFixer
+        $text = 'foo';
+        $text .= 'bar'; // LongToShorthandOperatorFixer
+
         // HeredocIndentationFixer
         $heredoc = <<<HEREDOC
             This is a
