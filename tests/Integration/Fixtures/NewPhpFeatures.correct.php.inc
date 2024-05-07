@@ -29,4 +29,18 @@ class NewPhpFeatures
     {
         return null;
     }
+
+    // AttributeEmptyParenthesesFixer
+    #[SomeFunctionAttribute]
+    #[AnotherAttribute('bar')]
+    #[AnotherAttribute]
+    #[First]
+    #[Second]
+    public function functionWithAttributes(
+        // MethodArgumentSpaceFixer
+        #[ParamAttribute]
+        #[AnotherAttribute('foo')]
+        string $foo,
+        string $bar,
+    ): void {}
 }
