@@ -136,6 +136,7 @@ use PhpCsFixer\Fixer\Semicolon\NoSinglelineWhitespaceBeforeSemicolonsFixer;
 use PhpCsFixer\Fixer\Semicolon\SpaceAfterSemicolonFixer;
 use PhpCsFixer\Fixer\Strict\DeclareStrictTypesFixer;
 use PhpCsFixer\Fixer\Strict\StrictParamFixer;
+use PhpCsFixer\Fixer\StringNotation\MultilineStringToHeredocFixer;
 use PhpCsFixer\Fixer\StringNotation\SingleQuoteFixer;
 use PhpCsFixer\Fixer\Whitespace\ArrayIndentationFixer;
 use PhpCsFixer\Fixer\Whitespace\BlankLineBeforeStatementFixer;
@@ -383,6 +384,8 @@ return ECSConfig::configure()
             DeclareStrictTypesFixer::class,
             // Functions should be used with `$strict` param set to `true`
             StrictParamFixer::class,
+            // Convert multiline string to heredoc or nowdoc.
+            MultilineStringToHeredocFixer::class,
             // Convert double quotes to single quotes for simple strings
             SingleQuoteFixer::class,
             // Each element of an array must be indented exactly once.
