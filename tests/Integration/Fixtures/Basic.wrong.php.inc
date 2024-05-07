@@ -53,6 +53,12 @@ class Basic extends \Some\Other\Namespace\AbstractBasic implements \Lmc\CodingSt
             $baz = join(',', ['foo', 'bar']);
         }
 
+        $i = 3;
+        $i = $i + 6; // LongToShorthandOperatorFixer
+        $i = $i * 2; // LongToShorthandOperatorFixer
+        $text = 'foo';
+        $text = $text . 'bar'; // LongToShorthandOperatorFixer
+
         // HeredocIndentationFixer
         $heredoc = <<<HEREDOC
 This is a

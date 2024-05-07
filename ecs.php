@@ -93,6 +93,7 @@ use PhpCsFixer\Fixer\NamespaceNotation\CleanNamespaceFixer;
 use PhpCsFixer\Fixer\NamespaceNotation\NoLeadingNamespaceWhitespaceFixer;
 use PhpCsFixer\Fixer\Operator\BinaryOperatorSpacesFixer;
 use PhpCsFixer\Fixer\Operator\ConcatSpaceFixer;
+use PhpCsFixer\Fixer\Operator\LongToShorthandOperatorFixer;
 use PhpCsFixer\Fixer\Operator\NewWithParenthesesFixer;
 use PhpCsFixer\Fixer\Operator\NoSpaceAroundDoubleColonFixer;
 use PhpCsFixer\Fixer\Operator\ObjectOperatorWithoutWhitespaceFixer;
@@ -310,6 +311,8 @@ return ECSConfig::configure()
             NoLeadingNamespaceWhitespaceFixer::class,
             // Binary operators should be surrounded by exactly one single space.
             BinaryOperatorSpacesFixer::class,
+            // Shorthand notation for operators should be used if possible.
+            LongToShorthandOperatorFixer::class,
             // There must be no space around scope resolution double colons
             NoSpaceAroundDoubleColonFixer::class,
             // All instances created with new keyword must be followed by parentheses.
