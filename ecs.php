@@ -63,6 +63,7 @@ use PhpCsFixer\Fixer\ClassNotation\SingleTraitInsertPerStatementFixer;
 use PhpCsFixer\Fixer\ClassNotation\VisibilityRequiredFixer;
 use PhpCsFixer\Fixer\Comment\NoEmptyCommentFixer;
 use PhpCsFixer\Fixer\Comment\SingleLineCommentSpacingFixer;
+use PhpCsFixer\Fixer\ControlStructure\NoUnneededControlParenthesesFixer;
 use PhpCsFixer\Fixer\ControlStructure\NoUselessElseFixer;
 use PhpCsFixer\Fixer\ControlStructure\SwitchContinueToBreakFixer;
 use PhpCsFixer\Fixer\ControlStructure\TrailingCommaInMultilineFixer;
@@ -565,6 +566,11 @@ return ECSConfig::configure()
     ->withConfiguredRule(
         FunctionDeclarationFixer::class,
         ['closure_fn_spacing' => 'none'], // Defined in PER 2.0
+    )
+    // Removes unneeded parentheses around specified control statements.
+    ->withConfiguredRule(
+        NoUnneededControlParenthesesFixer::class,
+        ['statements' => ['break', 'clone', 'continue', 'echo_print', 'others', 'switch_case', 'yield', 'yield_from']],
     )
     // Multi-line arrays, arguments list and parameters list must have a trailing comma
     ->withConfiguredRule(

@@ -69,6 +69,14 @@ class Basic extends AbstractBasic implements InterfaceFromThisNamespace // Fully
         $text = 'foo';
         $text .= 'bar'; // LongToShorthandOperatorFixer
 
+        switch ($i) {
+            case 1: // NoUnneededControlParenthesesFixer
+                $i++;
+                break;
+            default:
+                break;
+        }
+
         // HeredocIndentationFixer
         $heredoc = <<<HEREDOC
             This is a
