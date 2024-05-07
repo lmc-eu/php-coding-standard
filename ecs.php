@@ -285,9 +285,9 @@ return ECSConfig::configure()
             NoUnreachableDefaultArgumentValueFixer::class,
             // There must be no `sprintf` calls with only the first argument.
             NoUselessSprintfFixer::class,
-
+            // There must not be a space before colon in return type declarations.
             ReturnTypeDeclarationFixer::class,
-
+            // Add `void` return type to functions with missing or empty return statements.
             VoidReturnFixer::class,
             // Remove leading slashes in `use` clauses.
             NoLeadingImportSlashFixer::class,
@@ -307,15 +307,15 @@ return ECSConfig::configure()
             CleanNamespaceFixer::class,
             // The namespace declaration line shouldn't contain leading whitespace.
             NoLeadingNamespaceWhitespaceFixer::class,
-
+            // Binary operators should be surrounded by exactly one single space.
             BinaryOperatorSpacesFixer::class,
             // There must be no space around scope resolution double colons
             NoSpaceAroundDoubleColonFixer::class,
-
+            // All instances created with new keyword must be followed by parentheses.
             NewWithParenthesesFixer::class,
-
+            // There should not be space before or after object operators `->` and `?->`.
             ObjectOperatorWithoutWhitespaceFixer::class,
-
+            // Replace all `<>` with `!=`.
             StandardizeNotEqualsFixer::class,
             // Standardize spaces around ternary operator.
             TernaryOperatorSpacesFixer::class,
@@ -323,7 +323,7 @@ return ECSConfig::configure()
             TernaryToElvisOperatorFixer::class,
             // Use `null` coalescing operator `??` where possible.
             TernaryToNullCoalescingFixer::class,
-
+            // Unary operators should be placed adjacent (without a space) to their operands.
             UnaryOperatorSpacesFixer::class,
 
             NoBlankLinesAfterPhpdocFixer::class,
