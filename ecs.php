@@ -79,6 +79,7 @@ use PhpCsFixer\Fixer\FunctionNotation\PhpdocToPropertyTypeFixer;
 use PhpCsFixer\Fixer\FunctionNotation\PhpdocToReturnTypeFixer;
 use PhpCsFixer\Fixer\FunctionNotation\ReturnTypeDeclarationFixer;
 use PhpCsFixer\Fixer\FunctionNotation\VoidReturnFixer;
+use PhpCsFixer\Fixer\Import\FullyQualifiedStrictTypesFixer;
 use PhpCsFixer\Fixer\Import\NoLeadingImportSlashFixer;
 use PhpCsFixer\Fixer\Import\NoUnneededImportAliasFixer;
 use PhpCsFixer\Fixer\Import\NoUnusedImportsFixer;
@@ -548,6 +549,11 @@ return ECSConfig::configure()
     ->withConfiguredRule(
         TrailingCommaInMultilineFixer::class,
         ['after_heredoc' => true, 'elements' => ['arguments', 'arrays', 'match', 'parameters']], // Defined in PER 2.0
+    )
+    // Removes the leading part of FQCN
+    ->withConfiguredRule(
+        FullyQualifiedStrictTypesFixer::class,
+        ['import_symbols' => true], // Also import symbols from other namespaces than in current file
     )
     ->withSkip([
         // We allow empty catch statements (but they must have comment - see EmptyCatchCommentSniff)

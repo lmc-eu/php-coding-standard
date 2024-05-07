@@ -1,8 +1,12 @@
 <?php declare(strict_types=1);
 
-use Bar\Foo; // NoUnneededImportAliasFixer
+namespace Lmc\CodingStandard\Integration\Fixtures;
 
-class Basic
+// NoUnneededImportAliasFixer
+use Bar\Foo;
+use Some\Other\Namespace\AbstractBasic;
+
+class Basic extends AbstractBasic implements InterfaceFromThisNamespace // FullyQualifiedStrictTypesFixer
 {
     use SomeUsefulTrait; // OrderedClassElementsFixer
     public const FOO = 'foo'; // ClassAttributesSeparationFixer
