@@ -15,7 +15,7 @@
         "nette/utils": "^3.2",
         "slevomat/coding-standard": "^8.6",
         "squizlabs/php_codesniffer": "^3.9",
-        "symplify/easy-coding-standard": "^12.1.5"
+        "symplify/easy-coding-standard": "^12.1.9"
     },
     "require-dev": {
         "ergebnis/composer-normalize": "^2.13.2",
