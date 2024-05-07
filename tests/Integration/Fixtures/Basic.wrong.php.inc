@@ -1,8 +1,11 @@
 <?php
 
-use Bar\Foo as Foo; // NoUnneededImportAliasFixer
+namespace Lmc\CodingStandard\Integration\Fixtures;
 
-class Basic
+// NoUnneededImportAliasFixer
+use Bar\Foo as Foo;
+
+class Basic extends \Some\Other\Namespace\AbstractBasic implements \Lmc\CodingStandard\Integration\Fixtures\InterfaceFromThisNamespace // FullyQualifiedStrictTypesFixer
 {
     const FOO = 'foo'; // ClassAttributesSeparationFixer
     function isEqual($a, ? string $b): ? bool // VisibilityRequiredFixer, CompactNullableTypeDeclarationFixer
