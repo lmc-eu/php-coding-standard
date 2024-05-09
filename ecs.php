@@ -77,6 +77,7 @@ use PhpCsFixer\Fixer\FunctionNotation\LambdaNotUsedImportFixer;
 use PhpCsFixer\Fixer\FunctionNotation\MethodArgumentSpaceFixer;
 use PhpCsFixer\Fixer\FunctionNotation\NoUnreachableDefaultArgumentValueFixer;
 use PhpCsFixer\Fixer\FunctionNotation\NoUselessSprintfFixer;
+use PhpCsFixer\Fixer\FunctionNotation\NullableTypeDeclarationForDefaultNullValueFixer;
 use PhpCsFixer\Fixer\FunctionNotation\PhpdocToParamTypeFixer;
 use PhpCsFixer\Fixer\FunctionNotation\PhpdocToPropertyTypeFixer;
 use PhpCsFixer\Fixer\FunctionNotation\PhpdocToReturnTypeFixer;
@@ -296,6 +297,8 @@ return ECSConfig::configure()
             NoUnreachableDefaultArgumentValueFixer::class,
             // There must be no `sprintf` calls with only the first argument.
             NoUselessSprintfFixer::class,
+            // Add `?` before single type declarations when parameters have a default null value.
+            NullableTypeDeclarationForDefaultNullValueFixer::class,
             // There must not be a space before colon in return type declarations.
             ReturnTypeDeclarationFixer::class,
             // Add `void` return type to functions with missing or empty return statements.

@@ -171,6 +171,10 @@ class Basic extends AbstractBasic implements InterfaceFromThisNamespace // Fully
         );
     }
 
-    // NullableTypeDeclarationFixer
-    public function withParameters(?string $nullableValue): void {}
+    public function withParameters(
+        // NullableTypeDeclarationFixer
+        ?string $nullableValue,
+        // NullableTypeDeclarationForDefaultNullValueFixer
+        ?string $anotherNullableValue = null,
+    ): void {}
 }
