@@ -167,4 +167,8 @@ but should be heredoc instead';
             2
         );
     }
+
+    // NullableTypeDeclarationFixer
+    public function withParameters(null|string $nullableValue): void
+    {}
 }
