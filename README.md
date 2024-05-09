@@ -26,24 +26,12 @@ use Symplify\EasyCodingStandard\Config\ECSConfig;
 
 return ECSConfig::configure()
     ->withPaths([__DIR__ . '/src', __DIR__ . '/tests']) // optionally add 'config' or other directories with PHP files
-    ->withRootFiles() // to include ecs.php and all other php files in the root directory
+    ->withRootFiles() // to also check ecs.php and all other php files in the root directory
     ->withSets(
         [
             __DIR__ . '/vendor/lmc/coding-standard/ecs.php',
         ]
     );
-    
-    // By default, only checks compatible with PHP 8.0 are enabled.
-    // Depending on the lowest PHP version your project needs to support, you can enable additional checks.
-
-    // Import one of ecs-8.1.php, ecs-8.2.php or ecs-8.3.php. Use only one additional file (for the highest possible
-    // PHP version), the configs for previous versions are automatically included.
-    //->withSets(
-    //    [
-    //        __DIR__ . '/vendor/lmc/coding-standard/ecs.php',
-    //        __DIR__ . '/vendor/lmc/coding-standard/ecs-8.3.php',
-    //    ]
-    //);
 ```
 
 2. Run the check command
