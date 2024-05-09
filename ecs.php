@@ -89,6 +89,7 @@ use PhpCsFixer\Fixer\Import\NoUnusedImportsFixer;
 use PhpCsFixer\Fixer\Import\OrderedImportsFixer;
 use PhpCsFixer\Fixer\LanguageConstruct\DeclareEqualNormalizeFixer;
 use PhpCsFixer\Fixer\LanguageConstruct\IsNullFixer;
+use PhpCsFixer\Fixer\LanguageConstruct\NullableTypeDeclarationFixer;
 use PhpCsFixer\Fixer\LanguageConstruct\SingleSpaceAroundConstructFixer;
 use PhpCsFixer\Fixer\ListNotation\ListSyntaxFixer;
 use PhpCsFixer\Fixer\NamespaceNotation\BlankLinesBeforeNamespaceFixer;
@@ -310,6 +311,8 @@ return ECSConfig::configure()
             DeclareEqualNormalizeFixer::class,
             // Replaces `is_null($var)` expression with `null === $var`
             IsNullFixer::class,
+            // Nullable single type declaration should be standardised using question mark syntax.
+            NullableTypeDeclarationFixer::class,
             // Ensures a single space around language constructs.
             SingleSpaceAroundConstructFixer::class,
             // Namespace must not contain spacing, comments or PHPDoc.
