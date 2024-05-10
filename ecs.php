@@ -46,6 +46,7 @@ use PhpCsFixer\Fixer\ArrayNotation\WhitespaceAfterCommaInArrayFixer;
 use PhpCsFixer\Fixer\AttributeNotation\AttributeEmptyParenthesesFixer;
 use PhpCsFixer\Fixer\Basic\BracesFixer;
 use PhpCsFixer\Fixer\Basic\NoTrailingCommaInSinglelineFixer;
+use PhpCsFixer\Fixer\Basic\OctalNotationFixer;
 use PhpCsFixer\Fixer\Basic\PsrAutoloadingFixer;
 use PhpCsFixer\Fixer\Basic\SingleLineEmptyBodyFixer;
 use PhpCsFixer\Fixer\Casing\ClassReferenceNameCasingFixer;
@@ -245,6 +246,8 @@ return ECSConfig::configure()
             SingleLineEmptyBodyFixer::class, // Defined in PER 2.0
             // Values separated by a comma on a single line should not have a trailing comma.
             NoTrailingCommaInSinglelineFixer::class,
+            // Literal octal must be in 0o notation.
+            OctalNotationFixer::class,
             // Arrays should be formatted like function/method arguments
             TrimArraySpacesFixer::class,
             // In array declaration, there MUST be a whitespace after each comma
