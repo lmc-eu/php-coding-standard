@@ -53,6 +53,20 @@ class CodingStandardTest extends TestCase
         );
     }
 
+    /**
+     * @test
+     * @requires PHP >= 8.2
+     */
+    public function shouldFixPhp82(): void
+    {
+        $fixedFile = $this->runEcsCheckOnFile(__DIR__ . '/Fixtures/Php82.wrong.php.inc');
+
+        $this->assertStringEqualsFile(
+            __DIR__ . '/Fixtures/Php82.correct.php.inc',
+            file_get_contents($fixedFile),
+        );
+    }
+
     private function runEcsCheckOnFile(string $file): string
     {
         $fixtureFile = $this->initTempFixtureFile();

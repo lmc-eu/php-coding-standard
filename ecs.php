@@ -145,6 +145,7 @@ use PhpCsFixer\Fixer\Strict\DeclareStrictTypesFixer;
 use PhpCsFixer\Fixer\Strict\StrictComparisonFixer;
 use PhpCsFixer\Fixer\Strict\StrictParamFixer;
 use PhpCsFixer\Fixer\StringNotation\MultilineStringToHeredocFixer;
+use PhpCsFixer\Fixer\StringNotation\SimpleToComplexStringVariableFixer;
 use PhpCsFixer\Fixer\StringNotation\SingleQuoteFixer;
 use PhpCsFixer\Fixer\Whitespace\ArrayIndentationFixer;
 use PhpCsFixer\Fixer\Whitespace\BlankLineBeforeStatementFixer;
@@ -408,6 +409,8 @@ return ECSConfig::configure()
             StrictComparisonFixer::class,
             // Convert multiline string to heredoc or nowdoc.
             MultilineStringToHeredocFixer::class,
+            // Converts explicit variables in double-quoted strings from simple to complex format (${ to {$).
+            SimpleToComplexStringVariableFixer::class,
             // Convert double quotes to single quotes for simple strings
             SingleQuoteFixer::class,
             // Each element of an array must be indented exactly once.
