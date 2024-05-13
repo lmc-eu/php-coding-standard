@@ -425,10 +425,12 @@ return ECSConfig::configure()
             // Takes `@var` annotation of non-mixed types and adjusts accordingly the property signature to a native PHP 7.4+ type-hint.
             PhpdocToPropertyTypeFixer::class,
             PropertyTypeHintSniff::class,
-            // Takes `@param` annotations of non-mixed types and adjusts accordingly the function signature.
+            // Takes `@param` annotations of non-mixed types and adjusts accordingly the function signature to a native type-hints.
             PhpdocToParamTypeFixer::class,
+            ParameterTypeHintSniff::class,
             // Takes `@return` annotation of non-mixed types and adjusts accordingly the function signature.
             PhpdocToReturnTypeFixer::class,
+            ReturnTypeHintSniff::class,
             // Requires that only one attribute can be placed inside #[].
             DisallowAttributesJoiningSniff::class,
             // Disallows multiple attributes of some target on same line.
@@ -443,9 +445,6 @@ return ECSConfig::configure()
             // Require \Stringable interface in classes implementing __toString() method
             // > it may probably be a phpstan rule, more than cs rule - since it needs a class hierarchy to solve this
             // @see https://github.com/FriendsOfPHP/PHP-CS-Fixer/issues/6235
-
-            ParameterTypeHintSniff::class,
-            ReturnTypeHintSniff::class,
 
             // Multi-line arguments list in function/method call must have a trailing comma
             RequireTrailingCommaInCallSniff::class, // TODO: will be redundant after https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/pull/7989 is merged and released
@@ -524,7 +523,6 @@ return ECSConfig::configure()
     ->withConfiguredRule(ConcatSpaceFixer::class, ['spacing' => 'one'])
     // Removes `@param` and `@return` tags that don't provide any useful information
     ->withConfiguredRule(NoSuperfluousPhpdocTagsFixer::class, [
-        'allow_mixed' => true, // allow `@mixed` annotations to be preserved
         'allow_unused_params' => false, // whether param annotation without actual signature is allowed
         'remove_inheritdoc' => true, // remove @inheritDoc tags
     ])
