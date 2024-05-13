@@ -422,8 +422,9 @@ return ECSConfig::configure()
             ReferenceThrowableOnlySniff::class,
             // The @param, @return, @var and inline @var annotations should keep standard format
             ParamReturnAndVarTagMalformsFixer::class,
-            // Takes `@var` annotation of non-mixed types and adjusts accordingly the property signature.
+            // Takes `@var` annotation of non-mixed types and adjusts accordingly the property signature to a native PHP 7.4+ type-hint.
             PhpdocToPropertyTypeFixer::class,
+            PropertyTypeHintSniff::class,
             // Takes `@param` annotations of non-mixed types and adjusts accordingly the function signature.
             PhpdocToParamTypeFixer::class,
             // Takes `@return` annotation of non-mixed types and adjusts accordingly the function signature.
@@ -442,7 +443,6 @@ return ECSConfig::configure()
             // Require \Stringable interface in classes implementing __toString() method
             // > it may probably be a phpstan rule, more than cs rule - since it needs a class hierarchy to solve this
             // @see https://github.com/FriendsOfPHP/PHP-CS-Fixer/issues/6235
-            PropertyTypeHintSniff::class,
 
             ParameterTypeHintSniff::class,
             ReturnTypeHintSniff::class,
