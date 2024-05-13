@@ -6,7 +6,7 @@ class NewPhpFeatures
 {
     private string $someString;
 
-    public function __construct(string $someString)
+    public function __construct(string $someString) // RequireConstructorPropertyPromotionSniff
     {
         $this->someString = $someString;
     }

@@ -69,6 +69,9 @@ use PhpCsFixer\Fixer\FunctionNotation\ImplodeCallFixer;
 use PhpCsFixer\Fixer\FunctionNotation\LambdaNotUsedImportFixer;
 use PhpCsFixer\Fixer\FunctionNotation\NoUnreachableDefaultArgumentValueFixer;
 use PhpCsFixer\Fixer\FunctionNotation\NoUselessSprintfFixer;
+use PhpCsFixer\Fixer\FunctionNotation\PhpdocToParamTypeFixer;
+use PhpCsFixer\Fixer\FunctionNotation\PhpdocToPropertyTypeFixer;
+use PhpCsFixer\Fixer\FunctionNotation\PhpdocToReturnTypeFixer;
 use PhpCsFixer\Fixer\FunctionNotation\ReturnTypeDeclarationFixer;
 use PhpCsFixer\Fixer\FunctionNotation\VoidReturnFixer;
 use PhpCsFixer\Fixer\Import\NoLeadingImportSlashFixer;
@@ -130,10 +133,14 @@ use PhpCsFixer\Fixer\Whitespace\HeredocIndentationFixer;
 use PhpCsFixer\Fixer\Whitespace\NoExtraBlankLinesFixer;
 use PhpCsFixer\Fixer\Whitespace\NoWhitespaceInBlankLineFixer;
 use PhpCsFixer\Fixer\Whitespace\TypeDeclarationSpacesFixer;
+use SlevomatCodingStandard\Sniffs\Classes\RequireConstructorPropertyPromotionSniff;
 use SlevomatCodingStandard\Sniffs\ControlStructures\RequireNullSafeObjectOperatorSniff;
 use SlevomatCodingStandard\Sniffs\Exceptions\ReferenceThrowableOnlySniff;
 use SlevomatCodingStandard\Sniffs\Functions\RequireTrailingCommaInCallSniff;
 use SlevomatCodingStandard\Sniffs\Functions\RequireTrailingCommaInDeclarationSniff;
+use SlevomatCodingStandard\Sniffs\TypeHints\ParameterTypeHintSniff;
+use SlevomatCodingStandard\Sniffs\TypeHints\PropertyTypeHintSniff;
+use SlevomatCodingStandard\Sniffs\TypeHints\ReturnTypeHintSniff;
 use SlevomatCodingStandard\Sniffs\TypeHints\UnionTypeHintFormatSniff;
 use Symplify\CodingStandard\Fixer\Commenting\ParamReturnAndVarTagMalformsFixer;
 use Symplify\EasyCodingStandard\Config\ECSConfig;
@@ -370,6 +377,18 @@ return ECSConfig::configure()
             ReferenceThrowableOnlySniff::class,
             // The @param, @return, @var and inline @var annotations should keep standard format
             ParamReturnAndVarTagMalformsFixer::class,
+            // Takes `@var` annotation of non-mixed types and adjusts accordingly the property signature to a native PHP 7.4+ type-hint.
+            PhpdocToPropertyTypeFixer::class,
+            PropertyTypeHintSniff::class,
+            // Takes `@param` annotations of non-mixed types and adjusts accordingly the function signature to a native type-hints.
+            PhpdocToParamTypeFixer::class,
+            ParameterTypeHintSniff::class,
+            // Takes `@return` annotation of non-mixed types and adjusts accordingly the function signature.
+            PhpdocToReturnTypeFixer::class,
+            ReturnTypeHintSniff::class,
+            // Promote constructor properties
+            // For php-cs-fixer implementation @see https://github.com/FriendsOfPHP/PHP-CS-Fixer/issues/5956
+            RequireConstructorPropertyPromotionSniff::class,
 
             // switch -> match
             // @see https://github.com/FriendsOfPHP/PHP-CS-Fixer/issues/5894
@@ -510,6 +529,18 @@ return ECSConfig::configure()
 
         // Allow single line closures
         ScopeClosingBraceSniff::class . '.ContentBefore' => null,
+
+        // Skip unwanted rules from PropertyTypeHintSniff
+        PropertyTypeHintSniff::class . '.' . PropertyTypeHintSniff::CODE_MISSING_TRAVERSABLE_TYPE_HINT_SPECIFICATION => null,
+        PropertyTypeHintSniff::class . '.' . PropertyTypeHintSniff::CODE_MISSING_ANY_TYPE_HINT => null,
+
+        // Skip unwanted rules from ParameterTypeHintSniff
+        ParameterTypeHintSniff::class . '.' . ParameterTypeHintSniff::CODE_MISSING_TRAVERSABLE_TYPE_HINT_SPECIFICATION => null,
+        ParameterTypeHintSniff::class . '.' . ParameterTypeHintSniff::CODE_MISSING_ANY_TYPE_HINT => null,
+
+        // Skip unwanted rules from ReturnTypeHintSniff
+        ReturnTypeHintSniff::class . '.' . ReturnTypeHintSniff::CODE_MISSING_TRAVERSABLE_TYPE_HINT_SPECIFICATION => null,
+        ReturnTypeHintSniff::class . '.' . ReturnTypeHintSniff::CODE_MISSING_ANY_TYPE_HINT => null,
 
         // We use declare(strict_types=1); after opening tag
         BlankLineAfterOpeningTagFixer::class => null,
