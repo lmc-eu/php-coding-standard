@@ -22,4 +22,17 @@ class PhpDoc
     {
         return $first . $third;
     }
+
+    public function methodWithTypesInTypeHints(int $value, mixed $mixedType): bool
+    {
+        return $value > 3 ? true : false;
+    }
+
+    /**
+     * @param string $stringParam This phpdoc should be preserved, because it contains some comment for $stringParam.
+     */
+    public function methodWithMeaningfulParamComment(int $intParam, string $stringParam): void
+    {
+        // Do nothing.
+    }
 }

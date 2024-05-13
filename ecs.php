@@ -526,7 +526,6 @@ return ECSConfig::configure()
     ->withConfiguredRule(ConcatSpaceFixer::class, ['spacing' => 'one'])
     // Removes `@param` and `@return` tags that don't provide any useful information
     ->withConfiguredRule(NoSuperfluousPhpdocTagsFixer::class, [
-        'allow_mixed' => true, // allow `@mixed` annotations to be preserved
         'allow_unused_params' => false, // whether param annotation without actual signature is allowed
         'remove_inheritdoc' => true, // remove @inheritDoc tags
     ])
