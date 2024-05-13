@@ -28,7 +28,6 @@
 
 namespace Lmc\CodingStandard\Sniffs\Naming;
 
-use Nette\Utils\Strings;
 use PHP_CodeSniffer\Files\File;
 use PHP_CodeSniffer\Sniffs\Sniff;
 
@@ -56,7 +55,7 @@ final class TraitNameSniff implements Sniff
         $this->file = $phpcsFile;
         $this->position = $stackPtr;
 
-        if (Strings::endsWith($this->getTraitName(), 'Trait')) {
+        if (str_ends_with($this->getTraitName(), 'Trait')) {
             return;
         }
 
