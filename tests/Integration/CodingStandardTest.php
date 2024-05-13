@@ -37,6 +37,7 @@ class CodingStandardTest extends TestCase
                 __DIR__ . '/Fixtures/NewPhpFeatures.correct.php.inc',
             ],
             'PhpDoc' => [__DIR__ . '/Fixtures/PhpDoc.wrong.php.inc', __DIR__ . '/Fixtures/PhpDoc.correct.php.inc'],
+            'PhpUnit' => [__DIR__ . '/Fixtures/PhpUnit.wrong.php.inc', __DIR__ . '/Fixtures/PhpUnit.correct.php.inc'],
         ];
     }
 
