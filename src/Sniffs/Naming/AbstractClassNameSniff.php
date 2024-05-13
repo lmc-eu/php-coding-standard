@@ -28,7 +28,6 @@
 
 namespace Lmc\CodingStandard\Sniffs\Naming;
 
-use Nette\Utils\Strings;
 use PHP_CodeSniffer\Files\File;
 use PHP_CodeSniffer\Sniffs\Sniff;
 
@@ -70,7 +69,7 @@ final class AbstractClassNameSniff implements Sniff
             return true;
         }
 
-        return Strings::startsWith($className, 'Abstract');
+        return str_starts_with($className, 'Abstract');
     }
 
     private function isClassAbstract(): bool

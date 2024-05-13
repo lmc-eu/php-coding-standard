@@ -30,7 +30,6 @@ namespace Lmc\CodingStandard\Sniffs\Naming;
 
 use Lmc\CodingStandard\Helper\Naming;
 use Lmc\CodingStandard\Helper\SniffClassWrapper;
-use Nette\Utils\Strings;
 use PHP_CodeSniffer\Files\File;
 use PHP_CodeSniffer\Sniffs\Sniff;
 
@@ -101,7 +100,7 @@ final class ClassNameSuffixByParentSniff implements Sniff
 
             // the class that implements $currentParentType, should end with $suffix
             $suffix = $this->resolveExpectedSuffix($parentType);
-            if (Strings::endsWith($className, $suffix)) {
+            if (str_ends_with($className, $suffix)) {
                 continue;
             }
 
@@ -123,12 +122,12 @@ final class ClassNameSuffixByParentSniff implements Sniff
      */
     private function resolveExpectedSuffix(string $parentType): string
     {
-        if (Strings::endsWith($parentType, 'Interface')) {
-            $parentType = Strings::substring($parentType, 0, -mb_strlen('Interface'));
+        if (str_ends_with($parentType, 'Interface')) {
+            $parentType = mb_substr($parentType, 0, -mb_strlen('Interface'), 'UTF-8');
         }
 
-        if (Strings::startsWith($parentType, 'Abstract')) {
-            $parentType = Strings::substring($parentType, mb_strlen('Abstract'));
+        if (str_starts_with($parentType, 'Abstract')) {
+            $parentType = mb_substr($parentType, mb_strlen('Abstract'), null, 'UTF-8');
         }
 
         return $parentType;
