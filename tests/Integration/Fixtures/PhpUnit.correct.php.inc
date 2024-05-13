@@ -31,4 +31,9 @@ class PhpUnit extends TestCase
         // PhpUnitTestCaseStaticMethodCallsFixer
         $this->assertSame(1, 2);
     }
+
+    public function testMethodName(): void // PhpUnitMethodCasingFixer
+    {
+        $this->assertTrue(true);
+    }
 }

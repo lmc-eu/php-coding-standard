@@ -133,6 +133,7 @@ use PhpCsFixer\Fixer\PhpUnit\PhpUnitDedicateAssertFixer;
 use PhpCsFixer\Fixer\PhpUnit\PhpUnitDedicateAssertInternalTypeFixer;
 use PhpCsFixer\Fixer\PhpUnit\PhpUnitExpectationFixer;
 use PhpCsFixer\Fixer\PhpUnit\PhpUnitFqcnAnnotationFixer;
+use PhpCsFixer\Fixer\PhpUnit\PhpUnitMethodCasingFixer;
 use PhpCsFixer\Fixer\PhpUnit\PhpUnitMockFixer;
 use PhpCsFixer\Fixer\PhpUnit\PhpUnitMockShortWillReturnFixer;
 use PhpCsFixer\Fixer\PhpUnit\PhpUnitNoExpectationAnnotationFixer;
@@ -538,6 +539,8 @@ return ECSConfig::configure()
     ->withConfiguredRule(PhpdocOrderFixer::class, ['order' => ['param', 'return', 'throws']])
     // Order phpdoc tags by value.
     ->withConfiguredRule(PhpdocOrderByValueFixer::class, ['annotations' => ['covers', 'group', 'throws']])
+    // Enforce camel case for PHPUnit test methods.
+    ->withConfiguredRule(PhpUnitMethodCasingFixer::class, ['case' => 'camel_case'])
     // Calls to `PHPUnit\Framework\TestCase` static methods must all be of the same type (`$this->...`)
     ->withConfiguredRule(PhpUnitTestCaseStaticMethodCallsFixer::class, ['call_type' => 'this'])
     // An empty line feed must precede any configured statement
