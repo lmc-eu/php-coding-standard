@@ -40,13 +40,15 @@ or more configuration options in [ECS documentation](https://github.com/easy-cod
 
 Some more reasoning and examples of configurations can also be seen [in ECS author blogpost](https://tomasvotruba.com/blog/new-in-ecs-simpler-config).
 
-### 3. Remove imports of `ecs-7.4.php` and/or `ecs-8.0.php` from your `ecs.php`
+### 3. Remove imports of `ecs-7.4.php`, `ecs-8.0.php` or `ecs-8.1.php` from your `ecs.php`
 ```diff
     ->withSets(__DIR__ . '/vendor/lmc/coding-standard/ecs.php')
 -    ->withSets(__DIR__ . '/vendor/lmc/coding-standard/ecs-7.4.php')
 -    ->withSets(__DIR__ . '/vendor/lmc/coding-standard/ecs-8.0.php')
-    ->withSets(__DIR__ . '/vendor/lmc/coding-standard/ecs-8.1.php')
+-    ->withSets(__DIR__ . '/vendor/lmc/coding-standard/ecs-8.1.php')
 ```
+
+All the rules are now included in the main `ecs.php` file. Only rules compatible with your PHP version are applied.
 
 ### 4. Configure paths directly in ecs.php
 
