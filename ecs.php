@@ -132,6 +132,7 @@ use PhpCsFixer\Fixer\PhpUnit\PhpUnitConstructFixer;
 use PhpCsFixer\Fixer\PhpUnit\PhpUnitDedicateAssertFixer;
 use PhpCsFixer\Fixer\PhpUnit\PhpUnitDedicateAssertInternalTypeFixer;
 use PhpCsFixer\Fixer\PhpUnit\PhpUnitExpectationFixer;
+use PhpCsFixer\Fixer\PhpUnit\PhpUnitFqcnAnnotationFixer;
 use PhpCsFixer\Fixer\PhpUnit\PhpUnitMockFixer;
 use PhpCsFixer\Fixer\PhpUnit\PhpUnitMockShortWillReturnFixer;
 use PhpCsFixer\Fixer\PhpUnit\PhpUnitNoExpectationAnnotationFixer;
@@ -391,6 +392,8 @@ return ECSConfig::configure()
             PhpUnitNoExpectationAnnotationFixer::class,
             // Usages of ->setExpectedException* methods MUST be replaced by ->expectException* methods
             PhpUnitExpectationFixer::class,
+            // PHPUnit annotations should be a FQCNs including a root namespace.
+            PhpUnitFqcnAnnotationFixer::class,
             // Visibility of setUp() and tearDown() method should be kept protected
             PhpUnitSetUpTearDownVisibilityFixer::class,
             // There should not be an empty `return` statement at the end of a function

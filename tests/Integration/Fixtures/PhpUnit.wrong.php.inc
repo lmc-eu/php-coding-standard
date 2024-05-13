@@ -4,6 +4,9 @@ namespace Lmc\CodingStandard\Integration\Fixtures;
 
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @covers Lmc\CodingStandard\Integration\Fixtures\MyClass
+ */
 class PhpUnit extends TestCase
 {
     // PhpUnitSetUpTearDownVisibilityFixer
