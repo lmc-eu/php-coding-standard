@@ -76,6 +76,12 @@ return ECSConfig::configure()
             __DIR__ . '/vendor/lmc/coding-standard/ecs.php',
         ]
     )
+    ->withRules(
+        [
+            // PHPUnit attributes must be used over their respective PHPDoc-based annotations. (Use with PHPUnit 10+.)
+            PhpUnitAttributesFixer::class,
+        ]
+    )
     // Enforce line-length to 120 characters
     ->withConfiguredRule(LineLengthSniff::class, ['absoluteLineLimit' => 120])
     // Tests must have @test annotation
