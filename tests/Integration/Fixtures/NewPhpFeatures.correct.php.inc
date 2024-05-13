@@ -4,11 +4,8 @@ namespace Lmc\CodingStandard\Integration\Fixtures;
 
 class NewPhpFeatures
 {
-    private string $someString;
-
-    public function __construct(string $someString)
+    public function __construct(private string $someString) // RequireConstructorPropertyPromotionSniff
     {
-        $this->someString = $someString;
     }
 
     public function php80features(
