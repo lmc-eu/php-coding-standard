@@ -1,7 +1,7 @@
 # Upgrading from 3.x to 4.0
 
 ### 1. Update dependency in composer.json
-In require-dev section change the version constraint:
+In the `require-dev` section of `composer.json` change the version constraint:
 
 ```diff
 -        "lmc/coding-standard": "^3.3",
@@ -11,9 +11,9 @@ In require-dev section change the version constraint:
 Then run `composer update`.
 
 ### 2. Configuration updates
-Configuration now uses `ECSConfig` class instead of `ContainerConfigurator`.
+The configuration now uses `ECSConfig` class instead of `ContainerConfigurator`.
 
-Update your `ecs.php` to use the new configuration style:
+Update your `ecs.php` file to use the new configuration style:
 
 ```diff
 -use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
@@ -85,14 +85,27 @@ $ vendor/bin/ecs check --ansi src/ tests/ # old
 $ vendor/bin/ecs check --ansi # new
 ```
 
-### 5. Sanity check
-Besides running your code style checks, you can ensure all predefined checks are loaded as well, by running:
+### 5. BE CAREFUL WITH SUGGESTED CHANGES! ⚠️
+
+Some of the new default fixers introduced in php-coding-standard 4.0 and 4.1 suggest changes, which - if not
+thoughtfully reviewed - can change the code behavior. Especially changes introduced by (but not limited to!):
+
+- PhpdocToPropertyTypeFixer + PropertyTypeHintSniff
+- PhpdocToParamTypeFixer + ParameterTypeHintSniff
+- PhpdocToReturnTypeFixer + ReturnTypeHintSniff
+
+**Always carefully review the changes suggested by all fixers!** You may want to skip some of the checks
+(using `withSkip()`) in the first phase of upgrading to the new version of the coding standard
+or you can introduce some of the rules gradually or on a file-by-file basis.
+
+### 6. Sanity check
+Besides running your code style checks, you can ensure all predefined checks are loaded by running:
 
 ```sh
 vendor/bin/ecs list-checkers
 ```
 
-The result should end with something like:
+The result should end with something like this:
 ```
  41 checkers from PHP_CodeSniffer:
  ...

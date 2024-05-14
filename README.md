@@ -2,12 +2,12 @@
 
 [![Latest Stable Version](https://img.shields.io/packagist/v/lmc/coding-standard.svg?style=flat-square)](https://packagist.org/packages/lmc/coding-standard)
 
-PHP coding standard used in [Alma Career Czechia](https://www.almacareer.com/) (formerly LMC) products.
+PHP coding standard used in [Alma Career Czechia][Alma Career] (formerly LMC) products.
 
-Standard is based on [PSR-12](https://www.php-fig.org/psr/psr-12/) and adds
+The standard is based on [PSR-12][psr-12] and partially [PER 2.0][per-2] and adds
 various checks to make sure the code is readable, follows the same conventions, and does not contain common mistakes.
 
-We use [EasyCodingStandard] to define and execute checks created for both [PHP-CS-Fixer] and [PHP_CodeSniffer].
+We use [EasyCodingStandard][ecs] to define and execute checks created for both [PHP-CS-Fixer] and [PHP_CodeSniffer].
 
 ## Installation
 
@@ -59,7 +59,7 @@ Now you will be able to run the fix using `composer analyze` and execute automat
 
 ### Add custom checks or override default settings
 
-On top of default code-style rules you are free to add any rules from [PHP-CS-Fixer] or [PHP_CodeSniffer].
+On top of the default code-style rules, you are free to add any rules from [PHP-CS-Fixer] or [PHP_CodeSniffer].
 If needed, you can also override some default settings.
 
 ```php
@@ -83,12 +83,12 @@ return ECSConfig::configure()
     /* (...) */
 ```
 
-See [EasyCodingStandard docs](https://github.com/symplify/easy-coding-standard#configuration) for more configuration options.
+See [EasyCodingStandard docs][ecs-docs] for more configuration options.
 
 
 ### Exclude (skip) checks or files
 
-You can configure your `ecs.php` to entirely skip some files, disable specific checks or suppress specific errors.
+You can configure your `ecs.php` file to entirely skip some files, disable specific checks, or suppress specific errors.
 
 ```php
 <?php declare(strict_types=1);
@@ -114,18 +114,23 @@ return ECSConfig::configure()
     /* (...) */
 ```
 
-See [EasyCodingStandard docs](https://github.com/symplify/easy-coding-standard#configuration) for more configuration options.
+See [EasyCodingStandard docs][ecs-docs] for more configuration options.
 
 ### IDE integration
 
-For integration with PHPStorm etc. follow instructions in EasyCodingStandard [README](https://github.com/symplify/easy-coding-standard#your-ide-integration).
+For integration with PHPStorm and other IDEs, follow instructions in [EasyCodingStandard README][ecs-readme-ide].
 
 ## Changelog
-For the latest changes see [CHANGELOG.md](CHANGELOG.md) file. We follow [Semantic Versioning](https://semver.org/).
+For the latest changes, see [CHANGELOG.md](CHANGELOG.md) file. This library follows [Semantic Versioning](https://semver.org/).
 
 ## License
-This library is open source software licensed under the [MIT license](LICENSE.md).
+This library is open-source software licensed under the [MIT license](LICENSE.md).
 
+[Alma Career]: https://www.almacareer.com/
 [PHP-CS-Fixer]: https://github.com/FriendsOfPHP/PHP-CS-Fixer
 [PHP_CodeSniffer]: https://github.com/squizlabs/PHP_CodeSniffer
-[EasyCodingStandard]: https://github.com/symplify/easy-coding-standard
+[psr-12]: https://www.php-fig.org/psr/psr-12/
+[per-2]: https://www.php-fig.org/per/coding-style/
+[ecs]: https://github.com/easy-coding-standard/easy-coding-standard
+[ecs-docs]: https://github.com/easy-coding-standard/easy-coding-standard#configure
+[ecs-readme-ide]: https://github.com/easy-coding-standard/easy-coding-standard/blob/9.0.0/README.md#your-ide-integration
