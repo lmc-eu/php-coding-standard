@@ -39,7 +39,6 @@ final class TraitNameSniff implements Sniff
     private const ERROR_MESSAGE = 'Trait should have suffix "Trait".';
 
     private int $position;
-
     private File $file;
 
     /**
