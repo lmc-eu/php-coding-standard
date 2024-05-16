@@ -35,14 +35,10 @@ use PHP_CodeSniffer\Sniffs\Sniff;
 
 final class ClassNameSuffixByParentSniff implements Sniff
 {
-    /**
-     * @var string
-     */
+    /** @var string */
     private const ERROR_MESSAGE = 'Class "%s" should have suffix "%s" by parent class/interface';
 
-    /**
-     * @var string[]
-     */
+    /** @var string[] */
     public array $defaultParentClassToSuffixMap = [
         'Command',
         'Controller',
@@ -56,9 +52,7 @@ final class ClassNameSuffixByParentSniff implements Sniff
         'Handler',
     ];
 
-    /**
-     * @var string[]
-     */
+    /** @var string[] */
     public array $extraParentTypesToSuffixes = [];
 
     /**

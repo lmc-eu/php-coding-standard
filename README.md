@@ -60,7 +60,9 @@ Now you will be able to run the fix using `composer analyze` and execute automat
 ### Add custom checks or override default settings
 
 On top of the default code-style rules, you are free to add any rules from [PHP-CS-Fixer] or [PHP_CodeSniffer].
-If needed, you can also override some default settings.
+If needed, you can also override any default settings.
+
+Below find examples of some more opinionated checks you may want to add depending on your needs:
 
 ```php
 <?php declare(strict_types=1);
@@ -76,10 +78,20 @@ return ECSConfig::configure()
             __DIR__ . '/vendor/lmc/coding-standard/ecs.php',
         ]
     )
-    // Enforce line-length to 120 characters
+    ->withRules(
+        [
+            // PHPUnit attributes must be used over their respective PHPDoc-based annotations. (Use with PHPUnit 10+.)
+            PhpUnitAttributesFixer::class,
+            // Single-line comments must have proper spacing.
+            SingleLineCommentSpacingFixer::class,
+        ]
+    )
+    // Enforce line-length to 120 characters.
     ->withConfiguredRule(LineLengthSniff::class, ['absoluteLineLimit' => 120])
-    // Tests must have @test annotation
-    ->withConfiguredRule(PhpUnitTestAnnotationFixer::class, ['style' => 'annotation']);
+    // Tests must have @test annotation.
+    ->withConfiguredRule(PhpUnitTestAnnotationFixer::class, ['style' => 'annotation'])
+    // Specify elements separation.
+    ->withConfiguredRule(ClassAttributesSeparationFixer::class, ['elements' => ['const' => 'none', 'method' => 'one', 'property' => 'none']])
     /* (...) */
 ```
 

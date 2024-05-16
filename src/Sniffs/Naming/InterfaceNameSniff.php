@@ -39,7 +39,6 @@ final class InterfaceNameSniff implements Sniff
     private const ERROR_MESSAGE = 'Interface should have suffix "Interface".';
 
     private int $position;
-
     private File $file;
 
     /**
