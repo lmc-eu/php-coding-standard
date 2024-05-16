@@ -5,14 +5,18 @@
 <!-- There is always Unreleased section on the top. Subsections (Added, Changed, Fixed, Removed) should be added as needed. -->
 
 ## Unreleased
-- Require PHP ^8.0
-- Update to slevomat/coding-standard ^8.0
-- Update to squizlabs/php_codesniffer ^3.9
-- Update to symplify/easy-coding-standard ^12.1
-- Move coding standard declarations from `ecs-7.4.php` and `ecs-8.0.php` to `ecs.php` and remove the former files
-- Change deprecated rules to new ones
-- Add new `ecs-8.2.php` coding standard declaration file for PHP 8.2+
-- Add new `ecs-8.3.php` coding standard declaration file for PHP 8.3+
+
+## 4.0.0 - unreleased
+- BC: Update to symplify/easy-coding-standard ^12.1 and change configuration format in `ecs.php`. See [UPGRADE-4.0.md](UPGRADE-4.0.md) for step-by-step upgrade howto.
+- BC: Move coding standard declarations from `ecs-7.4.php`, `ecs-8.0.php` and `ecs-8.1.php` to `ecs.php` and remove the former files.
+- BC: Change base coding standard from [PSR-2](https://www.php-fig.org/psr/psr-2/) to [PSR-12](https://www.php-fig.org/psr/psr-12/).
+- BC: Change deprecated `php-cs-fixer` sniffs to new ones.
+- Rebrand to Alma Career in documentation and meta information.
+- Require PHP ^8.0.
+- Update to slevomat/coding-standard ^8.0.
+- Update to squizlabs/php_codesniffer ^3.9.
+- Refactor: Remove nette/utils dependency.
+- Add tests to ensure the code style defined by this library is being properly checked and fixed.
 
 ## 3.3.1 - 2022-05-23
 - Lock `symplify/easy-coding-standard` to <10.2.4 because of backward incompatibilities introduced in its bugfix releases.
