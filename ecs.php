@@ -348,9 +348,9 @@ return ECSConfig::configure()
             TernaryToNullCoalescingFixer::class,
             // Unary operators should be placed adjacent (without a space) to their operands.
             UnaryOperatorSpacesFixer::class,
-
+            // There should not be blank lines between docblock and the documented element.
             NoBlankLinesAfterPhpdocFixer::class,
-
+            // There should not be empty PHPDoc blocks.
             NoEmptyPhpdocFixer::class,
             // PHPDoc should contain `@param` for all params.
             PhpdocAddMissingParamAnnotationFixer::class,
@@ -442,17 +442,8 @@ return ECSConfig::configure()
             // Promote constructor properties
             // For php-cs-fixer implementation @see https://github.com/FriendsOfPHP/PHP-CS-Fixer/issues/5956
             RequireConstructorPropertyPromotionSniff::class,
-
-            // switch -> match
-            // @see https://github.com/FriendsOfPHP/PHP-CS-Fixer/issues/5894
-
-            // Require \Stringable interface in classes implementing __toString() method
-            // > it may probably be a phpstan rule, more than cs rule - since it needs a class hierarchy to solve this
-            // @see https://github.com/FriendsOfPHP/PHP-CS-Fixer/issues/6235
-
             // Multi-line arguments list in function/method call must have a trailing comma
             RequireTrailingCommaInCallSniff::class, // TODO: will be redundant after https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/pull/7989 is merged and released
-
             // Use `null-safe` operator `?->` where possible
             RequireNullSafeObjectOperatorSniff::class,
         ],
