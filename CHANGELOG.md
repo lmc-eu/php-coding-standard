@@ -6,6 +6,11 @@
 
 ## Unreleased
 
+## 4.1.0 - unreleased
+- Add most of the available checks for [PER-2](https://www.php-fig.org/per/coding-style/) coding style.
+- Add many new checks from `php-cs-fixer` up to version 3.56.
+- Add available php-cs-fixer rules for PHP 8.1 and 8.2 (which are automatically run only on compatible PHP versions).
+
 ## 4.0.0 - 2024-05-23
 - BC: Update to symplify/easy-coding-standard ^12.1 and change configuration format in `ecs.php`. See [UPGRADE-4.0.md](UPGRADE-4.0.md) for step-by-step upgrade howto.
 - BC: Move coding standard declarations from `ecs-7.4.php`, `ecs-8.0.php` and `ecs-8.1.php` to `ecs.php` and remove the former files.
