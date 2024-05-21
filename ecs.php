@@ -50,6 +50,7 @@ use PhpCsFixer\Fixer\Basic\OctalNotationFixer;
 use PhpCsFixer\Fixer\Basic\PsrAutoloadingFixer;
 use PhpCsFixer\Fixer\Basic\SingleLineEmptyBodyFixer;
 use PhpCsFixer\Fixer\Casing\ClassReferenceNameCasingFixer;
+use PhpCsFixer\Fixer\Casing\MagicConstantCasingFixer;
 use PhpCsFixer\Fixer\Casing\MagicMethodCasingFixer;
 use PhpCsFixer\Fixer\Casing\NativeFunctionCasingFixer;
 use PhpCsFixer\Fixer\Casing\NativeTypeDeclarationCasingFixer;
@@ -259,6 +260,8 @@ return ECSConfig::configure()
             PsrAutoloadingFixer::class,
             // When referencing an internal class it must be written using the correct casing.
             ClassReferenceNameCasingFixer::class,
+            // Magic constants should be referred to using the correct casing.
+            MagicConstantCasingFixer::class,
             // Magic method definitions and calls must be using the correct casing
             MagicMethodCasingFixer::class,
             // Function defined by PHP should be called using the correct casing
