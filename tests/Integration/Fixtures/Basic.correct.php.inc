@@ -15,6 +15,12 @@ class Basic extends AbstractBasic implements InterfaceFromThisNamespace // Fully
 
     protected int $myProperty = 666; // OrderedClassElementsFixer
 
+    // MagicMethodCasingFixer, OrderedClassElementsFixer
+    public function __toString(): string
+    {
+        return '';
+    }
+
     public function isEqual($a, ?string $b): ?bool // VisibilityRequiredFixer, CompactNullableTypeDeclarationFixer
     {
         // TrimArraySpacesFixer
@@ -44,6 +50,8 @@ class Basic extends AbstractBasic implements InterfaceFromThisNamespace // Fully
 
     public function fooBar(mixed $foo): mixed // FunctionDeclarationFixer
     {
+        // MagicConstantCasingFixer
+        $magicConstant = __DIR__;
         $value = 5;
         // FunctionDeclarationFixer
         $function = function ($foo) use ($value) {

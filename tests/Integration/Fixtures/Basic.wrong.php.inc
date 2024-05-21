@@ -36,6 +36,8 @@ class Basic extends \Some\Other\Namespace\AbstractBasic implements \Lmc\CodingSt
 
     public function fooBar ( mixed    $foo ): mixed // FunctionDeclarationFixer
     {
+        // MagicConstantCasingFixer
+        $magicConstant = __dir__;
         $value = 5;
         // FunctionDeclarationFixer
         $function = function($foo)use($value) {
@@ -158,4 +160,10 @@ but should be heredoc instead';
         // NullableTypeDeclarationForDefaultNullValueFixer
         string $anotherNullableValue = null,
     ): void {}
+
+    // MagicMethodCasingFixer, OrderedClassElementsFixer
+    public function __ToString(): string
+    {
+        return '';
+    }
 }
