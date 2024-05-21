@@ -11,4 +11,5 @@ parameters:
           message: '#Parameter \#1 \$code of static method PhpCsFixer\\Tokenizer\\Tokens::fromCode\(\) expects string, string\|false given#'
         - path: %currentWorkingDirectory%/tests/Integration/CodingStandardTest.php
           message: '#Parameter \#2 \$actualString of method PHPUnit\\Framework\\Assert::assertStringEqualsFile\(\) expects string, string\|false given#'
-    checkMissingIterableValueType: false
+        - identifier: missingType.iterableValue
+          path: %currentWorkingDirectory%/tests/*
