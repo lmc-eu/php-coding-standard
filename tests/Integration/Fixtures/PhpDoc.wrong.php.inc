@@ -15,7 +15,11 @@ class PhpDoc
 
     /**
      * Very well documented method.
-     * It tests PhpdocAlignFixer, NoSuperfluousPhpdocTagsFixer and possibly other Phpdoc rules.
+     * It tests PhpdocAlignFixer, NoSuperfluousPhpdocTagsFixer, PhpdocTrimConsecutiveBlankLineSeparationFixer
+     * and possibly other Phpdoc rules.
+     *
+     *
+     *
      * @param   string      $first
      * @throws  \Exception
      * @param   int|float   $second Second parameter does have a comment, unlike the first one.
