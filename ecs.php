@@ -124,6 +124,7 @@ use PhpCsFixer\Fixer\Phpdoc\PhpdocReturnSelfReferenceFixer;
 use PhpCsFixer\Fixer\Phpdoc\PhpdocScalarFixer;
 use PhpCsFixer\Fixer\Phpdoc\PhpdocSingleLineVarSpacingFixer;
 use PhpCsFixer\Fixer\Phpdoc\PhpdocToCommentFixer;
+use PhpCsFixer\Fixer\Phpdoc\PhpdocTrimConsecutiveBlankLineSeparationFixer;
 use PhpCsFixer\Fixer\Phpdoc\PhpdocTrimFixer;
 use PhpCsFixer\Fixer\Phpdoc\PhpdocTypesFixer;
 use PhpCsFixer\Fixer\Phpdoc\PhpdocVarAnnotationCorrectOrderFixer;
@@ -371,6 +372,8 @@ return ECSConfig::configure()
             PhpdocScalarFixer::class,
             // Single line `@var` PHPDoc should have proper spacing.
             PhpdocSingleLineVarSpacingFixer::class,
+            // Removes extra blank lines after summary and after description in PHPDoc.
+            PhpdocTrimConsecutiveBlankLineSeparationFixer::class,
             // PHPDoc should start and end with content
             PhpdocTrimFixer::class,
             // Docblocks should only be used on structural elements.
