@@ -95,16 +95,6 @@ class Basic extends AbstractBasic implements InterfaceFromThisNamespace // Fully
         $newdoc = <<<'NEWDOC'
             This is a $newdoc, where variables are not expanded.
             NEWDOC;
-        // MultilineStringToHeredocFixer
-        $multilineString = <<<'EOD'
-            This string
-            spans multiple lines
-            but should be heredoc instead
-            EOD;
-
-        // SingleLineCommentSpacingFixer
-        // This comment should have space on the beginning
-        /* So should this one, also with space on the end */
 
         // TernaryToElvisOperatorFixer
         return ($foo ?: 'not true');

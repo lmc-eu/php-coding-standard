@@ -82,8 +82,10 @@ return ECSConfig::configure()
         [
             // PHPUnit attributes must be used over their respective PHPDoc-based annotations. (Use with PHPUnit 10+.)
             PhpUnitAttributesFixer::class,
-            // Single-line comments must have proper spacing.
+            // Single-line comments must have proper spacing (one space after `//`).
             SingleLineCommentSpacingFixer::class,
+            // Convert multiline string to heredoc or nowdoc.
+            MultilineStringToHeredocFixer::class,
         ]
     )
     // Enforce line-length to 120 characters.

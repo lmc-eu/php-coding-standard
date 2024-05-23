@@ -85,6 +85,11 @@ $ vendor/bin/ecs check --ansi src/ tests/ # old
 $ vendor/bin/ecs check --ansi # new
 ```
 
+### 6. Add some optional rules
+On top of default rules included in ecs.php, there are some more opinionated ones you may want to add.
+
+These suggested rules are listed in [README.md](https://github.com/lmc-eu/php-coding-standard?tab=readme-ov-file#add-custom-checks-or-override-default-settings).
+
 ### 5. BE CAREFUL WITH SUGGESTED CHANGES! ⚠️
 
 Some of the new default fixers introduced in php-coding-standard 4.0 and 4.1 suggest changes, which - if not
