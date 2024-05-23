@@ -486,6 +486,11 @@ return ECSConfig::configure()
         // We allow empty catch statements (but they must have comment - see EmptyCatchCommentSniff)
         EmptyStatementSniff::class . '.DetectedCatch' => null,
 
+        // Skip because of its attempts to add spaces in declare(strict_types=1); starting with ECS 12.2.0
+        // @TODO: In future ECS versions try whether its is still broken or this skip could be removed
+        OperatorSpacingSniff::class . '.NoSpaceAfter' => null,
+        OperatorSpacingSniff::class . '.NoSpaceBefore' => null,
+
         // Skip unwanted rules from DocCommentSniff
         DocCommentSniff::class . '.ContentAfterOpen' => null,
         DocCommentSniff::class . '.ContentBeforeClose' => null,
