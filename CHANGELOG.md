@@ -6,7 +6,7 @@
 
 ## Unreleased
 
-## 4.0.0 - unreleased
+## 4.0.0 - 2024-05-23
 - BC: Update to symplify/easy-coding-standard ^12.1 and change configuration format in `ecs.php`. See [UPGRADE-4.0.md](UPGRADE-4.0.md) for step-by-step upgrade howto.
 - BC: Move coding standard declarations from `ecs-7.4.php`, `ecs-8.0.php` and `ecs-8.1.php` to `ecs.php` and remove the former files.
 - BC: Change base coding standard from [PSR-2](https://www.php-fig.org/psr/psr-2/) to [PSR-12](https://www.php-fig.org/psr/psr-12/).
