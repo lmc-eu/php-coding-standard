@@ -162,7 +162,6 @@ use SlevomatCodingStandard\Sniffs\Attributes\DisallowMultipleAttributesPerLineSn
 use SlevomatCodingStandard\Sniffs\Classes\RequireConstructorPropertyPromotionSniff;
 use SlevomatCodingStandard\Sniffs\ControlStructures\RequireNullSafeObjectOperatorSniff;
 use SlevomatCodingStandard\Sniffs\Exceptions\ReferenceThrowableOnlySniff;
-use SlevomatCodingStandard\Sniffs\Functions\RequireTrailingCommaInCallSniff;
 use SlevomatCodingStandard\Sniffs\TypeHints\ParameterTypeHintSniff;
 use SlevomatCodingStandard\Sniffs\TypeHints\PropertyTypeHintSniff;
 use SlevomatCodingStandard\Sniffs\TypeHints\ReturnTypeHintSniff;
@@ -445,8 +444,6 @@ return ECSConfig::configure()
             // Promote constructor properties
             // For php-cs-fixer implementation @see https://github.com/FriendsOfPHP/PHP-CS-Fixer/issues/5956
             RequireConstructorPropertyPromotionSniff::class,
-            // Multi-line arguments list in function/method call must have a trailing comma
-            RequireTrailingCommaInCallSniff::class, // TODO: will be redundant after https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/pull/7989 is merged and released
             // Use `null-safe` operator `?->` where possible
             RequireNullSafeObjectOperatorSniff::class,
         ],
