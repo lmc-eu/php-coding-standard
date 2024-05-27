@@ -110,11 +110,11 @@ Besides running your code style checks, you can ensure all predefined checks are
 vendor/bin/ecs list-checkers
 ```
 
-The result should end with something like this:
+With `php-coding-standard` 4.1, the result should end with something like this:
 ```
- 41 checkers from PHP_CodeSniffer:
+ 40 checkers from PHP_CodeSniffer:
  ...
- 147 checkers from PHP-CS-Fixer:
+ 171 checkers from PHP-CS-Fixer:
  ...
  2 checkers are skipped:
  ...
