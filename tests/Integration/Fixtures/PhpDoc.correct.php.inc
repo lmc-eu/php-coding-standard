@@ -16,7 +16,9 @@ class PhpDoc
      * and possibly other Phpdoc rules.
      *
      * @param int|float $second Second parameter does have a comment, unlike the first one.
-     * @param string|null $third Third parameter is optional and has a default value.
+     * @param string|null $third Third parameter is optional and has a default value and multilne comment. Lorem
+     * ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nunc ultricies ultricies.
+     * Nullam nec purus nec nunc ultricies ultricies. Nullam nec purus nec nunc ultricies ultricies.
      * @return mixed There is also information about return type.
      * @throws \Exception
      */
