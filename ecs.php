@@ -522,7 +522,8 @@ return ECSConfig::configure()
         'remove_inheritdoc' => true, // remove @inheritDoc tags
     ])
     // All items of the given PHPDoc tags must be left-aligned.
-    ->withConfiguredRule(PhpdocAlignFixer::class, ['align' => 'left'])
+    // @TODO: Re-enable if https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/issues/8052 is fixed
+    //->withConfiguredRule(PhpdocAlignFixer::class, ['align' => 'left'])
     // Annotations in PHPDoc should be ordered in defined sequence.
     ->withConfiguredRule(PhpdocOrderFixer::class, ['order' => ['param', 'return', 'throws']])
     // Order phpdoc tags by value.
