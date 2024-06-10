@@ -6,6 +6,9 @@
 
 ## Unreleased
 
+## 4.1.1 - 2024-06-10
+- Disable incorrectly behaving PhpdocAlignFixer.
+
 ## 4.1.0 - 2024-05-27
 - Add most of the available checks for [PER-2](https://www.php-fig.org/per/coding-style/) coding style.
 - Add many new checks from `php-cs-fixer` up to version 3.56.
