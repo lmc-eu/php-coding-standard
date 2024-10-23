@@ -5,6 +5,7 @@
 <!-- There is always Unreleased section on the top. Subsections (Added, Changed, Fixed, Removed) should be added as needed. -->
 
 ## Unreleased
+- Remove skip of BlankLineAfterOpeningTagFixer to be PSR-12 compliant.
 
 ## 4.1.1 - 2024-06-10
 - Disable incorrectly behaving PhpdocAlignFixer.
