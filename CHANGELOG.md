@@ -6,6 +6,9 @@
 
 ## Unreleased
 
+## 4.1.2 - 2024-12-27
+- Restrict php-cs-fixer version 3.65.0 (included in ECS version 12.4+) from being installed because of [bug in `NullableTypeDeclarationFixer`](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/issues/8330).
+
 ## 4.1.1 - 2024-06-10
 - Disable incorrectly behaving PhpdocAlignFixer.
 
